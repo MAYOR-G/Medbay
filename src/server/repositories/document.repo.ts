@@ -200,6 +200,44 @@ export async function getDocumentStorageLocation(
   };
 }
 
+export async function getDocumentCountsByProfile(
+  client: SupabaseClient<Database>,
+  userId: string,
+): Promise<Map<string, number>> {
+  const { data, error } = await client
+    .from("medical_documents")
+    .select("profile_id")
+    .eq("user_id", userId);
+
+  if (error) {
+    throw new ExternalProviderError(`Failed to count profile documents: ${error.message}`);
+  }
+
+  const counts = new Map<string, number>();
+  for (const row of data ?? []) {
+    counts.set(row.profile_id, (counts.get(row.profile_id) ?? 0) + 1);
+  }
+  return counts;
+}
+
+export async function listStoragePathsByProfile(
+  client: SupabaseClient<Database>,
+  userId: string,
+  profileId: string,
+): Promise<string[]> {
+  const { data, error } = await client
+    .from("medical_documents")
+    .select("storage_path")
+    .eq("user_id", userId)
+    .eq("profile_id", profileId);
+
+  if (error) {
+    throw new ExternalProviderError(`Failed to list profile storage paths: ${error.message}`);
+  }
+
+  return (data ?? []).map((row) => row.storage_path);
+}
+
 export async function createDocument(
   client: SupabaseClient<Database>,
   input: {

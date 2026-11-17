@@ -1,15 +1,24 @@
-export default function ProfilesPage() {
-  return (
-    <section className="space-y-4">
-      <h1 className="font-heading text-2xl font-semibold tracking-[-0.015em]">
-        Family Profiles &amp; Settings
-      </h1>
-      <div className="rounded-lg border border-border-hairline bg-surface p-6 shadow-elevation-1">
-        <p className="text-[15px] text-text-secondary">
-          Managed dependent sub-profiles and Google Workspace settings will be implemented in Phase
-          3.
-        </p>
-      </div>
-    </section>
-  );
+import { redirect } from "next/navigation";
+import { ProfilesClientView } from "@/components/profiles";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { getUserAccount } from "@/server/repositories";
+import { listFamilyProfilesWithDocCounts } from "@/server/services";
+
+export default async function ProfilesPage() {
+  const supabase = await createSupabaseServerClient();
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+
+  if (error || !user) {
+    redirect("/login");
+  }
+
+  const [userAccount, profiles] = await Promise.all([
+    getUserAccount(supabase, user.id),
+    listFamilyProfilesWithDocCounts(supabase, user.id),
+  ]);
+
+  return <ProfilesClientView user={userAccount} profiles={profiles} />;
 }
