@@ -43,6 +43,12 @@ export class NotFoundError extends AppError {
   }
 }
 
+export class ConflictError extends AppError {
+  constructor(message = "Operation conflicts with current resource state.", code = "CONFLICT") {
+    super(message, 409, code);
+  }
+}
+
 export class LinkExpiredError extends AppError {
   constructor(message = "This medical share link has expired or been revoked.") {
     super(message, 410, "LINK_EXPIRED_OR_REVOKED");
