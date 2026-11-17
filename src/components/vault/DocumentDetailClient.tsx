@@ -1,18 +1,31 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import * as Tabs from "@radix-ui/react-tabs";
 import { ArrowLeft } from "lucide-react";
-import type { FamilyProfileDto, MedicalDocumentDetailDto } from "@/types/domain.types";
+import type {
+  FamilyProfileDto,
+  MedicalDocumentDetailDto,
+  ShareLinkDto,
+} from "@/types/domain.types";
 import { DocumentViewerPane } from "./DocumentViewerPane";
+import { ShareModal } from "./ShareModal";
 import { SummaryPanel } from "./SummaryPanel";
 
 export interface DocumentDetailClientProps {
   document: MedicalDocumentDetailDto;
   profiles: FamilyProfileDto[];
+  activeShareLinks: ShareLinkDto[];
 }
 
-export function DocumentDetailClient({ document, profiles }: DocumentDetailClientProps) {
+export function DocumentDetailClient({
+  document,
+  profiles,
+  activeShareLinks,
+}: DocumentDetailClientProps) {
+  const [shareModalOpen, setShareModalOpen] = useState(false);
+
   return (
     <div className="space-y-4">
       <Link
@@ -45,7 +58,11 @@ export function DocumentDetailClient({ document, profiles }: DocumentDetailClien
           </Tabs.List>
 
           <Tabs.Content value="summary">
-            <SummaryPanel document={document} profiles={profiles} />
+            <SummaryPanel
+              document={document}
+              profiles={profiles}
+              onOpenShare={() => setShareModalOpen(true)}
+            />
           </Tabs.Content>
           <Tabs.Content value="original">
             <DocumentViewerPane
@@ -67,9 +84,21 @@ export function DocumentDetailClient({ document, profiles }: DocumentDetailClien
           />
         </div>
         <div>
-          <SummaryPanel document={document} profiles={profiles} />
+          <SummaryPanel
+            document={document}
+            profiles={profiles}
+            onOpenShare={() => setShareModalOpen(true)}
+          />
         </div>
       </div>
+
+      <ShareModal
+        open={shareModalOpen}
+        onOpenChange={setShareModalOpen}
+        documentId={document.id}
+        documentTitle={document.title}
+        activeLinks={activeShareLinks}
+      />
     </div>
   );
 }

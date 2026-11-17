@@ -15,3 +15,5 @@ export {
   reassignDocumentProfileAction,
   deleteDocumentAction,
 } from "./document.action";
+
+export { createShareLinkAction, revokeShareLinkAction } from "./share.action";

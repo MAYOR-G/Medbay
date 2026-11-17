@@ -4,6 +4,7 @@ import { NotFoundError } from "@/lib/errors";
 import { documentIdParamSchema } from "@/lib/schemas";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getDocumentDetailById, listProfilesByUser } from "@/server/repositories";
+import { listDocumentActiveShareLinks } from "@/server/services";
 
 export default async function DocumentDetailPage({
   params,
@@ -28,10 +29,12 @@ export default async function DocumentDetailPage({
 
   let document;
   let profiles;
+  let activeShareLinks;
   try {
-    [document, profiles] = await Promise.all([
+    [document, profiles, activeShareLinks] = await Promise.all([
       getDocumentDetailById(supabase, user.id, parsed.data.documentId),
       listProfilesByUser(supabase, user.id),
+      listDocumentActiveShareLinks(supabase, user.id, parsed.data.documentId),
     ]);
   } catch (err) {
     if (err instanceof NotFoundError) {
@@ -40,5 +43,11 @@ export default async function DocumentDetailPage({
     throw err;
   }
 
-  return <DocumentDetailClient document={document} profiles={profiles} />;
+  return (
+    <DocumentDetailClient
+      document={document}
+      profiles={profiles}
+      activeShareLinks={activeShareLinks}
+    />
+  );
 }

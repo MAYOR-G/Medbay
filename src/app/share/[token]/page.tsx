@@ -1,17 +1,57 @@
+import { Clock } from "lucide-react";
+import { Card } from "@/components/ui";
+import { PublicShareViewer } from "@/components/vault";
+import { shareTokenParamSchema } from "@/lib/schemas";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { resolvePublicShareDocument } from "@/server/services";
+import type { ResolvedShareLinkDto } from "@/types/domain.types";
+
+export const dynamic = "force-dynamic";
+
+function ExpiredShareFallback() {
+  return (
+    <main className="flex min-h-screen items-center justify-center bg-canvas px-4">
+      <Card className="w-full max-w-[420px] p-6 text-center">
+        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-border-hairline bg-surface-subtle text-text-secondary">
+          <Clock className="h-5 w-5" aria-hidden="true" />
+        </div>
+        <h1 className="mt-4 font-heading text-xl font-semibold text-text-primary">
+          Link Expired or Revoked
+        </h1>
+        <p className="mt-2 text-[15px] text-text-secondary">
+          This medical document link is no longer active. Please ask the document owner to generate
+          a new share link.
+        </p>
+      </Card>
+    </main>
+  );
+}
+
 export default async function PublicSharePage({ params }: { params: Promise<{ token: string }> }) {
-  const { token } = await params;
+  const rawParams = await params;
+  const parsed = shareTokenParamSchema.safeParse(rawParams);
+  if (!parsed.success) {
+    return <ExpiredShareFallback />;
+  }
+
+  let resolved: ResolvedShareLinkDto | null = null;
+  try {
+    const adminClient = createSupabaseAdminClient();
+    resolved = await resolvePublicShareDocument(adminClient, parsed.data.token);
+  } catch {
+    resolved = null;
+  }
+
+  if (!resolved) {
+    return <ExpiredShareFallback />;
+  }
 
   return (
-    <div className="flex min-h-screen flex-col bg-viewer-dark text-text-inverted">
-      <header className="flex h-14 items-center justify-between border-b border-white/10 bg-text-primary px-4 sm:px-6">
-        <span className="truncate font-heading text-base font-semibold">Shared Medical Record</span>
-        <span className="font-mono text-xs text-white/70">Token: {token.slice(0, 8)}...</span>
-      </header>
-      <main className="flex flex-1 items-center justify-center p-6">
-        <p className="text-[15px] text-white/75">
-          Isolated raw document viewer will be implemented in Phase 5.
-        </p>
-      </main>
-    </div>
+    <PublicShareViewer
+      token={parsed.data.token}
+      title={resolved.title}
+      mimeType={resolved.mimeType}
+      expiresAt={resolved.expiresAt}
+    />
   );
 }
