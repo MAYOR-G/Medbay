@@ -1,0 +1,29 @@
+{
+  "name": "MedBay — Family Medical Vault",
+  "short_name": "MedBay",
+  "description": "Encrypted family medical vault with plain-English AI summaries, profile-isolated RAG, and one-click expiring shares.",
+  "start_url": "/vault",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#1B5E4B",
+  "background_color": "#F5F5F0",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

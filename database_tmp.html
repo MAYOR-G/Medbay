@@ -1,0 +1,2203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>database.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<pre class="hljs"><code><div><span class="hljs-section"># Database Architecture &amp; Schema Specification: MedBay (`DATABASE.md`)</span>
+
+| Field | Detail |
+| :--- | :--- |
+| <span class="hljs-strong">**Product Name**</span> | MedBay (<span class="hljs-code">`medbay`</span>) |
+| <span class="hljs-strong">**Database Engine**</span> | Supabase Managed PostgreSQL 16 + <span class="hljs-code">`pgvector`</span> Extension (<span class="hljs-code">`v0.7+`</span>) |
+| <span class="hljs-strong">**Object Storage**</span> | Supabase Storage (Private Encrypted Bucket: <span class="hljs-code">`vault-files`</span>) |
+| <span class="hljs-strong">**Data Access Layer**</span> | <span class="hljs-code">`@supabase/supabase-js`</span> &amp; <span class="hljs-code">`@supabase/ssr`</span> inside <span class="hljs-code">`src/server/repositories/*.repo.ts`</span> |
+| <span class="hljs-strong">**Multi-Tenancy Model**</span> | Single-database shared-schema tenant isolation enforced via PostgreSQL Row-Level Security (<span class="hljs-code">`user_id = auth.uid()`</span>) |
+| <span class="hljs-strong">**Source of Truth**</span> | Aligned 1:1 with <span class="hljs-code">`PRD.md`</span> v1.0, <span class="hljs-code">`DESIGN.md`</span> v1.0, and <span class="hljs-code">`ARCHITECTURE.md`</span> v1.0 |
+
+---
+
+<span class="hljs-section">## 1. Database Technology &amp; Configuration Overview</span>
+
+<span class="hljs-section">### 1.1 Engine &amp; Extension Configuration</span>
+<span class="hljs-bullet">* </span><span class="hljs-strong">**Primary Relational Store:**</span> PostgreSQL 16 hosted on Supabase Cloud with PgBouncer transaction pooling enabled for serverless Next.js Route Handlers and Server Actions.
+<span class="hljs-bullet">* </span><span class="hljs-strong">**Vector Extension:**</span> <span class="hljs-code">`pgvector`</span> enabled in the <span class="hljs-code">`extensions`</span> schema to store and query <span class="hljs-code">`1536`</span>-dimensional <span class="hljs-code">`halfvec`</span>/<span class="hljs-code">`vector(1536)`</span> embeddings generated by Google AI's <span class="hljs-code">`gemini-embedding-001`</span> model.
+<span class="hljs-bullet">* </span><span class="hljs-strong">**Cryptographic Extension:**</span> <span class="hljs-code">`pgcrypto`</span> enabled for UUID generation (<span class="hljs-code">`gen_random_uuid()`</span>) and cryptographic helpers.
+
+<span class="hljs-section">### 1.2 Naming Conventions</span>
+<span class="hljs-bullet">* </span><span class="hljs-strong">**Tables &amp; Views:**</span> Strictly <span class="hljs-code">`snake_case`</span> plural nouns (e.g., <span class="hljs-code">`family_profiles`</span>, <span class="hljs-code">`medical_documents`</span>, <span class="hljs-code">`document_chunks`</span>, <span class="hljs-code">`share_links`</span>).
+<span class="hljs-bullet">* </span><span class="hljs-strong">**Columns &amp; Indexes:**</span> Strictly <span class="hljs-code">`snake_case`</span> singular descriptors (e.g., <span class="hljs-code">`detected_patient_name`</span>, <span class="hljs-code">`expires_at`</span>). Indexes follow <span class="hljs-code">`idx_&lt;table&gt;_&lt;columns&gt;`</span> for standard indexes, <span class="hljs-code">`uq_&lt;table&gt;_&lt;columns&gt;`</span> for unique indexes, and <span class="hljs-code">`hnsw_&lt;table&gt;_&lt;column&gt;`</span> for vector indexes.
+<span class="hljs-bullet">* </span><span class="hljs-strong">**Primary Keys:**</span> Standardized <span class="hljs-code">`UUID`</span> (<span class="hljs-code">`gen_random_uuid()`</span>) across all domain tables, except <span class="hljs-code">`users.id`</span> which maps 1:1 to <span class="hljs-code">`auth.users(id)`</span> (<span class="hljs-code">`UUID`</span>).
+<span class="hljs-bullet">* </span><span class="hljs-strong">**Foreign Keys:**</span> Named <span class="hljs-code">`&lt;singular_parent_table&gt;_id`</span> (e.g., <span class="hljs-code">`user_id`</span>, <span class="hljs-code">`profile_id`</span>, <span class="hljs-code">`document_id`</span>, <span class="hljs-code">`thread_id`</span>).
+
+<span class="hljs-section">### 1.3 Audit Columns &amp; Deletion Policy</span>
+<span class="hljs-bullet">* </span><span class="hljs-strong">**Standard Timestamps:**</span> All tables include <span class="hljs-code">`created_at TIMESTAMPTZ NOT NULL DEFAULT now()`</span>. Mutable tables (<span class="hljs-code">`users`</span>, <span class="hljs-code">`family_profiles`</span>, <span class="hljs-code">`medical_documents`</span>, <span class="hljs-code">`chat_threads`</span>, <span class="hljs-code">`push_subscriptions`</span>) additionally include <span class="hljs-code">`updated_at TIMESTAMPTZ NOT NULL DEFAULT now()`</span> maintained automatically by a shared <span class="hljs-code">`set_updated_at()`</span> <span class="hljs-code">`BEFORE UPDATE`</span> trigger.
+<span class="hljs-bullet">* </span><span class="hljs-strong">**Hard Deletes vs. Soft Revocation:**</span>
+<span class="hljs-bullet">  * </span><span class="hljs-strong">**Hard Deletes (`DELETE`):**</span> Enforced for user accounts, family sub-profiles, medical documents, document summaries, vector chunks, chat threads, and expired rate-limit buckets. Because medical records are sensitive user property, deleting a document or sub-profile permanently purges both relational rows and the underlying encrypted Storage object (<span class="hljs-code">`vault-files`</span>).
+<span class="hljs-bullet">  * </span><span class="hljs-strong">**Logical Revocation (`revoked_at`):**</span> Applied exclusively to <span class="hljs-code">`share_links`</span> (<span class="hljs-code">`revoked_at TIMESTAMPTZ NULL`</span>) so revoked links immediately return <span class="hljs-code">`410 Gone`</span> while preserving the audit history on <span class="hljs-code">`activity_events`</span>.
+
+---
+
+<span class="hljs-section">## 2. Entity-Relationship (ER) Diagram &amp; Cardinality</span>
+
+<span class="hljs-code">```mermaid
+erDiagram
+    AUTH_USERS ||--|| USERS : "1:1 mirrors"
+    USERS ||--|{ FAMILY_PROFILES : "1:N owns"
+    USERS ||--|{ MEDICAL_DOCUMENTS : "1:N owns"
+    USERS ||--|{ CHAT_THREADS : "1:N initiates"
+    USERS ||--|{ SHARE_LINKS : "1:N creates"
+    USERS ||--|{ ACTIVITY_EVENTS : "1:N generates"
+    USERS ||--|{ NOTIFICATION_ITEMS : "1:N receives"
+    USERS ||--|{ PUSH_SUBSCRIPTIONS : "1:N registers"
+
+    FAMILY_PROFILES ||--o{ MEDICAL_DOCUMENTS : "1:N assigned to"
+    FAMILY_PROFILES ||--o{ DOCUMENT_CHUNKS : "1:N scopes RAG"
+    FAMILY_PROFILES ||--o{ CHAT_THREADS : "1:N filters"
+    FAMILY_PROFILES ||--o{ ACTIVITY_EVENTS : "1:N tagged on"
+
+    MEDICAL_DOCUMENTS ||--|| DOCUMENT_SUMMARIES : "1:1 summarized by"
+    MEDICAL_DOCUMENTS ||--|{ DOCUMENT_CHUNKS : "1:N split into"
+    MEDICAL_DOCUMENTS ||--o{ SHARE_LINKS : "1:N shared via"
+    MEDICAL_DOCUMENTS ||--o{ ACTIVITY_EVENTS : "1:N referenced in"
+    MEDICAL_DOCUMENTS ||--o| NOTIFICATION_ITEMS : "1:1 imported from"
+
+    CHAT_THREADS ||--|{ CHAT_MESSAGES : "1:N contains"
+
+    USERS {
+        uuid id PK
+        varchar email
+        varchar full_name
+        boolean gmail_scan_enabled
+        timestamptz last_gmail_scan_at
+    }
+
+    FAMILY_PROFILES {
+        uuid id PK
+        uuid user_id FK
+        varchar full_name
+        varchar relationship
+        date date_of_birth
+        boolean is_primary
+        smallint color_index
+    }
+
+    MEDICAL_DOCUMENTS {
+        uuid id PK
+        uuid user_id FK
+        uuid profile_id FK
+        varchar title
+        varchar mime_type
+        varchar storage_path
+        varchar category
+        varchar ingestion_status
+        varchar profile_match_confidence
+    }
+
+    DOCUMENT_SUMMARIES {
+        uuid id PK
+        uuid document_id FK
+        text overview
+        jsonb key_findings
+        jsonb doctor_questions
+        jsonb citations
+        varchar model_used
+    }
+
+    DOCUMENT_CHUNKS {
+        uuid id PK
+        uuid document_id FK
+        uuid user_id FK
+        uuid profile_id FK
+        integer chunk_index
+        text content
+        vector embedding
+    }
+
+    CHAT_THREADS {
+        uuid id PK
+        uuid user_id FK
+        uuid profile_id FK
+        varchar title
+    }
+
+    CHAT_MESSAGES {
+        uuid id PK
+        uuid thread_id FK
+        varchar role
+        text content
+        jsonb vault_citations
+        jsonb web_citations
+        jsonb calendar_event_created
+    }
+
+    SHARE_LINKS {
+        uuid id PK
+        uuid document_id FK
+        uuid user_id FK
+        varchar token
+        varchar duration_preset
+        timestamptz expires_at
+        timestamptz revoked_at
+        integer view_count
+    }
+
+    ACTIVITY_EVENTS {
+        uuid id PK
+        uuid user_id FK
+        uuid profile_id FK
+        uuid document_id FK
+        varchar event_type
+        text description
+        jsonb metadata
+    }
+
+    NOTIFICATION_ITEMS {
+        uuid id PK
+        uuid user_id FK
+        uuid imported_document_id FK
+        varchar type
+        varchar gmail_message_id
+        boolean is_read
+    }
+
+    PUSH_SUBSCRIPTIONS {
+        uuid id PK
+        uuid user_id FK
+        text endpoint
+        text p256dh_key
+        text auth_key
+    }
+
+</span></div></code></pre>
+<h3 id="21-relationship--join-summary">2.1 Relationship &amp; Join Summary</h3>
+<ul>
+<li><strong>Tenant Root (<code>users</code>):</strong> Extends Supabase <code>auth.users</code> (<code>1:1</code>). Every domain entity carries a direct <code>user_id</code> foreign key for flat, high-speed Row-Level Security evaluation without multi-hop joins.</li>
+<li><strong>Family Sub-Profiles (<code>family_profiles</code>):</strong> <code>1:N</code> under <code>users</code>. Each user has exactly one primary <code>Self</code> profile (<code>is_primary = true</code>) and up to 15 managed dependent profiles.</li>
+<li><strong>Documents, Summaries &amp; Chunks:</strong> Each <code>medical_documents</code> record belongs to one <code>users</code> row and one <code>family_profiles</code> row (<code>N:1</code>), has at most one <code>document_summaries</code> record (<code>1:1</code>), and decomposes into <code>1:N</code> <code>document_chunks</code> rows carrying denormalized <code>(user_id, profile_id)</code> columns for single-scan <code>pgvector</code> pre-filtering.</li>
+<li><strong>Many-to-Many Modeling:</strong> No standalone M:N join tables are required in MVP v1.0 because each medical document is assigned to a single primary patient <code>FamilyProfile</code>, and chat message citations (<code>vault_citations</code>, <code>web_citations</code>) are stored as immutable point-in-time JSONB snapshots on <code>chat_messages</code> so historical answers remain intact even if a source document is later renamed or deleted.</li>
+</ul>
+<hr>
+<h2 id="3-enums--standardized-value-sets">3. Enums &amp; Standardized Value Sets</h2>
+<p>To prevent migration lock-in when adding future categories while guaranteeing strict database validation, controlled vocabularies are enforced via PostgreSQL <code>CHECK</code> constraints matching TypeScript/Zod union literals verbatim:</p>
+<table>
+<thead>
+<tr>
+<th>Logical Enum Name</th>
+<th>Column(s)</th>
+<th>Exact Allowed Values (Case-Sensitive)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>family_relationship</code></td>
+<td><code>family_profiles.relationship</code></td>
+<td><code>'Self'</code>, <code>'Spouse'</code>, <code>'Child'</code>, <code>'Parent'</code>, <code>'Dependent'</code>, <code>'Other'</code></td>
+</tr>
+<tr>
+<td><code>document_category</code></td>
+<td><code>medical_documents.category</code></td>
+<td><code>'Lab Report'</code>, <code>'Prescription'</code>, <code>'Imaging'</code>, <code>'Discharge Summary'</code>, <code>'Vaccination'</code>, <code>'Clinic Note'</code>, <code>'Other'</code></td>
+</tr>
+<tr>
+<td><code>profile_match_confidence</code></td>
+<td><code>medical_documents.profile_match_confidence</code></td>
+<td><code>'high'</code>, <code>'needs_review'</code>, <code>'manual'</code></td>
+</tr>
+<tr>
+<td><code>ingestion_status</code></td>
+<td><code>medical_documents.ingestion_status</code></td>
+<td><code>'queued'</code>, <code>'extracting'</code>, <code>'summarizing'</code>, <code>'indexing'</code>, <code>'ready'</code>, <code>'failed'</code></td>
+</tr>
+<tr>
+<td><code>document_source</code></td>
+<td><code>medical_documents.source</code></td>
+<td><code>'manual_upload'</code>, <code>'gmail_import'</code></td>
+</tr>
+<tr>
+<td><code>finding_severity</code></td>
+<td><code>document_summaries.key_findings[*].severity</code></td>
+<td><code>'normal'</code>, <code>'attention'</code>, <code>'critical'</code></td>
+</tr>
+<tr>
+<td><code>chat_role</code></td>
+<td><code>chat_messages.role</code></td>
+<td><code>'user'</code>, <code>'assistant'</code></td>
+</tr>
+<tr>
+<td><code>share_duration_preset</code></td>
+<td><code>share_links.duration_preset</code></td>
+<td><code>'24h'</code>, <code>'7d'</code>, <code>'30d'</code></td>
+</tr>
+<tr>
+<td><code>activity_event_type</code></td>
+<td><code>activity_events.event_type</code></td>
+<td><code>'DOCUMENT_UPLOADED'</code>, <code>'AI_SUMMARY_GENERATED'</code>, <code>'PROFILE_ASSIGNED'</code>, <code>'SHARE_LINK_CREATED'</code>, <code>'SHARE_LINK_ACCESSED'</code>, <code>'SHARE_LINK_REVOKED'</code>, <code>'CALENDAR_APPOINTMENT_BOOKED'</code>, <code>'GMAIL_MEDICAL_DETECTED'</code></td>
+</tr>
+<tr>
+<td><code>notification_type</code></td>
+<td><code>notification_items.type</code></td>
+<td><code>'gmail_medical_found'</code>, <code>'ingestion_failed'</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-complete-table--column-specifications">4. Complete Table &amp; Column Specifications</h2>
+<h3 id="41-users-application-account-root">4.1 <code>users</code> (Application Account Root)</h3>
+<p>Mirrors Supabase <code>auth.users</code> (<code>1:1</code>) and holds encrypted Google Workspace OAuth credentials and 24-hour Gmail scan preferences.</p>
+<table>
+<thead>
+<tr>
+<th>Column Name</th>
+<th>Data Type</th>
+<th>Nullable?</th>
+<th>Default Value</th>
+<th>Constraints</th>
+<th>Description / Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>PK</code>, <code>FK -&gt; auth.users.id</code></td>
+<td>Primary key matching Supabase Auth user UID.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>VARCHAR(320)</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>UNIQUE</code></td>
+<td>Primary Google account email address.</td>
+</tr>
+<tr>
+<td><code>full_name</code></td>
+<td><code>VARCHAR(160)</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>CHECK (length(trim(full_name)) &gt; 0)</code></td>
+<td>Display name populated from Google OAuth profile.</td>
+</tr>
+<tr>
+<td><code>avatar_url</code></td>
+<td><code>TEXT</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td>None</td>
+<td>Optional Google profile avatar URL.</td>
+</tr>
+<tr>
+<td><code>encrypted_google_refresh_token</code></td>
+<td><code>TEXT</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td>None</td>
+<td>AES-256-GCM encrypted Google OAuth refresh token (<code>iv:authTag:ciphertext</code>) for Calendar &amp; Gmail access.</td>
+</tr>
+<tr>
+<td><code>google_scopes_valid</code></td>
+<td><code>BOOLEAN</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>true</code></td>
+<td>None</td>
+<td>Set to <code>false</code> if Google revokes refresh token, triggering UI reconnect banner.</td>
+</tr>
+<tr>
+<td><code>gmail_scan_enabled</code></td>
+<td><code>BOOLEAN</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>true</code></td>
+<td>None</td>
+<td>User toggle enabling/disabling the 24-hour Gmail medical scanner.</td>
+</tr>
+<tr>
+<td><code>last_gmail_scan_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td>None</td>
+<td>Timestamp of the last completed 24-hour Gmail scan cycle.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>now()</code></td>
+<td>None</td>
+<td>Account creation timestamp.</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>now()</code></td>
+<td>None</td>
+<td>Auto-updated timestamp on profile/token changes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-familyprofiles-self--managed-dependents">4.2 <code>family_profiles</code> (Self &amp; Managed Dependents)</h3>
+<p>Stores the primary user's <code>Self</code> profile and non-login sub-profiles for spouse, children, and dependents.</p>
+<table>
+<thead>
+<tr>
+<th>Column Name</th>
+<th>Data Type</th>
+<th>Nullable?</th>
+<th>Default Value</th>
+<th>Constraints</th>
+<th>Description / Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>gen_random_uuid()</code></td>
+<td><code>PK</code></td>
+<td>Unique family profile identifier.</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>FK -&gt; users.id</code></td>
+<td>Owning primary account holder.</td>
+</tr>
+<tr>
+<td><code>full_name</code></td>
+<td><code>VARCHAR(160)</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>CHECK (length(trim(full_name)) &gt; 0)</code></td>
+<td>Full name of family member (used by Agent 1 for patient name matching).</td>
+</tr>
+<tr>
+<td><code>relationship</code></td>
+<td><code>VARCHAR(32)</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>CHECK (relationship IN (...))</code></td>
+<td>Standardized relationship (<code>Self</code>, <code>Spouse</code>, <code>Child</code>, <code>Parent</code>, <code>Dependent</code>, <code>Other</code>).</td>
+</tr>
+<tr>
+<td><code>date_of_birth</code></td>
+<td><code>DATE</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td><code>CHECK (date_of_birth &lt;= CURRENT_DATE)</code></td>
+<td>Optional birth date to disambiguate clinical reference ranges.</td>
+</tr>
+<tr>
+<td><code>is_primary</code></td>
+<td><code>BOOLEAN</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>false</code></td>
+<td>None</td>
+<td><code>true</code> strictly for the account holder's own <code>Self</code> profile.</td>
+</tr>
+<tr>
+<td><code>color_index</code></td>
+<td><code>SMALLINT</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>0</code></td>
+<td><code>CHECK (color_index &gt;= 0 AND color_index &lt;= 6)</code></td>
+<td>Deterministic palette index (<code>0–6</code>) mapping to <code>DESIGN.md</code> Family Profile Pill colors.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>now()</code></td>
+<td>None</td>
+<td>Sub-profile creation timestamp.</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>now()</code></td>
+<td>None</td>
+<td>Auto-updated timestamp.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-medicaldocuments-vault-file-metadata--ingestion-state">4.3 <code>medical_documents</code> (Vault File Metadata &amp; Ingestion State)</h3>
+<p>Stores metadata, private storage paths, patient matching confidence, and Agent 1 pipeline status for every uploaded file.</p>
+<table>
+<thead>
+<tr>
+<th>Column Name</th>
+<th>Data Type</th>
+<th>Nullable?</th>
+<th>Default Value</th>
+<th>Constraints</th>
+<th>Description / Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>gen_random_uuid()</code></td>
+<td><code>PK</code></td>
+<td>Unique medical document identifier.</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>FK -&gt; users.id</code></td>
+<td>Owning primary account holder.</td>
+</tr>
+<tr>
+<td><code>profile_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>FK -&gt; family_profiles.id</code></td>
+<td>Assigned family member profile.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>VARCHAR(240)</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>CHECK (length(trim(title)) &gt; 0)</code></td>
+<td>Human-readable document title (auto-refined by AI or user-editable).</td>
+</tr>
+<tr>
+<td><code>original_filename</code></td>
+<td><code>VARCHAR(255)</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td>None</td>
+<td>Sanitized original uploaded filename.</td>
+</tr>
+<tr>
+<td><code>mime_type</code></td>
+<td><code>VARCHAR(120)</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>CHECK (mime_type IN (...))</code></td>
+<td>Validated MIME type (<code>image/jpeg</code>, <code>image/png</code>, <code>image/webp</code>, <code>application/pdf</code>, <code>application/vnd.openxmlformats-officedocument.wordprocessingml.document</code>, <code>text/plain</code>).</td>
+</tr>
+<tr>
+<td><code>file_size_bytes</code></td>
+<td><code>INTEGER</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>CHECK (file_size_bytes &gt; 0 AND file_size_bytes &lt;= 26214400)</code></td>
+<td>Exact binary byte size (capped at <code>25 MB</code> = <code>26,214,400</code> bytes).</td>
+</tr>
+<tr>
+<td><code>storage_path</code></td>
+<td><code>TEXT</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>UNIQUE</code></td>
+<td>Private Supabase Storage key (<code>{user_id}/{document_id}/{filename}</code>).</td>
+</tr>
+<tr>
+<td><code>category</code></td>
+<td><code>VARCHAR(40)</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>'Other'</code></td>
+<td><code>CHECK (category IN (...))</code></td>
+<td>Clinical category (<code>Lab Report</code>, <code>Prescription</code>, <code>Imaging</code>, <code>Discharge Summary</code>, <code>Vaccination</code>, <code>Clinic Note</code>, <code>Other</code>).</td>
+</tr>
+<tr>
+<td><code>document_date</code></td>
+<td><code>DATE</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td>None</td>
+<td>Clinical service/test date extracted from the document by Agent 1.</td>
+</tr>
+<tr>
+<td><code>detected_patient_name</code></td>
+<td><code>VARCHAR(160)</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td>None</td>
+<td>Raw patient name string extracted from document text by Agent 1.</td>
+</tr>
+<tr>
+<td><code>profile_match_confidence</code></td>
+<td><code>VARCHAR(20)</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>'manual'</code></td>
+<td><code>CHECK (profile_match_confidence IN (...))</code></td>
+<td>Routing confidence (<code>high</code>, <code>needs_review</code>, <code>manual</code>).</td>
+</tr>
+<tr>
+<td><code>ingestion_status</code></td>
+<td><code>VARCHAR(20)</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>'queued'</code></td>
+<td><code>CHECK (ingestion_status IN (...))</code></td>
+<td>Current Agent 1 stage (<code>queued</code>, <code>extracting</code>, <code>summarizing</code>, <code>indexing</code>, <code>ready</code>, <code>failed</code>).</td>
+</tr>
+<tr>
+<td><code>ingestion_error</code></td>
+<td><code>TEXT</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td>None</td>
+<td>Sanitized error message when <code>ingestion_status = 'failed'</code>.</td>
+</tr>
+<tr>
+<td><code>extracted_text</code></td>
+<td><code>TEXT</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td>None</td>
+<td>Full OCR/parsed text output used for chunking and keyword search.</td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td><code>VARCHAR(24)</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>'manual_upload'</code></td>
+<td><code>CHECK (source IN (...))</code></td>
+<td>Origin of document (<code>manual_upload</code> or <code>gmail_import</code>).</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>now()</code></td>
+<td>None</td>
+<td>Upload timestamp.</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>now()</code></td>
+<td>None</td>
+<td>Auto-updated timestamp.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="44-documentsummaries-agent-1-plain-english-output">4.4 <code>document_summaries</code> (Agent 1 Plain-English Output)</h3>
+<p>Stores the concise plain-English summary, structured critical flags, doctor questions, and verified medical citations (<code>1:1</code> with <code>medical_documents</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Column Name</th>
+<th>Data Type</th>
+<th>Nullable?</th>
+<th>Default Value</th>
+<th>Constraints</th>
+<th>Description / Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>gen_random_uuid()</code></td>
+<td><code>PK</code></td>
+<td>Unique summary identifier.</td>
+</tr>
+<tr>
+<td><code>document_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>UNIQUE</code>, <code>FK -&gt; medical_documents.id</code></td>
+<td><code>1:1</code> reference to the summarized medical document.</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>FK -&gt; users.id</code></td>
+<td>Denormalized owner UID for direct RLS policy evaluation.</td>
+</tr>
+<tr>
+<td><code>overview</code></td>
+<td><code>TEXT</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>CHECK (length(trim(overview)) &gt; 0)</code></td>
+<td>Concise plain-English summary (<code>120–220</code> words) explaining what the document means.</td>
+</tr>
+<tr>
+<td><code>key_findings</code></td>
+<td><code>JSONB</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>'[]'::jsonb</code></td>
+<td><code>CHECK (jsonb_typeof(key_findings) = 'array')</code></td>
+<td>Array of <code>{ label, value, severity ('normal'|'attention'|'critical'), explanation }</code>.</td>
+</tr>
+<tr>
+<td><code>doctor_questions</code></td>
+<td><code>JSONB</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>'[]'::jsonb</code></td>
+<td><code>CHECK (jsonb_typeof(doctor_questions) = 'array')</code></td>
+<td>Array of 2–4 concise, actionable questions to ask the physician.</td>
+</tr>
+<tr>
+<td><code>citations</code></td>
+<td><code>JSONB</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>'[]'::jsonb</code></td>
+<td><code>CHECK (jsonb_typeof(citations) = 'array')</code></td>
+<td>Array of verified Tavily source objects <code>{ title, url, domain, snippet }</code>.</td>
+</tr>
+<tr>
+<td><code>model_used</code></td>
+<td><code>VARCHAR(100)</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td>None</td>
+<td>OpenRouter model identifier that generated the summary (e.g., <code>deepseek/deepseek-v4.1-flash</code>).</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>now()</code></td>
+<td>None</td>
+<td>Summary generation timestamp.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="45-documentchunks-profile-isolated-pgvector-index">4.5 <code>document_chunks</code> (Profile-Isolated <code>pgvector</code> Index)</h3>
+<p>Stores semantic text chunks and <code>1536</code>-dimensional <code>gemini-embedding-001</code> embeddings strictly tagged with <code>profile_id</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Column Name</th>
+<th>Data Type</th>
+<th>Nullable?</th>
+<th>Default Value</th>
+<th>Constraints</th>
+<th>Description / Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>gen_random_uuid()</code></td>
+<td><code>PK</code></td>
+<td>Unique vector chunk identifier.</td>
+</tr>
+<tr>
+<td><code>document_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>FK -&gt; medical_documents.id</code></td>
+<td>Source medical document.</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>FK -&gt; users.id</code></td>
+<td>Owning primary user UID.</td>
+</tr>
+<tr>
+<td><code>profile_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>FK -&gt; family_profiles.id</code></td>
+<td>Strict family member isolation key updated automatically on reassignment.</td>
+</tr>
+<tr>
+<td><code>chunk_index</code></td>
+<td><code>INTEGER</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>CHECK (chunk_index &gt;= 0)</code></td>
+<td>Zero-based sequential chunk position within the document.</td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td><code>TEXT</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>CHECK (length(trim(content)) &gt; 0)</code></td>
+<td>Overlapping text chunk (<code>500–800</code> tokens).</td>
+</tr>
+<tr>
+<td><code>embedding</code></td>
+<td><code>vector(1536)</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td>None</td>
+<td><code>1536</code>-dimension vector generated by Google AI <code>gemini-embedding-001</code>.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>now()</code></td>
+<td>None</td>
+<td>Indexing timestamp.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="46-chatthreads-agent-2-conversation-sessions">4.6 <code>chat_threads</code> (Agent 2 Conversation Sessions)</h3>
+<p>Tracks conversational sessions scoped either to a specific <code>FamilyProfile</code> or across the whole family (<code>profile_id IS NULL</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Column Name</th>
+<th>Data Type</th>
+<th>Nullable?</th>
+<th>Default Value</th>
+<th>Constraints</th>
+<th>Description / Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>gen_random_uuid()</code></td>
+<td><code>PK</code></td>
+<td>Unique chat thread identifier.</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>FK -&gt; users.id</code></td>
+<td>Owning primary account holder.</td>
+</tr>
+<tr>
+<td><code>profile_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td><code>FK -&gt; family_profiles.id</code></td>
+<td>Active family member lock (<code>NULL</code> indicates explicit &quot;All Family&quot; scope).</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>VARCHAR(160)</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>'New Health Consultation'</code></td>
+<td>None</td>
+<td>Auto-generated thread title derived from the first user prompt.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>now()</code></td>
+<td>None</td>
+<td>Thread creation timestamp.</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>now()</code></td>
+<td>None</td>
+<td>Updated on every new message to sort recent threads first.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="47-chatmessages-streaming-rag-messages--tool-artifacts">4.7 <code>chat_messages</code> (Streaming RAG Messages &amp; Tool Artifacts)</h3>
+<p>Persists user prompts, structured Markdown assistant responses, vault/web citations, and booked Google Calendar event cards.</p>
+<table>
+<thead>
+<tr>
+<th>Column Name</th>
+<th>Data Type</th>
+<th>Nullable?</th>
+<th>Default Value</th>
+<th>Constraints</th>
+<th>Description / Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>gen_random_uuid()</code></td>
+<td><code>PK</code></td>
+<td>Unique message identifier.</td>
+</tr>
+<tr>
+<td><code>thread_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>FK -&gt; chat_threads.id</code></td>
+<td>Parent conversation thread.</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>FK -&gt; users.id</code></td>
+<td>Denormalized owner UID for direct RLS enforcement.</td>
+</tr>
+<tr>
+<td><code>role</code></td>
+<td><code>VARCHAR(16)</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>CHECK (role IN ('user', 'assistant'))</code></td>
+<td>Message author role.</td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td><code>TEXT</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td>None</td>
+<td>Raw user prompt or structured Markdown assistant response.</td>
+</tr>
+<tr>
+<td><code>vault_citations</code></td>
+<td><code>JSONB</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>'[]'::jsonb</code></td>
+<td><code>CHECK (jsonb_typeof(vault_citations) = 'array')</code></td>
+<td>Array of <code>{ document_id, title, document_date, profile_name }</code> referenced in answer.</td>
+</tr>
+<tr>
+<td><code>web_citations</code></td>
+<td><code>JSONB</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>'[]'::jsonb</code></td>
+<td><code>CHECK (jsonb_typeof(web_citations) = 'array')</code></td>
+<td>Array of Tavily external sources <code>{ title, url, domain }</code>.</td>
+</tr>
+<tr>
+<td><code>calendar_event_created</code></td>
+<td><code>JSONB</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td>None</td>
+<td>Nullable object <code>{ event_id, title, start_iso, end_iso, timezone, location, html_link }</code> when Calendar tool runs.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>now()</code></td>
+<td>None</td>
+<td>Message creation timestamp.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="48-sharelinks-one-click-expiring-document-access">4.8 <code>share_links</code> (One-Click Expiring Document Access)</h3>
+<p>Manages time-limited (<code>24h</code>, <code>7d</code>, <code>30d</code>), PIN-free public links exposing <strong>only</strong> the original raw document.</p>
+<table>
+<thead>
+<tr>
+<th>Column Name</th>
+<th>Data Type</th>
+<th>Nullable?</th>
+<th>Default Value</th>
+<th>Constraints</th>
+<th>Description / Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>gen_random_uuid()</code></td>
+<td><code>PK</code></td>
+<td>Unique share link record ID.</td>
+</tr>
+<tr>
+<td><code>document_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>FK -&gt; medical_documents.id</code></td>
+<td>Shared medical document.</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>FK -&gt; users.id</code></td>
+<td>Owner who generated the link.</td>
+</tr>
+<tr>
+<td><code>token</code></td>
+<td><code>VARCHAR(64)</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>UNIQUE</code></td>
+<td>High-entropy (<code>192</code>-bit) URL-safe random token used in <code>/share/[token]</code>.</td>
+</tr>
+<tr>
+<td><code>duration_preset</code></td>
+<td><code>VARCHAR(8)</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>CHECK (duration_preset IN ('24h', '7d', '30d'))</code></td>
+<td>Selected TTL window preset.</td>
+</tr>
+<tr>
+<td><code>expires_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>CHECK (expires_at &gt; created_at)</code></td>
+<td>Exact UTC expiration timestamp (<code>created_at + 24h / 7d / 30d</code>).</td>
+</tr>
+<tr>
+<td><code>revoked_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td>None</td>
+<td>Populated immediately if owner manually revokes access early.</td>
+</tr>
+<tr>
+<td><code>view_count</code></td>
+<td><code>INTEGER</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>0</code></td>
+<td><code>CHECK (view_count &gt;= 0)</code></td>
+<td>Number of times an external recipient opened the active link.</td>
+</tr>
+<tr>
+<td><code>last_accessed_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td>None</td>
+<td>Timestamp of the most recent external view.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>now()</code></td>
+<td>None</td>
+<td>Link generation timestamp.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="49-activityevents-chronological-timeline-audit-log">4.9 <code>activity_events</code> (Chronological Timeline Audit Log)</h3>
+<p>Powers the <code>/timeline</code> screen with a complete chronological trail of uploads, summaries, shares, bookings, and Gmail alerts.</p>
+<table>
+<thead>
+<tr>
+<th>Column Name</th>
+<th>Data Type</th>
+<th>Nullable?</th>
+<th>Default Value</th>
+<th>Constraints</th>
+<th>Description / Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>gen_random_uuid()</code></td>
+<td><code>PK</code></td>
+<td>Unique timeline event identifier.</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>FK -&gt; users.id</code></td>
+<td>Owning primary account holder.</td>
+</tr>
+<tr>
+<td><code>profile_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td><code>FK -&gt; family_profiles.id</code></td>
+<td>Associated family member (<code>NULL</code> for account-wide events).</td>
+</tr>
+<tr>
+<td><code>document_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td><code>FK -&gt; medical_documents.id</code></td>
+<td>Associated document for deep-link navigation (<code>NULL</code> if document deleted).</td>
+</tr>
+<tr>
+<td><code>event_type</code></td>
+<td><code>VARCHAR(40)</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>CHECK (event_type IN (...))</code></td>
+<td>Standardized audit event code (<code>DOCUMENT_UPLOADED</code>, <code>CALENDAR_APPOINTMENT_BOOKED</code>, etc.).</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>TEXT</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>CHECK (length(trim(description)) &gt; 0)</code></td>
+<td>Human-readable timeline summary rendered in <code>/timeline</code>.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>JSONB</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>'{}'::jsonb</code></td>
+<td><code>CHECK (jsonb_typeof(metadata) = 'object')</code></td>
+<td>Structured context (e.g., <code>share_duration</code>, <code>calendar_html_link</code>, <code>notification_id</code>).</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>now()</code></td>
+<td>None</td>
+<td>Exact timestamp used for date-grouped timeline rendering.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="410-notificationitems-24-hour-gmail-scanner--system-alerts">4.10 <code>notification_items</code> (24-Hour Gmail Scanner &amp; System Alerts)</h3>
+<p>Stores in-app alerts triggered by the 24-hour Gmail medical scanner or failed document ingestions (never triggers outbound emails).</p>
+<table>
+<thead>
+<tr>
+<th>Column Name</th>
+<th>Data Type</th>
+<th>Nullable?</th>
+<th>Default Value</th>
+<th>Constraints</th>
+<th>Description / Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>gen_random_uuid()</code></td>
+<td><code>PK</code></td>
+<td>Unique notification identifier.</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>FK -&gt; users.id</code></td>
+<td>Recipient primary user.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>VARCHAR(32)</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>CHECK (type IN ('gmail_medical_found', 'ingestion_failed'))</code></td>
+<td>Alert category.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>VARCHAR(200)</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td>None</td>
+<td>Alert headline displayed in Notification Center and Web Push.</td>
+</tr>
+<tr>
+<td><code>body</code></td>
+<td><code>TEXT</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td>None</td>
+<td>Concise alert summary / email snippet preview.</td>
+</tr>
+<tr>
+<td><code>gmail_message_id</code></td>
+<td><code>VARCHAR(128)</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td>None</td>
+<td>Gmail API message ID used to prevent duplicate alerts for the same email.</td>
+</tr>
+<tr>
+<td><code>email_subject</code></td>
+<td><code>VARCHAR(300)</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td>None</td>
+<td>Detected medical email subject line.</td>
+</tr>
+<tr>
+<td><code>email_sender</code></td>
+<td><code>VARCHAR(320)</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td>None</td>
+<td>Detected medical email <code>From</code> address/name.</td>
+</tr>
+<tr>
+<td><code>has_attachments</code></td>
+<td><code>BOOLEAN</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>false</code></td>
+<td>None</td>
+<td>Enables the one-tap <code>&quot;Import to Vault&quot;</code> action when attachments exist.</td>
+</tr>
+<tr>
+<td><code>is_read</code></td>
+<td><code>BOOLEAN</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>false</code></td>
+<td>None</td>
+<td>Unread indicator state for top header bell badge.</td>
+</tr>
+<tr>
+<td><code>imported_document_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td><code>FK -&gt; medical_documents.id</code></td>
+<td>Populated once user taps <code>&quot;Import to Vault&quot;</code> on a Gmail alert.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>now()</code></td>
+<td>None</td>
+<td>Alert creation timestamp.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="411-pushsubscriptions-mobile--desktop-pwa-web-push-endpoints">4.11 <code>push_subscriptions</code> (Mobile &amp; Desktop PWA Web Push Endpoints)</h3>
+<p>Stores VAPID Web Push subscriptions per user browser/device.</p>
+<table>
+<thead>
+<tr>
+<th>Column Name</th>
+<th>Data Type</th>
+<th>Nullable?</th>
+<th>Default Value</th>
+<th>Constraints</th>
+<th>Description / Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>gen_random_uuid()</code></td>
+<td><code>PK</code></td>
+<td>Unique subscription identifier.</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td><code>UUID</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>FK -&gt; users.id</code></td>
+<td>Subscribed primary user.</td>
+</tr>
+<tr>
+<td><code>endpoint</code></td>
+<td><code>TEXT</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>UNIQUE</code></td>
+<td>Browser push service endpoint URL.</td>
+</tr>
+<tr>
+<td><code>p256dh_key</code></td>
+<td><code>TEXT</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td>None</td>
+<td>Client P-256 ECDH public encryption key.</td>
+</tr>
+<tr>
+<td><code>auth_key</code></td>
+<td><code>TEXT</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td>None</td>
+<td>Client authentication secret.</td>
+</tr>
+<tr>
+<td><code>device_label</code></td>
+<td><code>VARCHAR(120)</code></td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td>None</td>
+<td>Friendly browser/OS label (e.g., <code>iPhone Safari PWA</code>, <code>Chrome Linux</code>).</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>now()</code></td>
+<td>None</td>
+<td>Subscription registration timestamp.</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>now()</code></td>
+<td>None</td>
+<td>Auto-updated timestamp.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="412-ratelimitbuckets-serverless-sliding-window-rate-limiter">4.12 <code>rate_limit_buckets</code> (Serverless Sliding-Window Rate Limiter)</h3>
+<p>Lightweight internal table powering database-backed rate limiting (<code>/api/chat</code>, <code>/api/documents/upload</code>, <code>/api/share/[token]/file</code>) without requiring Redis in MVP v1.0.</p>
+<table>
+<thead>
+<tr>
+<th>Column Name</th>
+<th>Data Type</th>
+<th>Nullable?</th>
+<th>Default Value</th>
+<th>Constraints</th>
+<th>Description / Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bucket_key</code></td>
+<td><code>VARCHAR(180)</code></td>
+<td><code>NOT NULL</code></td>
+<td>None</td>
+<td><code>PK</code></td>
+<td>Composite scope key (e.g., <code>chat:{user_id}</code>, <code>share:{ip_hash}</code>).</td>
+</tr>
+<tr>
+<td><code>window_start</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>now()</code></td>
+<td>None</td>
+<td>Start timestamp of the current 60-second sliding window.</td>
+</tr>
+<tr>
+<td><code>request_count</code></td>
+<td><code>INTEGER</code></td>
+<td><code>NOT NULL</code></td>
+<td><code>1</code></td>
+<td><code>CHECK (request_count &gt;= 1)</code></td>
+<td>Number of requests recorded in the active window.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="5-foreign-keys--referential-integrity-rules">5. Foreign Keys &amp; Referential Integrity Rules</h2>
+<table>
+<thead>
+<tr>
+<th>Child Table.Column</th>
+<th>Parent Table.Column</th>
+<th><code>ON DELETE</code> Rule</th>
+<th><code>ON UPDATE</code> Rule</th>
+<th>Architectural Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>users.id</code></td>
+<td><code>auth.users.id</code></td>
+<td><code>CASCADE</code></td>
+<td><code>CASCADE</code></td>
+<td>Account deletion in Supabase Auth purges all MedBay user data cleanly.</td>
+</tr>
+<tr>
+<td><code>family_profiles.user_id</code></td>
+<td><code>users.id</code></td>
+<td><code>CASCADE</code></td>
+<td><code>CASCADE</code></td>
+<td>Deleting an account removes all managed family sub-profiles.</td>
+</tr>
+<tr>
+<td><code>medical_documents.user_id</code></td>
+<td><code>users.id</code></td>
+<td><code>CASCADE</code></td>
+<td><code>CASCADE</code></td>
+<td>Deleting an account purges all document metadata.</td>
+</tr>
+<tr>
+<td><code>medical_documents.profile_id</code></td>
+<td><code>family_profiles.id</code></td>
+<td><code>CASCADE</code></td>
+<td><code>CASCADE</code></td>
+<td>Deleting a sub-profile removes all medical records belonging to that dependent (per <code>PRD.md</code> FR-105).</td>
+</tr>
+<tr>
+<td><code>document_summaries.document_id</code></td>
+<td><code>medical_documents.id</code></td>
+<td><code>CASCADE</code></td>
+<td><code>CASCADE</code></td>
+<td>Deleting a document automatically deletes its <code>1:1</code> AI summary.</td>
+</tr>
+<tr>
+<td><code>document_summaries.user_id</code></td>
+<td><code>users.id</code></td>
+<td><code>CASCADE</code></td>
+<td><code>CASCADE</code></td>
+<td>Enforces clean tenant cascade.</td>
+</tr>
+<tr>
+<td><code>document_chunks.document_id</code></td>
+<td><code>medical_documents.id</code></td>
+<td><code>CASCADE</code></td>
+<td><code>CASCADE</code></td>
+<td>Deleting a document immediately purges all vector embeddings from RAG search.</td>
+</tr>
+<tr>
+<td><code>document_chunks.user_id</code></td>
+<td><code>users.id</code></td>
+<td><code>CASCADE</code></td>
+<td><code>CASCADE</code></td>
+<td>Enforces clean tenant cascade.</td>
+</tr>
+<tr>
+<td><code>document_chunks.profile_id</code></td>
+<td><code>family_profiles.id</code></td>
+<td><code>CASCADE</code></td>
+<td><code>CASCADE</code></td>
+<td>Deleting a sub-profile immediately purges its vector embeddings.</td>
+</tr>
+<tr>
+<td><code>chat_threads.user_id</code></td>
+<td><code>users.id</code></td>
+<td><code>CASCADE</code></td>
+<td><code>CASCADE</code></td>
+<td>Deleting an account removes all conversation history.</td>
+</tr>
+<tr>
+<td><code>chat_threads.profile_id</code></td>
+<td><code>family_profiles.id</code></td>
+<td><code>SET NULL</code></td>
+<td><code>CASCADE</code></td>
+<td>Deleting a sub-profile preserves historical chat threads as general family threads rather than losing user conversations.</td>
+</tr>
+<tr>
+<td><code>chat_messages.thread_id</code></td>
+<td><code>chat_threads.id</code></td>
+<td><code>CASCADE</code></td>
+<td><code>CASCADE</code></td>
+<td>Deleting a chat thread deletes all its messages.</td>
+</tr>
+<tr>
+<td><code>chat_messages.user_id</code></td>
+<td><code>users.id</code></td>
+<td><code>CASCADE</code></td>
+<td><code>CASCADE</code></td>
+<td>Enforces clean tenant cascade.</td>
+</tr>
+<tr>
+<td><code>share_links.document_id</code></td>
+<td><code>medical_documents.id</code></td>
+<td><code>CASCADE</code></td>
+<td><code>CASCADE</code></td>
+<td>Deleting a document immediately invalidates and deletes all active share links.</td>
+</tr>
+<tr>
+<td><code>share_links.user_id</code></td>
+<td><code>users.id</code></td>
+<td><code>CASCADE</code></td>
+<td><code>CASCADE</code></td>
+<td>Enforces clean tenant cascade.</td>
+</tr>
+<tr>
+<td><code>activity_events.user_id</code></td>
+<td><code>users.id</code></td>
+<td><code>CASCADE</code></td>
+<td><code>CASCADE</code></td>
+<td>Deleting an account removes its audit timeline.</td>
+</tr>
+<tr>
+<td><code>activity_events.profile_id</code></td>
+<td><code>family_profiles.id</code></td>
+<td><code>SET NULL</code></td>
+<td><code>CASCADE</code></td>
+<td>Preserves historical timeline entries even if a dependent sub-profile is later removed.</td>
+</tr>
+<tr>
+<td><code>activity_events.document_id</code></td>
+<td><code>medical_documents.id</code></td>
+<td><code>SET NULL</code></td>
+<td><code>CASCADE</code></td>
+<td>Preserves historical upload/share timeline audit entries after a document is deleted.</td>
+</tr>
+<tr>
+<td><code>notification_items.user_id</code></td>
+<td><code>users.id</code></td>
+<td><code>CASCADE</code></td>
+<td><code>CASCADE</code></td>
+<td>Deleting an account removes all notifications.</td>
+</tr>
+<tr>
+<td><code>notification_items.imported_document_id</code></td>
+<td><code>medical_documents.id</code></td>
+<td><code>SET NULL</code></td>
+<td><code>CASCADE</code></td>
+<td>Preserves the Gmail alert record if the imported vault document is later deleted.</td>
+</tr>
+<tr>
+<td><code>push_subscriptions.user_id</code></td>
+<td><code>users.id</code></td>
+<td><code>CASCADE</code></td>
+<td><code>CASCADE</code></td>
+<td>Deleting an account removes all device push endpoints.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="6-data-integrity-constraints--db-level-validation">6. Data Integrity Constraints &amp; DB-Level Validation</h2>
+<h3 id="61-unique--partial-unique-constraints">6.1 Unique &amp; Partial Unique Constraints</h3>
+<ul>
+<li><strong><code>uq_family_profiles_single_primary</code> (Partial Unique Index):</strong> <code>UNIQUE (user_id) WHERE (is_primary = true)</code> — Guarantees at the database engine level that each user has <strong>at most one</strong> primary <code>Self</code> profile.</li>
+<li><strong><code>uq_document_chunks_doc_chunk_idx</code> (Composite Unique):</strong> <code>UNIQUE (document_id, chunk_index)</code> — Prevents duplicate chunk indexing if an ingestion job is retried.</li>
+<li><strong><code>uq_notification_items_user_gmail_msg</code> (Partial Composite Unique):</strong> <code>UNIQUE (user_id, gmail_message_id) WHERE (gmail_message_id IS NOT NULL)</code> — Guarantees idempotency for the 24-hour Gmail scanner so the same Gmail message can never trigger duplicate alerts.</li>
+<li><strong><code>uq_share_links_token</code>:</strong> <code>UNIQUE (token)</code> — Ensures globally unique public share URL tokens.</li>
+</ul>
+<h3 id="62-database-level-check--trigger-guards">6.2 Database-Level <code>CHECK</code> &amp; Trigger Guards</h3>
+<ul>
+<li><strong>Maximum 15 Sub-Profiles Guard:</strong> A <code>BEFORE INSERT</code> trigger on <code>family_profiles</code> verifies <code>COUNT(*) &lt; 16</code> (1 <code>Self</code> + up to 15 dependents) per <code>user_id</code>, raising an exception if exceeded.</li>
+<li><strong>File Size &amp; MIME Whitelist:</strong> <code>medical_documents</code> enforces <code>file_size_bytes BETWEEN 1 AND 26214400</code> (<code>25 MB</code>) and restricts <code>mime_type</code> strictly to the 6 approved formats (<code>JPEG</code>, <code>PNG</code>, <code>WebP</code>, <code>PDF</code>, <code>DOCX</code>, <code>TXT</code>).</li>
+<li><strong>Share Link Temporal Validity:</strong> <code>share_links</code> enforces <code>expires_at &gt; created_at</code> and <code>view_count &gt;= 0</code>.</li>
+<li><strong>Atomic Profile Reassignment Sync:</strong> Whenever <code>medical_documents.profile_id</code> is updated, an <code>AFTER UPDATE OF profile_id</code> trigger on <code>medical_documents</code> automatically updates <code>document_chunks.profile_id = NEW.profile_id WHERE document_id = NEW.id</code> in the same transaction so vector isolation never drifts out of sync.</li>
+</ul>
+<hr>
+<h2 id="7-query-driven-indexing-strategy">7. Query-Driven Indexing Strategy</h2>
+<p>Every non-primary index below maps directly to a high-frequency query in <code>PRD.md</code> and <code>ARCHITECTURE.md</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Index Name</th>
+<th>Table &amp; Columns</th>
+<th>Index Type</th>
+<th>Exact Query / Access Pattern Optimized</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>idx_family_profiles_user_primary</code></td>
+<td><code>family_profiles (user_id, is_primary DESC, created_at ASC)</code></td>
+<td>Composite B-Tree</td>
+<td>Renders the top Profile Switcher bar (<code>Self</code> first, followed by dependents in creation order).</td>
+</tr>
+<tr>
+<td><code>idx_medical_docs_user_profile_created</code></td>
+<td><code>medical_documents (user_id, profile_id, created_at DESC)</code></td>
+<td>Composite B-Tree</td>
+<td>Powers <code>/vault</code> home feed filtered by active <code>FamilyProfile</code> and sorted newest-first.</td>
+</tr>
+<tr>
+<td><code>idx_medical_docs_user_category_created</code></td>
+<td><code>medical_documents (user_id, category, created_at DESC)</code></td>
+<td>Composite B-Tree</td>
+<td>Powers <code>/vault</code> category filter chips (<code>Lab Report</code>, <code>Prescription</code>, <code>Imaging</code>, etc.).</td>
+</tr>
+<tr>
+<td><code>idx_medical_docs_search_gin</code></td>
+<td>`medical_documents USING GIN (to_tsvector('english', coalesce(title,'')</td>
+<td></td>
+<td>' '</td>
+</tr>
+<tr>
+<td><code>hnsw_document_chunks_embedding</code></td>
+<td><code>document_chunks USING hnsw (embedding vector_cosine_ops)</code></td>
+<td>HNSW Vector</td>
+<td>Accelerates approximate nearest-neighbor cosine similarity search (<code>&lt;=&gt;</code>) during Agent 2 RAG chat.</td>
+</tr>
+<tr>
+<td><code>idx_document_chunks_user_profile</code></td>
+<td><code>document_chunks (user_id, profile_id, document_id)</code></td>
+<td>Composite B-Tree</td>
+<td>Pre-filters vector candidates strictly by <code>user_id</code> and active <code>profile_id</code> before similarity ranking.</td>
+</tr>
+<tr>
+<td><code>idx_chat_threads_user_updated</code></td>
+<td><code>chat_threads (user_id, updated_at DESC)</code></td>
+<td>Composite B-Tree</td>
+<td>Lists recent AI chat threads in <code>/chat</code> thread drawer ordered by most recent activity.</td>
+</tr>
+<tr>
+<td><code>idx_chat_messages_thread_created</code></td>
+<td><code>chat_messages (thread_id, created_at ASC)</code></td>
+<td>Composite B-Tree</td>
+<td>Loads chronological message history when opening a <code>/chat</code> thread.</td>
+</tr>
+<tr>
+<td><code>idx_share_links_document_active</code></td>
+<td><code>share_links (document_id, expires_at DESC) WHERE revoked_at IS NULL</code></td>
+<td>Partial B-Tree</td>
+<td>Lists active, non-revoked share links inside the Document Share Modal.</td>
+</tr>
+<tr>
+<td><code>idx_activity_events_user_created</code></td>
+<td><code>activity_events (user_id, created_at DESC)</code></td>
+<td>Composite B-Tree</td>
+<td>Renders <code>/timeline</code> reverse-chronological feed grouped by date.</td>
+</tr>
+<tr>
+<td><code>idx_activity_events_user_profile_type</code></td>
+<td><code>activity_events (user_id, profile_id, event_type, created_at DESC)</code></td>
+<td>Composite B-Tree</td>
+<td>Powers <code>/timeline</code> filtering by family member and event category.</td>
+</tr>
+<tr>
+<td><code>idx_notifications_user_unread_created</code></td>
+<td><code>notification_items (user_id, is_read, created_at DESC)</code></td>
+<td>Composite B-Tree</td>
+<td>Computes unread bell badge count and renders <code>/notifications</code> feed.</td>
+</tr>
+<tr>
+<td><code>idx_users_gmail_scan_eligible</code></td>
+<td><code>users (last_gmail_scan_at ASC NULLS FIRST) WHERE gmail_scan_enabled = true AND google_scopes_valid = true</code></td>
+<td>Partial B-Tree</td>
+<td>Allows the 24-hour <code>/api/cron/gmail-scan</code> job to fetch only eligible users due for scanning.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="8-data-ownership-multi-tenancy--authorization-model">8. Data Ownership, Multi-Tenancy &amp; Authorization Model</h2>
+<h3 id="81-tenant-ownership-rule">8.1 Tenant Ownership Rule</h3>
+<p>Every domain table carries an explicit <code>user_id</code> column referencing <code>users.id</code>. Row-Level Security (<code>ENABLE ROW LEVEL SECURITY</code>) is mandatory on <strong>all 12 tables</strong> in the <code>public</code> schema, with <code>FORCE ROW LEVEL SECURITY</code> enabled so table owners cannot accidentally bypass policies.</p>
+<h3 id="82-row-level-security-rls-policy-matrix">8.2 Row-Level Security (RLS) Policy Matrix</h3>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th><code>anon</code> Role</th>
+<th><code>authenticated</code> Role (<code>SELECT</code>)</th>
+<th><code>authenticated</code> Role (<code>INSERT</code> / <code>UPDATE</code>)</th>
+<th><code>authenticated</code> Role (<code>DELETE</code>)</th>
+<th><code>service_role</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>users</code></td>
+<td>Denied</td>
+<td><code>id = auth.uid()</code></td>
+<td><code>id = auth.uid()</code> (cannot overwrite <code>id</code>)</td>
+<td><code>id = auth.uid()</code></td>
+<td>Full Access (Cron &amp; Callback)</td>
+</tr>
+<tr>
+<td><code>family_profiles</code></td>
+<td>Denied</td>
+<td><code>user_id = auth.uid()</code></td>
+<td><code>user_id = auth.uid()</code></td>
+<td><code>user_id = auth.uid() AND is_primary = false</code></td>
+<td>Full Access</td>
+</tr>
+<tr>
+<td><code>medical_documents</code></td>
+<td>Denied</td>
+<td><code>user_id = auth.uid()</code></td>
+<td><code>user_id = auth.uid()</code> (verified <code>profile_id</code> belongs to <code>auth.uid()</code>)</td>
+<td><code>user_id = auth.uid()</code></td>
+<td>Full Access (Agent 1 Worker)</td>
+</tr>
+<tr>
+<td><code>document_summaries</code></td>
+<td>Denied</td>
+<td><code>user_id = auth.uid()</code></td>
+<td>Denied directly (written via Agent 1 RPC)</td>
+<td><code>user_id = auth.uid()</code></td>
+<td>Full Access (Agent 1 Worker)</td>
+</tr>
+<tr>
+<td><code>document_chunks</code></td>
+<td>Denied</td>
+<td><code>user_id = auth.uid()</code></td>
+<td>Denied directly (written via Agent 1 RPC)</td>
+<td><code>user_id = auth.uid()</code></td>
+<td>Full Access (Agent 1 Worker)</td>
+</tr>
+<tr>
+<td><code>chat_threads</code></td>
+<td>Denied</td>
+<td><code>user_id = auth.uid()</code></td>
+<td><code>user_id = auth.uid()</code></td>
+<td><code>user_id = auth.uid()</code></td>
+<td>Full Access</td>
+</tr>
+<tr>
+<td><code>chat_messages</code></td>
+<td>Denied</td>
+<td><code>user_id = auth.uid()</code></td>
+<td><code>user_id = auth.uid()</code></td>
+<td><code>user_id = auth.uid()</code></td>
+<td>Full Access</td>
+</tr>
+<tr>
+<td><code>share_links</code></td>
+<td><strong>Denied directly</strong> (Access solely via <code>resolve_active_share_link</code> RPC)</td>
+<td><code>user_id = auth.uid()</code></td>
+<td><code>user_id = auth.uid()</code> (create &amp; set <code>revoked_at</code>)</td>
+<td><code>user_id = auth.uid()</code></td>
+<td>Full Access</td>
+</tr>
+<tr>
+<td><code>activity_events</code></td>
+<td>Denied</td>
+<td><code>user_id = auth.uid()</code></td>
+<td><code>user_id = auth.uid()</code></td>
+<td>Denied (Immutable audit log until account/doc deletion)</td>
+<td>Full Access</td>
+</tr>
+<tr>
+<td><code>notification_items</code></td>
+<td>Denied</td>
+<td><code>user_id = auth.uid()</code></td>
+<td><code>user_id = auth.uid()</code> (<code>UPDATE</code> <code>is_read</code> &amp; <code>imported_document_id</code> only)</td>
+<td><code>user_id = auth.uid()</code></td>
+<td>Full Access (Gmail Cron)</td>
+</tr>
+<tr>
+<td><code>push_subscriptions</code></td>
+<td>Denied</td>
+<td><code>user_id = auth.uid()</code></td>
+<td><code>user_id = auth.uid()</code></td>
+<td><code>user_id = auth.uid()</code></td>
+<td>Full Access (Push Sender)</td>
+</tr>
+<tr>
+<td><code>rate_limit_buckets</code></td>
+<td>Denied</td>
+<td>Denied</td>
+<td>Denied</td>
+<td>Denied</td>
+<td>Full Access (Rate-Limit RPC)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="83-public-share-link-isolation-rpc-resolveactivesharelink">8.3 Public Share Link Isolation RPC (<code>resolve_active_share_link</code>)</h3>
+<ul>
+<li>Unauthenticated external viewers (<code>/share/[token]</code>) <strong>never</strong> query <code>share_links</code> or <code>medical_documents</code> directly via PostgREST.</li>
+<li>Instead, the Next.js Server Component / API route calls a narrowly scoped <code>SECURITY DEFINER</code> RPC <code>resolve_active_share_link(p_token VARCHAR)</code> which:</li>
+</ul>
+<ol>
+<li>Verifies <code>token = p_token AND revoked_at IS NULL AND expires_at &gt; now()</code>.</li>
+<li>Atomically increments <code>view_count = view_count + 1</code> and sets <code>last_accessed_at = now()</code>.</li>
+<li>Inserts a <code>SHARE_LINK_ACCESSED</code> row into <code>activity_events</code>.</li>
+<li>Projects and returns <strong>only</strong> <code>{ document_id, title, mime_type, storage_path, expires_at }</code>—physically excluding <code>document_summaries</code>, <code>extracted_text</code>, <code>family_profiles</code>, and <code>users</code> metadata.</li>
+</ol>
+<hr>
+<h2 id="9-sensitive-data-pii--encryption-handling">9. Sensitive Data, PII &amp; Encryption Handling</h2>
+<table>
+<thead>
+<tr>
+<th>Data Asset</th>
+<th>Storage Location</th>
+<th>Encryption &amp; Protection Rule</th>
+<th>API / Client Exposure Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Google OAuth Refresh Tokens</strong></td>
+<td><code>users.encrypted_google_refresh_token</code></td>
+<td>Encrypted at the application layer before write using <strong>AES-256-GCM</strong> (<code>ENCRYPTION_SECRET</code> 32-byte key + random 12-byte IV + 16-byte auth tag) on top of Supabase disk encryption.</td>
+<td><strong>Never</strong> selected in client-facing repository queries or serialized to browser state.</td>
+</tr>
+<tr>
+<td><strong>Raw Medical Binaries</strong></td>
+<td>Supabase Storage (<code>vault-files</code> bucket)</td>
+<td>Encrypted at rest via <strong>AES-256</strong> and in transit via <strong>TLS 1.3</strong>. Bucket is strictly private (<code>public = false</code>).</td>
+<td>Accessed exclusively via short-lived signed URLs (<code>900s</code> for owner, <code>300s</code> for active <code>/share/[token]</code>).</td>
+</tr>
+<tr>
+<td><strong>OCR Text, Summaries &amp; Chat</strong></td>
+<td><code>medical_documents.extracted_text</code>, <code>document_summaries</code>, <code>chat_messages</code></td>
+<td>Encrypted at rest (AES-256) and protected by strict <code>user_id = auth.uid()</code> RLS.</td>
+<td>Never written to structured application logs (<code>logger.ts</code> redacts all clinical text fields).</td>
+</tr>
+<tr>
+<td><strong>Web Push Keys</strong></td>
+<td><code>push_subscriptions.p256dh_key</code>, <code>auth_key</code></td>
+<td>Encrypted at rest; used solely by server-side <code>web-push.adapter.ts</code>.</td>
+<td>Never returned in <code>GET</code> responses after initial browser registration.</td>
+</tr>
+<tr>
+<td><strong>Public Share Tokens</strong></td>
+<td><code>share_links.token</code></td>
+<td>Generated via <code>crypto.randomBytes(24).toString('base64url')</code> (<code>192</code> bits of cryptographic entropy).</td>
+<td>Returned to the owning user upon creation; never logged in plaintext access logs.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="10-ai--vector--unstructured-storage">10. AI / Vector &amp; Unstructured Storage</h2>
+<h3 id="101-pgvector-embedding--retrieval-specification">10.1 <code>pgvector</code> Embedding &amp; Retrieval Specification</h3>
+<ul>
+<li>
+<p><strong>Embedding Model &amp; Dimensionality:</strong> Google AI <code>gemini-embedding-001</code> configured with <code>outputDimensionality: 1536</code>, stored in <code>document_chunks.embedding</code> (<code>vector(1536)</code>).</p>
+</li>
+<li>
+<p><strong>Task-Type Asymmetry:</strong></p>
+</li>
+<li>
+<p>Document ingestion embeds chunks with <code>taskType: 'RETRIEVAL_DOCUMENT'</code>.</p>
+</li>
+<li>
+<p>User chat prompts embed queries with <code>taskType: 'RETRIEVAL_QUERY'</code>.</p>
+</li>
+<li>
+<p><strong>Distance Metric:</strong> Cosine distance (<code>&lt;=&gt;</code> operator), converted to similarity score via <code>1 - (embedding &lt;=&gt; query_embedding)</code>.</p>
+</li>
+<li>
+<p><strong>Mandatory Profile Isolation RPC (<code>match_document_chunks</code>):</strong></p>
+</li>
+<li>
+<p>Signature: <code>match_document_chunks(p_user_id UUID, p_profile_id UUID, p_query_embedding vector(1536), p_match_threshold FLOAT DEFAULT 0.45, p_match_count INT DEFAULT 8)</code></p>
+</li>
+<li>
+<p>Execution Logic: Filters <code>WHERE dc.user_id = p_user_id AND (p_profile_id IS NULL OR dc.profile_id = p_profile_id) AND md.ingestion_status = 'ready'</code> and joins <code>medical_documents</code> (<code>md</code>) and <code>family_profiles</code> (<code>fp</code>) to return <code>{ chunk_id, document_id, document_title, document_date, detected_patient_name, profile_name, content, similarity }</code>.</p>
+</li>
+</ul>
+<h3 id="102-supabase-object-storage-vault-files-specification">10.2 Supabase Object Storage (<code>vault-files</code>) Specification</h3>
+<ul>
+<li><strong>Bucket Name:</strong> <code>vault-files</code> (<code>public: false</code>, <code>file_size_limit: 26214400</code> bytes).</li>
+<li><strong>Allowed MIME Types:</strong> <code>image/jpeg</code>, <code>image/png</code>, <code>image/webp</code>, <code>application/pdf</code>, <code>application/vnd.openxmlformats-officedocument.wordprocessingml.document</code>, <code>text/plain</code>.</li>
+<li><strong>Deterministic Object Key Convention:</strong> <code>{user_id}/{document_id}/{sanitized_original_filename}</code></li>
+<li><strong>Storage RLS Policies:</strong></li>
+<li><code>authenticated</code> users can <code>INSERT</code>, <code>SELECT</code>, and <code>DELETE</code> objects strictly where <code>(storage.foldername(name))[1] = auth.uid()::text</code>.</li>
+<li><code>anon</code> users have <strong>zero</strong> direct Storage RLS permissions; public <code>/share/[token]</code> downloads receive a transient 5-minute signed URL minted server-side by <code>service_role</code> only after <code>resolve_active_share_link</code> succeeds.</li>
+</ul>
+<hr>
+<h2 id="11-migrations-seeding--lifecycle-strategy">11. Migrations, Seeding &amp; Lifecycle Strategy</h2>
+<h3 id="111-schema-migration-workflow">11.1 Schema Migration Workflow</h3>
+<ul>
+<li>All schema modifications are authored as sequential, timestamped SQL files under <code>supabase/migrations/YYYYMMDDHHMMSS_&lt;descriptive_name&gt;.sql</code> using the Supabase CLI (<code>supabase migration new</code>).</li>
+<li><strong>Local Verification:</strong> Developers run <code>supabase db reset</code> locally to verify clean migration replay from scratch, RLS policy tests (<code>tests/integration/</code>), and regenerate TypeScript types (<code>supabase gen types typescript --local &gt; src/types/database.types.ts</code>).</li>
+<li><strong>CI/CD Promotion:</strong> Merging to <code>main</code> triggers <code>supabase db push</code> against the production Supabase project prior to deploying the updated Next.js build on Vercel.</li>
+</ul>
+<h3 id="112-local-seed-data-blueprint-supabaseseedsql">11.2 Local Seed Data Blueprint (<code>supabase/seed.sql</code>)</h3>
+<p>To enable deterministic local development and E2E Playwright testing without burning live API tokens on every test run, <code>supabase/seed.sql</code> provisions:</p>
+<ol>
+<li><strong>Test Primary User:</strong> <code>demo.caregiver@medbay.test</code> with a pre-created <code>Self</code> primary profile (<code>color_index = 0</code>) and two managed sub-profiles: <code>Sarah</code> (<code>Spouse</code>, <code>color_index = 1</code>) and <code>David</code> (<code>Child</code>, <code>color_index = 2</code>).</li>
+<li><strong>Sample Ready Documents:</strong> Two pre-indexed sample records (one adult <code>Lab Report</code> assigned to <code>Self</code> with an <code>attention</code> LDL cholesterol flag, and one pediatric <code>Vaccination</code> record assigned to <code>David</code>) complete with <code>document_summaries</code> and sample <code>document_chunks</code>.</li>
+<li><strong>Sample Timeline &amp; Notification Items:</strong> Three <code>activity_events</code> rows (<code>DOCUMENT_UPLOADED</code>, <code>AI_SUMMARY_GENERATED</code>, <code>CALENDAR_APPOINTMENT_BOOKED</code>) and one unread <code>gmail_medical_found</code> alert in <code>notification_items</code> so every UI screen renders rich realistic states out of the box.</li>
+</ol>
+<h3 id="113-zero-downtime-migration-rules">11.3 Zero-Downtime Migration Rules</h3>
+<ul>
+<li><strong>Additive Changes First:</strong> Add new columns as <code>NULL</code> or with a non-locking <code>DEFAULT</code> before deploying application code that writes to them.</li>
+<li><strong>Safe Column Renames:</strong> Never rename a live column in-place; add the new column, dual-write during transition, backfill existing rows, and drop the deprecated column in a subsequent release.</li>
+<li><strong>Concurrent Index Builds:</strong> Create large production indexes using <code>CREATE INDEX CONCURRENTLY</code> outside transaction blocks so live <code>/vault</code> reads and uploads are never locked.</li>
+</ul>
+<hr>
+<h2 id="12-backup-retention--recovery-considerations">12. Backup, Retention &amp; Recovery Considerations</h2>
+<ul>
+<li>
+<p><strong>Automated Daily Backups &amp; PITR:</strong> Supabase automated daily physical backups are enabled (<code>7-day</code> retention minimum on Pro tier), with Point-in-Time Recovery (PITR) recommended upon production launch so accidental clinical data corruption can be restored to the exact second.</p>
+</li>
+<li>
+<p><strong>Automated Housekeeping &amp; Purging:</strong></p>
+</li>
+<li>
+<p><code>rate_limit_buckets</code>: Stale rows older than <code>1 hour</code> are pruned automatically at the end of the daily <code>/api/cron/gmail-scan</code> execution.</p>
+</li>
+<li>
+<p><code>share_links</code>: Expired links remain in <code>share_links</code> (blocked from access by <code>expires_at &gt; now()</code>) so the owner's <code>/timeline</code> audit trail remains verifiable, and are purged automatically if the parent document or user account is deleted.</p>
+</li>
+<li>
+<p><strong>Right to Erasure &amp; Account Deletion Cascade:</strong></p>
+</li>
+<li>
+<p>When a user deletes their MedBay account, the deletion service first lists and deletes all binary objects under <code>{user_id}/</code> in the <code>vault-files</code> Storage bucket, and then deletes the <code>auth.users</code> record—triggering a single atomic <code>ON DELETE CASCADE</code> across <code>users</code>, <code>family_profiles</code>, <code>medical_documents</code>, <code>document_summaries</code>, <code>document_chunks</code>, <code>chat_threads</code>, <code>chat_messages</code>, <code>share_links</code>, <code>activity_events</code>, <code>notification_items</code>, and <code>push_subscriptions</code>.</p>
+</li>
+</ul>
+
+</body>
+</html>

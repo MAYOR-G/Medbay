@@ -1,0 +1,208 @@
+@import "tailwindcss";
+
+:root {
+  /* Surface & Background Tokens (DESIGN.md 2.1) */
+  --bg-canvas: #f5f5f0;
+  --bg-surface: #ffffff;
+  --bg-surface-subtle: #ecece4;
+  --bg-surface-hover: #f7f8f6;
+  --bg-viewer-dark: #0e1513;
+  --bg-overlay: rgba(20, 33, 29, 0.52);
+
+  /* Typography Color Tokens (DESIGN.md 2.2) */
+  --text-primary: #14211d;
+  --text-secondary: #4b5e58;
+  --text-muted: #73857f;
+  --text-inverted: #ffffff;
+
+  /* Brand & Accent Tokens (DESIGN.md 2.3) */
+  --accent-primary: #1b5e4b;
+  --accent-primary-hover: #144738;
+  --accent-primary-active: #0f362b;
+  --accent-primary-tint: #e6f0ec;
+  --accent-primary-border: #b7d4c8;
+  --accent-secondary: #2e6f65;
+
+  /* Border & Divider Tokens (DESIGN.md 2.4) */
+  --border-hairline: #dce2df;
+  --border-strong: #b8c4bf;
+  --border-focus: #1b5e4b;
+
+  /* Semantic Status Tokens (DESIGN.md 2.5) */
+  --status-success-bg: #ecfdf5;
+  --status-success-border: #a7f3d0;
+  --status-success-text: #065f46;
+
+  --status-warning-bg: #fffbeb;
+  --status-warning-border: #fde68a;
+  --status-warning-text: #92400e;
+
+  --status-danger-bg: #fef2f2;
+  --status-danger-border: #fecaca;
+  --status-danger-text: #991b1b;
+
+  --status-info-bg: #f0f9ff;
+  --status-info-border: #bae6fd;
+  --status-info-text: #075985;
+
+  /* Family Profile Identity Palette (DESIGN.md 2.6) */
+  --profile-0-bg: #e6f0ec;
+  --profile-0-border: #b7d4c8;
+  --profile-0-text: #1b5e4b;
+
+  --profile-1-bg: #eef2ff;
+  --profile-1-border: #c7d2fe;
+  --profile-1-text: #3730a3;
+
+  --profile-2-bg: #fef3c7;
+  --profile-2-border: #fde68a;
+  --profile-2-text: #92400e;
+
+  --profile-3-bg: #fce7f3;
+  --profile-3-border: #fbcfe8;
+  --profile-3-text: #9d174d;
+
+  --profile-4-bg: #ecfdf5;
+  --profile-4-border: #a7f3d0;
+  --profile-4-text: #065f46;
+
+  --profile-5-bg: #f0f9ff;
+  --profile-5-border: #bae6fd;
+  --profile-5-text: #075985;
+
+  --profile-6-bg: #ecece4;
+  --profile-6-border: #dce2df;
+  --profile-6-text: #14211d;
+
+  /* Typography Stacks (DESIGN.md 3.1) */
+  --font-heading: var(--font-outfit), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: var(--font-source-sans-3), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Spatial Scale — 4px Grid (DESIGN.md 4.1) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+
+  /* Border Radius Scale (DESIGN.md 4.3) */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-full: 9999px;
+
+  /* Elevation System (DESIGN.md 4.4) */
+  --elevation-0: none;
+  --elevation-1: 0 1px 2px rgba(20, 33, 29, 0.04);
+  --elevation-2: 0 2px 8px rgba(20, 33, 29, 0.05);
+  --elevation-3: 0 12px 32px -4px rgba(20, 33, 29, 0.14);
+
+  /* Motion Timing Curves (DESIGN.md 8) */
+  --ease-micro: cubic-bezier(0.2, 0, 0, 1);
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme inline {
+  --color-canvas: var(--bg-canvas);
+  --color-surface: var(--bg-surface);
+  --color-surface-subtle: var(--bg-surface-subtle);
+  --color-surface-hover: var(--bg-surface-hover);
+  --color-viewer-dark: var(--bg-viewer-dark);
+  --color-overlay: var(--bg-overlay);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-inverted: var(--text-inverted);
+
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-primary-hover: var(--accent-primary-hover);
+  --color-accent-primary-active: var(--accent-primary-active);
+  --color-accent-primary-tint: var(--accent-primary-tint);
+  --color-accent-primary-border: var(--accent-primary-border);
+  --color-accent-secondary: var(--accent-secondary);
+
+  --color-border-hairline: var(--border-hairline);
+  --color-border-strong: var(--border-strong);
+  --color-border-focus: var(--border-focus);
+
+  --color-status-success-bg: var(--status-success-bg);
+  --color-status-success-border: var(--status-success-border);
+  --color-status-success-text: var(--status-success-text);
+
+  --color-status-warning-bg: var(--status-warning-bg);
+  --color-status-warning-border: var(--status-warning-border);
+  --color-status-warning-text: var(--status-warning-text);
+
+  --color-status-danger-bg: var(--status-danger-bg);
+  --color-status-danger-border: var(--status-danger-border);
+  --color-status-danger-text: var(--status-danger-text);
+
+  --color-status-info-bg: var(--status-info-bg);
+  --color-status-info-border: var(--status-info-border);
+  --color-status-info-text: var(--status-info-text);
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-full: var(--radius-full);
+
+  --shadow-elevation-1: var(--elevation-1);
+  --shadow-elevation-2: var(--elevation-2);
+  --shadow-elevation-3: var(--elevation-3);
+}
+
+html,
+body {
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+}
+
+/* Global Focus Ring (DESIGN.md 10) */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* Clinical Formatting Utilities (DESIGN.md 3.3) */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.clinical-prose {
+  max-width: 64ch;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+/* Reduced Motion Compliance (DESIGN.md 8) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 100ms !important;
+    scroll-behavior: auto !important;
+  }
+}
