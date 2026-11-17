@@ -31,6 +31,7 @@ export async function listActivityEvents(
     pageSize: number;
     profileId?: string | "all";
     eventType?: ActivityEventType | "all";
+    eventTypes?: ActivityEventType[];
   },
 ): Promise<PaginatedResult<ActivityEventDto>> {
   const from = (filters.page - 1) * filters.pageSize;
@@ -46,7 +47,9 @@ export async function listActivityEvents(
   if (filters.profileId && filters.profileId !== "all") {
     query = query.eq("profile_id", filters.profileId);
   }
-  if (filters.eventType && filters.eventType !== "all") {
+  if (filters.eventTypes && filters.eventTypes.length > 0) {
+    query = query.in("event_type", filters.eventTypes);
+  } else if (filters.eventType && filters.eventType !== "all") {
     query = query.eq("event_type", filters.eventType);
   }
 

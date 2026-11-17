@@ -1,2 +1,3 @@
-// Placeholder barrel for timeline domain components (populated in Phase 7).
-export {};
+export { TimelineFeed, type TimelineFeedProps } from "./TimelineFeed";
+export { TimelineGroup, type TimelineGroupProps } from "./TimelineGroup";
+export { TimelineRow, type TimelineRowProps } from "./TimelineRow";
