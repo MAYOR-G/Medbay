@@ -110,6 +110,16 @@ export async function updateUserPreferences(
   return mapUserRowToDto(data);
 }
 
+export async function deleteUserRow(
+  client: SupabaseClient<Database>,
+  userId: string,
+): Promise<void> {
+  const { error } = await client.from("users").delete().eq("id", userId);
+  if (error) {
+    throw new ExternalProviderError(`Failed to delete user record: ${error.message}`);
+  }
+}
+
 /**
  * Worker-only query retrieving encrypted refresh token. Must only be called with service-role client.
  */

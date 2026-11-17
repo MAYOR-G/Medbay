@@ -66,3 +66,45 @@ export class ExternalProviderError extends AppError {
     super(message, 502, "EXTERNAL_PROVIDER_ERROR");
   }
 }
+
+export interface ApiErrorBody {
+  code: string;
+  message: string;
+  fieldErrors?: ErrorFieldMap;
+}
+
+export type ApiResponse<T> =
+  | {
+      success: true;
+      data: T;
+      requestId: string;
+    }
+  | {
+      success: false;
+      error: ApiErrorBody;
+      requestId: string;
+    };
+
+export function normalizeError(error: unknown): {
+  statusCode: number;
+  body: ApiErrorBody;
+} {
+  if (error instanceof AppError) {
+    return {
+      statusCode: error.statusCode,
+      body: {
+        code: error.code,
+        message: error.message,
+        ...(error.fieldErrors ? { fieldErrors: error.fieldErrors } : {}),
+      },
+    };
+  }
+
+  return {
+    statusCode: 500,
+    body: {
+      code: "INTERNAL_SERVER_ERROR",
+      message: "An unexpected server error occurred.",
+    },
+  };
+}

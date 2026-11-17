@@ -1,2 +1,5 @@
-// Placeholder barrel for Next.js Server Actions (implemented in Phase 2+).
-export {};
+export {
+  signOutAction,
+  updateAccountPreferencesAction,
+  deleteUserAccountAction,
+} from "./account.action";
