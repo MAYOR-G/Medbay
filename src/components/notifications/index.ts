@@ -1,2 +1,3 @@
-// Placeholder barrel for notification components (populated in Phase 8).
-export {};
+export { NotificationList, type NotificationListProps } from "./NotificationList";
+export { NotificationCard, type NotificationCardProps } from "./NotificationCard";
+export { PushOptInCard } from "./PushOptInCard";

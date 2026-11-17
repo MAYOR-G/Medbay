@@ -242,3 +242,10 @@ export async function enforceRateLimit(
   }
   return result;
 }
+
+export async function pruneStaleRateLimitBuckets(
+  adminClient: SupabaseClient<Database>,
+): Promise<void> {
+  const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+  await adminClient.from("rate_limit_buckets").delete().lt("window_start", oneHourAgo);
+}

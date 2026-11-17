@@ -3,3 +3,4 @@ export * from "./openrouter.adapter";
 export * from "./google-ai.adapter";
 export * from "./tavily.adapter";
 export * from "./google-workspace.adapter";
+export * from "./web-push.adapter";
