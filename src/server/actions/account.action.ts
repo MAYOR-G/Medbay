@@ -10,6 +10,7 @@ import {
   type UpdateAccountPreferencesInput,
 } from "@/lib/schemas";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { purgeUserVaultFolder } from "@/server/integrations";
 import { deleteUserRow, updateUserPreferences } from "@/server/repositories";
 import { executeServerAction, parseWithZod, requireAuthenticatedContext } from "./action-utils";
 
@@ -54,29 +55,7 @@ export async function deleteUserAccountAction(
     const { supabase, userId } = await requireAuthenticatedContext();
 
     // Purge user's Storage objects under {userId}/ via user-scoped RLS policy
-    const { data: folders } = await supabase.storage.from("vault-files").list(userId, {
-      limit: 1000,
-    });
-
-    if (folders && folders.length > 0) {
-      const objectPaths: string[] = [];
-      for (const entry of folders) {
-        const prefix = `${userId}/${entry.name}`;
-        const { data: nestedFiles } = await supabase.storage.from("vault-files").list(prefix, {
-          limit: 100,
-        });
-        if (nestedFiles && nestedFiles.length > 0) {
-          for (const file of nestedFiles) {
-            objectPaths.push(`${prefix}/${file.name}`);
-          }
-        } else if (entry.id) {
-          objectPaths.push(prefix);
-        }
-      }
-      if (objectPaths.length > 0) {
-        await supabase.storage.from("vault-files").remove(objectPaths);
-      }
-    }
+    await purgeUserVaultFolder(supabase, userId);
 
     await deleteUserRow(supabase, userId);
     await supabase.auth.signOut();

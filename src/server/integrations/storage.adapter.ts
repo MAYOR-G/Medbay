@@ -94,13 +94,50 @@ export async function deleteVaultFile(
   client: SupabaseClient<Database>,
   storagePath: string,
 ): Promise<void> {
+  return deleteVaultFiles(client, [storagePath]);
+}
+
+export async function deleteVaultFiles(
+  client: SupabaseClient<Database>,
+  storagePaths: string[],
+): Promise<void> {
+  if (storagePaths.length === 0) return;
+
   const { error } = await withTimeout(
-    client.storage.from(VAULT_BUCKET).remove([storagePath]),
+    client.storage.from(VAULT_BUCKET).remove(storagePaths),
     10_000,
     "Vault file deletion",
   );
 
   if (error) {
-    throw new ExternalProviderError(`Failed to delete vault file: ${error.message}`);
+    throw new ExternalProviderError(`Failed to delete vault files: ${error.message}`);
   }
+}
+
+export async function purgeUserVaultFolder(
+  client: SupabaseClient<Database>,
+  userId: string,
+): Promise<void> {
+  const { data: folders } = await client.storage.from(VAULT_BUCKET).list(userId, {
+    limit: 1000,
+  });
+
+  if (!folders || folders.length === 0) return;
+
+  const objectPaths: string[] = [];
+  for (const entry of folders) {
+    const prefix = `${userId}/${entry.name}`;
+    const { data: nestedFiles } = await client.storage.from(VAULT_BUCKET).list(prefix, {
+      limit: 100,
+    });
+    if (nestedFiles && nestedFiles.length > 0) {
+      for (const file of nestedFiles) {
+        objectPaths.push(`${prefix}/${file.name}`);
+      }
+    } else if (entry.id) {
+      objectPaths.push(prefix);
+    }
+  }
+
+  await deleteVaultFiles(client, objectPaths);
 }

@@ -1,5 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { ConflictError, ValidationError } from "@/lib/errors";
+import { deleteVaultFiles } from "@/server/integrations";
 import {
   createDependentProfile,
   deleteDependentProfile,
@@ -116,9 +117,7 @@ export async function deleteManagedDependentProfile(
   }
 
   const storagePaths = await listStoragePathsByProfile(client, userId, profileId);
-  if (storagePaths.length > 0) {
-    await client.storage.from("vault-files").remove(storagePaths);
-  }
+  await deleteVaultFiles(client, storagePaths);
 
   return deleteDependentProfile(client, userId, profileId);
 }

@@ -272,7 +272,7 @@ export function ChatWorkspace({
             type="button"
             onClick={() => setUseHeavyReasoning((v) => !v)}
             className={cn(
-              "inline-flex min-h-[36px] items-center gap-1.5 rounded-full border px-3 text-xs font-semibold transition-colors",
+              "inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-3 text-xs font-semibold transition-colors md:min-h-[36px]",
               useHeavyReasoning
                 ? "border-accent-primary bg-accent-primary-tint text-accent-primary"
                 : "border-border-hairline bg-surface text-text-secondary hover:border-border-strong",
