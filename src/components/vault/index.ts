@@ -1,2 +1,6 @@
-// Placeholder barrel for vault domain components (populated in Phase 4).
-export {};
+export { DocumentCard, type DocumentCardProps } from "./DocumentCard";
+export { UploadSheet, type UploadSheetProps } from "./UploadSheet";
+export { VaultFeedClient, type VaultFeedClientProps } from "./VaultFeedClient";
+export { DocumentViewerPane, type DocumentViewerPaneProps } from "./DocumentViewerPane";
+export { SummaryPanel, type SummaryPanelProps } from "./SummaryPanel";
+export { DocumentDetailClient, type DocumentDetailClientProps } from "./DocumentDetailClient";

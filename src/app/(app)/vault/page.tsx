@@ -1,14 +1,56 @@
-export default function VaultPage() {
+import { redirect } from "next/navigation";
+import { VaultFeedClient } from "@/components/vault";
+import { vaultSearchParamsSchema } from "@/lib/schemas";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { listDocumentsByUser, listProfilesByUser } from "@/server/repositories";
+
+interface VaultPageProps {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}
+
+export default async function VaultPage({ searchParams }: VaultPageProps) {
+  const supabase = await createSupabaseServerClient();
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+
+  if (error || !user) {
+    redirect("/login");
+  }
+
+  const rawSearch = await searchParams;
+  const parsedParams = vaultSearchParamsSchema.safeParse({
+    page: typeof rawSearch.page === "string" ? rawSearch.page : undefined,
+    pageSize: typeof rawSearch.pageSize === "string" ? rawSearch.pageSize : undefined,
+    profileId: typeof rawSearch.profileId === "string" ? rawSearch.profileId : undefined,
+    category: typeof rawSearch.category === "string" ? rawSearch.category : undefined,
+    q: typeof rawSearch.q === "string" ? rawSearch.q : undefined,
+  });
+
+  const filters = parsedParams.success
+    ? parsedParams.data
+    : { page: 1, pageSize: 20, profileId: "all" as const, category: "all" as const, q: "" };
+
+  const [documentsPage, profiles] = await Promise.all([
+    listDocumentsByUser(supabase, user.id, {
+      page: filters.page,
+      pageSize: filters.pageSize,
+      profileId: filters.profileId,
+      category: filters.category,
+      q: filters.q,
+    }),
+    listProfilesByUser(supabase, user.id),
+  ]);
+
   return (
-    <section className="space-y-4">
-      <h1 className="font-heading text-2xl font-semibold tracking-[-0.015em]">
-        Family Medical Vault
-      </h1>
-      <div className="rounded-lg border border-border-hairline bg-surface p-6 shadow-elevation-1">
-        <p className="text-[15px] text-text-secondary">
-          Vault feed, profile switcher, and document upload pipeline will be implemented in Phase 4.
-        </p>
-      </div>
-    </section>
+    <VaultFeedClient
+      documents={documentsPage.items}
+      profiles={profiles}
+      activeCategory={filters.category}
+      activeProfileFilter={filters.profileId}
+      initialQuery={filters.q}
+      totalCount={documentsPage.pagination.totalCount}
+    />
   );
 }

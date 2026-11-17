@@ -9,3 +9,9 @@ export {
   updateFamilyProfileAction,
   deleteFamilyProfileAction,
 } from "./profile.action";
+
+export {
+  updateDocumentMetadataAction,
+  reassignDocumentProfileAction,
+  deleteDocumentAction,
+} from "./document.action";

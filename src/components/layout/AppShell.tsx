@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Suspense, useEffect, useState, type ReactNode } from "react";
 import { AlertTriangle, WifiOff } from "lucide-react";
 import { ToastViewport } from "@/components/ui";
+import { UploadSheet } from "@/components/vault";
 import { useVaultStore } from "@/stores/use-vault-store";
 import type { FamilyProfileDto, UserAccountDto } from "@/types/domain.types";
 import { DesktopSidebar } from "./DesktopSidebar";
@@ -94,6 +95,7 @@ export function AppShell({ user, profiles, unreadNotificationCount, children }: 
       </div>
 
       <MobileBottomNav />
+      <UploadSheet profiles={profiles} />
       <ToastViewport />
     </div>
   );

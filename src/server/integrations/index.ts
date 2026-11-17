@@ -1,2 +1,4 @@
-// Placeholder barrel for external API integration adapters (implemented in Phase 4+).
-export {};
+export * from "./storage.adapter";
+export * from "./openrouter.adapter";
+export * from "./google-ai.adapter";
+export * from "./tavily.adapter";

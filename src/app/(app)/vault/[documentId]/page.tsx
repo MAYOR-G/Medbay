@@ -1,20 +1,44 @@
+import { notFound, redirect } from "next/navigation";
+import { DocumentDetailClient } from "@/components/vault";
+import { NotFoundError } from "@/lib/errors";
+import { documentIdParamSchema } from "@/lib/schemas";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { getDocumentDetailById, listProfilesByUser } from "@/server/repositories";
+
 export default async function DocumentDetailPage({
   params,
 }: {
   params: Promise<{ documentId: string }>;
 }) {
-  const { documentId } = await params;
+  const supabase = await createSupabaseServerClient();
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
 
-  return (
-    <section className="space-y-4">
-      <h1 className="font-heading text-2xl font-semibold tracking-[-0.015em]">Document Detail</h1>
-      <div className="rounded-lg border border-border-hairline bg-surface p-6 shadow-elevation-1">
-        <p className="font-mono text-xs text-text-muted">documentId: {documentId}</p>
-        <p className="mt-2 text-[15px] text-text-secondary">
-          Split-screen raw document viewer and plain-English AI summary will be implemented in Phase
-          4.
-        </p>
-      </div>
-    </section>
-  );
+  if (error || !user) {
+    redirect("/login");
+  }
+
+  const rawParams = await params;
+  const parsed = documentIdParamSchema.safeParse(rawParams);
+  if (!parsed.success) {
+    notFound();
+  }
+
+  let document;
+  let profiles;
+  try {
+    [document, profiles] = await Promise.all([
+      getDocumentDetailById(supabase, user.id, parsed.data.documentId),
+      listProfilesByUser(supabase, user.id),
+    ]);
+  } catch (err) {
+    if (err instanceof NotFoundError) {
+      notFound();
+    }
+    throw err;
+  }
+
+  return <DocumentDetailClient document={document} profiles={profiles} />;
 }
