@@ -15,6 +15,7 @@ const baseCspDirectives = [
 ];
 
 const nextConfig: NextConfig = {
+  serverExternalPackages: ["googleapis", "mammoth", "web-push"],
   async headers() {
     return [
       {

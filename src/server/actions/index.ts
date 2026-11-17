@@ -17,3 +17,5 @@ export {
 } from "./document.action";
 
 export { createShareLinkAction, revokeShareLinkAction } from "./share.action";
+
+export { deleteChatThreadAction } from "./chat.action";

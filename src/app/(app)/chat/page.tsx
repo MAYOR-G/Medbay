@@ -1,14 +1,57 @@
-export default function ChatPage() {
+import { redirect } from "next/navigation";
+import { ChatWorkspace } from "@/components/chat";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+import {
+  getChatThreadWithMessages,
+  listChatThreadsByUser,
+  listProfilesByUser,
+} from "@/server/repositories";
+import type { ChatMessageDto } from "@/types/domain.types";
+
+interface ChatPageProps {
+  searchParams: Promise<{ threadId?: string; profileId?: string }>;
+}
+
+export default async function ChatPage({ searchParams }: ChatPageProps) {
+  const supabase = await createSupabaseServerClient();
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+
+  if (error || !user) {
+    redirect("/login");
+  }
+
+  const params = await searchParams;
+  const [profiles, threads] = await Promise.all([
+    listProfilesByUser(supabase, user.id),
+    listChatThreadsByUser(supabase, user.id, 30),
+  ]);
+
+  let initialThreadId: string | null = null;
+  let initialMessages: ChatMessageDto[] = [];
+  let initialProfileId: string | null = params.profileId ?? null;
+
+  if (params.threadId) {
+    try {
+      const loaded = await getChatThreadWithMessages(supabase, user.id, params.threadId);
+      initialThreadId = loaded.thread.id;
+      initialMessages = loaded.messages;
+      initialProfileId = loaded.thread.profileId;
+    } catch {
+      initialThreadId = null;
+    }
+  }
+
   return (
-    <section className="mx-auto max-w-[820px] space-y-4">
-      <h1 className="font-heading text-2xl font-semibold tracking-[-0.015em]">
-        Personalized Health Chat
-      </h1>
-      <div className="rounded-lg border border-border-hairline bg-surface p-6 shadow-elevation-1">
-        <p className="text-[15px] text-text-secondary">
-          Profile-isolated RAG chat and Google Calendar booking will be implemented in Phase 6.
-        </p>
-      </div>
-    </section>
+    <ChatWorkspace
+      key={initialThreadId ?? "new-thread"}
+      profiles={profiles}
+      threads={threads}
+      initialThreadId={initialThreadId}
+      initialMessages={initialMessages}
+      initialProfileId={initialProfileId}
+    />
   );
 }
