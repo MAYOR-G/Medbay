@@ -6,12 +6,12 @@ export function VaultCitationChip({ citation }: { citation: VaultCitationRef }) 
   return (
     <Link
       href={`/vault/${citation.documentId}`}
-      className="inline-flex min-h-[44px] items-center gap-1.5 rounded-sm border border-accent-primary-border bg-accent-primary-tint px-2.5 py-1 text-[13px] font-medium text-accent-primary hover:bg-[#D6E7E0]"
+      className="inline-flex h-9 flex-row items-center gap-1.5 whitespace-nowrap rounded-lg border border-[#A7F3D0] bg-[#ECFDF5] px-3 text-[13px] font-semibold text-[#065F46] transition-colors hover:bg-[#D1FAE5]"
     >
-      <FileText className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+      <FileText className="h-3.5 w-3.5 shrink-0 text-[#059669]" aria-hidden="true" />
       <span>{citation.title}</span>
       {citation.documentDate && (
-        <span className="font-mono text-xs text-accent-secondary tabular-nums">
+        <span className="font-mono text-xs text-[#065F46]/80 tabular-nums">
           ({citation.documentDate})
         </span>
       )}
@@ -27,7 +27,7 @@ export function WebCitationChip({ citation }: { citation: WebCitationRef }) {
       href={safeHref}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex min-h-[44px] items-center gap-1.5 rounded-sm border border-status-info-border bg-status-info-bg px-2.5 py-1 text-[13px] font-medium text-status-info-text hover:underline"
+      className="inline-flex h-9 flex-row items-center gap-1.5 whitespace-nowrap rounded-lg border border-[#BFDBFE] bg-[#EFF6FF] px-3 text-[13px] font-semibold text-[#1D4ED8] transition-colors hover:bg-[#DBEAFE]"
     >
       <ShieldCheck className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
       <span className="font-mono text-xs">{citation.domain}</span>

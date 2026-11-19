@@ -7,7 +7,7 @@ import { ensurePrimarySelfProfile, upsertUserFromOAuth } from "@/server/reposito
 
 function sanitizeRedirectPath(rawNext: string | null): string {
   if (!rawNext || !rawNext.startsWith("/") || rawNext.startsWith("//")) {
-    return "/vault";
+    return "/dashboard";
   }
   return rawNext;
 }
@@ -74,10 +74,13 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     return NextResponse.redirect(`${origin}${nextPath}`);
   } catch (err) {
+    const rawMessage = err instanceof Error ? err.message : "unknown";
+    const safeReason = rawMessage.replace(/\S+@\S+/g, "[REDACTED]").slice(0, 140);
     logEvent("error", {
       service: "auth",
       event: "oauth_callback_exception",
       errorCode: err instanceof Error ? err.name : "UNKNOWN",
+      meta: { reason: safeReason },
     });
     return NextResponse.redirect(`${origin}/login?error=oauth_failed`);
   }

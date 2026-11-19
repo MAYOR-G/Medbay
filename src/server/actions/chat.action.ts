@@ -4,8 +4,19 @@ import { revalidatePath } from "next/cache";
 import type { ApiResponse } from "@/lib/errors";
 import { logEvent } from "@/lib/logger";
 import { deleteChatThreadSchema, type DeleteChatThreadInput } from "@/lib/schemas";
-import { deleteChatThread } from "@/server/repositories";
+import { deleteChatThread, getChatThreadWithMessages } from "@/server/repositories";
+import type { ChatMessageDto, ChatThreadDto } from "@/types/domain.types";
 import { executeServerAction, parseWithZod, requireAuthenticatedContext } from "./action-utils";
+
+export async function loadChatThreadAction(
+  input: DeleteChatThreadInput,
+): Promise<ApiResponse<{ thread: ChatThreadDto; messages: ChatMessageDto[] }>> {
+  return executeServerAction(async () => {
+    const parsed = parseWithZod(deleteChatThreadSchema, input);
+    const { supabase, userId } = await requireAuthenticatedContext();
+    return getChatThreadWithMessages(supabase, userId, parsed.threadId);
+  });
+}
 
 export async function deleteChatThreadAction(
   input: DeleteChatThreadInput,

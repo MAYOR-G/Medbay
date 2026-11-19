@@ -9,11 +9,11 @@ export interface TimelineGroupProps {
 
 export function TimelineGroup({ group, profileMap }: TimelineGroupProps) {
   return (
-    <section className="space-y-2.5">
-      <h2 className="sticky top-14 z-10 bg-canvas/95 py-1 font-heading text-sm font-semibold tracking-wide text-text-secondary uppercase backdrop-blur-sm md:top-0">
+    <section className="space-y-3">
+      <h2 className="sticky top-16 z-10 bg-white/95 py-1.5 font-heading text-[18px] font-semibold text-[#0F172A] backdrop-blur-sm md:top-0">
         {group.label}
       </h2>
-      <div className="space-y-2">
+      <div className="space-y-2.5">
         {group.events.map((event) => (
           <TimelineRow
             key={event.id}

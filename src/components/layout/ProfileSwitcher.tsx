@@ -1,19 +1,10 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Users } from "lucide-react";
 import { cn } from "@/components/ui";
 import { useVaultStore } from "@/stores/use-vault-store";
 import type { FamilyProfileDto } from "@/types/domain.types";
-
-const ACTIVE_PILL_PALETTE: readonly string[] = [
-  "bg-[#1B5E4B] border-[#1B5E4B] text-white",
-  "bg-[#3730A3] border-[#3730A3] text-white",
-  "bg-[#92400E] border-[#92400E] text-white",
-  "bg-[#9D174D] border-[#9D174D] text-white",
-  "bg-[#065F46] border-[#065F46] text-white",
-  "bg-[#075985] border-[#075985] text-white",
-  "bg-[#14211D] border-[#14211D] text-white",
-];
 
 export interface ProfileSwitcherProps {
   profiles: FamilyProfileDto[];
@@ -32,7 +23,7 @@ export function ProfileSwitcher({ profiles }: ProfileSwitcherProps) {
   function selectProfile(profileId: string) {
     setActiveProfileId(profileId);
 
-    if (pathname === "/vault" || pathname === "/timeline") {
+    if (pathname === "/dashboard" || pathname === "/vault" || pathname === "/timeline") {
       const nextParams = new URLSearchParams(searchParams.toString());
       if (profileId === "all") {
         nextParams.delete("profileId");
@@ -46,63 +37,70 @@ export function ProfileSwitcher({ profiles }: ProfileSwitcherProps) {
   }
 
   return (
-    <div
-      role="tablist"
-      aria-label="Filter by family member"
-      className="flex items-center gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-    >
-      <button
-        type="button"
-        role="tab"
-        aria-selected={currentId === "all"}
-        onClick={() => selectProfile("all")}
-        className="inline-flex min-h-[44px] shrink-0 items-center"
+    <div className="flex flex-wrap items-center justify-between gap-3">
+      <div
+        role="tablist"
+        aria-label="Filter by family member"
+        className="flex items-center gap-2 overflow-x-auto py-0.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        <span
+        <span className="mr-1 hidden items-center gap-1.5 text-xs font-semibold tracking-wide text-[#64748B] uppercase sm:inline-flex">
+          <Users className="h-3.5 w-3.5 shrink-0 text-[#059669]" aria-hidden="true" />
+          <span>Patient Scope:</span>
+        </span>
+
+        <button
+          type="button"
+          role="tab"
+          aria-selected={currentId === "all"}
+          onClick={() => selectProfile("all")}
           className={cn(
-            "inline-flex h-9 items-center rounded-full border px-3 text-[14px] transition-colors duration-150",
+            "inline-flex h-9 shrink-0 flex-row items-center gap-2 whitespace-nowrap rounded-full border px-3.5 text-[14px] transition-colors duration-150",
             currentId === "all"
-              ? "border-accent-primary bg-accent-primary font-semibold text-text-inverted"
-              : "border-border-hairline bg-surface font-medium text-text-secondary hover:border-border-strong hover:text-text-primary",
+              ? "border-[#A7F3D0] bg-[#ECFDF5] font-semibold text-[#065F46] shadow-2xs"
+              : "border-[#E2E8F0] bg-white font-medium text-[#475569] hover:border-[#CBD5E1] hover:text-[#0F172A]",
           )}
         >
-          All Family
-        </span>
-      </button>
+          {currentId === "all" && (
+            <span className="h-2 w-2 shrink-0 rounded-full bg-[#059669]" aria-hidden="true" />
+          )}
+          <span>All Family</span>
+        </button>
 
-      {profiles.map((profile) => {
-        const isActive = currentId === profile.id;
-        const activeClass =
-          ACTIVE_PILL_PALETTE[Math.abs(profile.colorIndex) % ACTIVE_PILL_PALETTE.length] ??
-          ACTIVE_PILL_PALETTE[0];
+        {profiles.map((profile) => {
+          const isActive = currentId === profile.id;
 
-        return (
-          <button
-            key={profile.id}
-            type="button"
-            role="tab"
-            aria-selected={isActive}
-            onClick={() => selectProfile(profile.id)}
-            className="inline-flex min-h-[44px] shrink-0 items-center"
-          >
-            <span
+          return (
+            <button
+              key={profile.id}
+              type="button"
+              role="tab"
+              aria-selected={isActive}
+              onClick={() => selectProfile(profile.id)}
               className={cn(
-                "inline-flex h-9 items-center gap-1.5 rounded-full border px-3 text-[14px] transition-colors duration-150",
+                "inline-flex h-9 shrink-0 flex-row items-center gap-1.5 whitespace-nowrap rounded-full border px-3.5 text-[14px] transition-colors duration-150",
                 isActive
-                  ? cn(activeClass, "font-semibold")
-                  : "border-border-hairline bg-surface font-medium text-text-secondary hover:border-border-strong hover:text-text-primary",
+                  ? "border-[#A7F3D0] bg-[#ECFDF5] font-semibold text-[#065F46] shadow-2xs"
+                  : "border-[#E2E8F0] bg-white font-medium text-[#475569] hover:border-[#CBD5E1] hover:text-[#0F172A]",
               )}
             >
+              {isActive && (
+                <span className="h-2 w-2 shrink-0 rounded-full bg-[#059669]" aria-hidden="true" />
+              )}
               <span>{profile.isPrimary ? "Self" : profile.fullName}</span>
               {!profile.isPrimary && (
-                <span className={cn("text-xs", isActive ? "text-white/80" : "text-text-muted")}>
+                <span
+                  className={cn(
+                    "text-xs",
+                    isActive ? "font-medium text-[#065F46]/80" : "text-[#64748B]",
+                  )}
+                >
                   ({profile.relationship})
                 </span>
               )}
-            </span>
-          </button>
-        );
-      })}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }

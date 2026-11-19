@@ -16,9 +16,11 @@ test.describe("MedBay Core Public & Security Smoke Suite", () => {
     );
     expect(overflow).toBe(false);
 
-    await page.getByRole("link", { name: /sign in/i }).click();
+    await page.getByRole("link", { name: /sign in/i }).first().click();
     await expect(page).toHaveURL(/\/login$/);
-    await expect(page.getByRole("heading", { name: /sign in to medbay/i })).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: /welcome to medbay|sign in to medbay/i }),
+    ).toBeVisible();
   });
 
   test("renders neutral expired fallback on invalid public share links with zero metadata leak", async ({

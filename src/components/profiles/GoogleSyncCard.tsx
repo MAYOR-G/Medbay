@@ -120,35 +120,33 @@ export function GoogleSyncCard({ user }: GoogleSyncCardProps) {
       <Card className="space-y-5">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
-            <h2 className="font-heading text-xl font-semibold text-text-primary">
+            <h2 className="font-heading text-[18px] font-semibold text-[#0F172A]">
               Connected Google Services
             </h2>
-            <p className="mt-1 text-[14px] text-text-secondary">
-              Signed in as <span className="font-semibold text-text-primary">{user.email}</span>
+            <p className="mt-1 text-[15px] text-[#475569]">
+              Signed in as <span className="font-semibold text-[#0F172A]">{user.email}</span>
             </p>
           </div>
           <Button
             variant="outline"
-            size="compact"
             isLoading={isReconnecting}
             loadingLabel="Redirecting..."
             onClick={handleReconnectGoogle}
           >
-            <RefreshCw className="h-4 w-4" aria-hidden="true" />
+            <RefreshCw className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
             <span>Reconnect Google Permissions</span>
           </Button>
         </div>
 
-        <div className="divide-y divide-border-hairline rounded-md border border-border-hairline bg-surface-hover">
-          <div className="flex flex-wrap items-center justify-between gap-3 p-4">
-            <div className="flex items-start gap-3">
-              <CalendarCheck
-                className="mt-0.5 h-5 w-5 shrink-0 text-accent-primary"
-                aria-hidden="true"
-              />
+        <div className="divide-y divide-[#E2E8F0] rounded-xl border border-[#E2E8F0] bg-[#F8FAFC]">
+          <div className="flex flex-wrap items-center justify-between gap-4 p-5">
+            <div className="flex items-start gap-3.5">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#A7F3D0] bg-[#ECFDF5] text-[#059669]">
+                <CalendarCheck className="h-5 w-5" aria-hidden="true" />
+              </span>
               <div>
-                <p className="text-[15px] font-semibold text-text-primary">Google Calendar</p>
-                <p className="text-[13px] text-text-secondary">
+                <p className="text-[15px] font-semibold text-[#0F172A]">Google Calendar</p>
+                <p className="mt-0.5 text-[14px] text-[#475569]">
                   Allows MedBay AI Chat to schedule doctor appointments directly on your primary
                   calendar.
                 </p>
@@ -159,18 +157,20 @@ export function GoogleSyncCard({ user }: GoogleSyncCardProps) {
             </Badge>
           </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-3 p-4">
-            <div className="flex items-start gap-3">
-              <Mail className="mt-0.5 h-5 w-5 shrink-0 text-accent-primary" aria-hidden="true" />
+          <div className="flex flex-wrap items-center justify-between gap-4 p-5">
+            <div className="flex items-start gap-3.5">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#BFDBFE] bg-[#EFF6FF] text-[#1D4ED8]">
+                <Mail className="h-5 w-5" aria-hidden="true" />
+              </span>
               <div>
-                <p className="text-[15px] font-semibold text-text-primary">
+                <p className="text-[15px] font-semibold text-[#0F172A]">
                   24-Hour Gmail Medical Scanner
                 </p>
-                <p className="text-[13px] text-text-secondary">
+                <p className="mt-0.5 text-[14px] text-[#475569]">
                   Read-only scan for lab notices and clinic updates. Alerts arrive in-app and via
                   Web Push (zero outbound emails).
                 </p>
-                <p className="mt-1 font-mono text-xs text-text-muted tabular-nums">
+                <p className="mt-1.5 font-mono text-xs text-[#64748B] tabular-nums">
                   Last scan:{" "}
                   {user.lastGmailScanAt
                     ? new Date(user.lastGmailScanAt).toLocaleString()
@@ -185,9 +185,9 @@ export function GoogleSyncCard({ user }: GoogleSyncCardProps) {
                 checked={gmailEnabled}
                 onCheckedChange={handleToggleGmailScan}
                 disabled={isPending}
-                className="relative h-6 w-11 shrink-0 cursor-pointer rounded-full border border-border-strong bg-surface-subtle transition-colors data-[state=checked]:border-accent-primary data-[state=checked]:bg-accent-primary"
+                className="relative h-6 w-11 shrink-0 cursor-pointer rounded-full border border-[#CBD5E1] bg-[#E2E8F0] transition-colors data-[state=checked]:border-[#059669] data-[state=checked]:bg-[#059669]"
               >
-                <Switch.Thumb className="block h-5 w-5 translate-x-0.5 rounded-full bg-surface shadow-elevation-1 transition-transform data-[state=checked]:translate-x-[21px]" />
+                <Switch.Thumb className="block h-5 w-5 translate-x-0.5 rounded-full bg-white shadow-xs transition-transform data-[state=checked]:translate-x-[21px]" />
               </Switch.Root>
             </div>
           </div>
@@ -197,14 +197,14 @@ export function GoogleSyncCard({ user }: GoogleSyncCardProps) {
       {/* Section 3: Session & Account Erasure */}
       <Card className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h2 className="font-heading text-lg font-semibold text-text-primary">Account Session</h2>
-          <p className="mt-1 text-[14px] text-text-secondary">
+          <h2 className="font-heading text-[18px] font-semibold text-[#0F172A]">Account Session</h2>
+          <p className="mt-1 text-[15px] text-[#475569]">
             Manage your active browser session or permanently erase your encrypted vault.
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-3">
           <Button variant="outline" disabled={isPending} onClick={handleSignOut}>
-            <LogOut className="h-4 w-4" aria-hidden="true" />
+            <LogOut className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
             <span>Sign Out</span>
           </Button>
           <Button
@@ -215,7 +215,7 @@ export function GoogleSyncCard({ user }: GoogleSyncCardProps) {
               setDeleteDialogOpen(true);
             }}
           >
-            <Trash2 className="h-4 w-4" aria-hidden="true" />
+            <Trash2 className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
             <span>Delete Account</span>
           </Button>
         </div>
@@ -241,7 +241,7 @@ export function GoogleSyncCard({ user }: GoogleSyncCardProps) {
               disabled={isPending}
               onClick={() => setDeleteDialogOpen(false)}
             >
-              Cancel
+              <span>Cancel</span>
             </Button>
             <Button
               variant="destructive"
@@ -250,7 +250,7 @@ export function GoogleSyncCard({ user }: GoogleSyncCardProps) {
               loadingLabel="Deleting Account..."
               onClick={handleDeleteAccount}
             >
-              Permanently Delete Vault
+              <span>Permanently Delete Vault</span>
             </Button>
           </div>
         </div>

@@ -62,5 +62,16 @@ describe("useVaultStore", () => {
       store.dismissToast(toasts[0].id);
     }
     expect(useVaultStore.getState().toasts).toHaveLength(0);
+
+    expect(useVaultStore.getState().isChatOpen).toBe(false);
+    expect(useVaultStore.getState().hasOpenedChat).toBe(false);
+    store.setChatOpen(true, "Explain my CMP lab results");
+    expect(useVaultStore.getState().isChatOpen).toBe(true);
+    expect(useVaultStore.getState().hasOpenedChat).toBe(true);
+    expect(useVaultStore.getState().chatInitialPrompt).toBe("Explain my CMP lab results");
+    store.setChatOpen(false);
+    expect(useVaultStore.getState().isChatOpen).toBe(false);
+    expect(useVaultStore.getState().hasOpenedChat).toBe(true);
+    expect(useVaultStore.getState().chatInitialPrompt).toBeNull();
   });
 });

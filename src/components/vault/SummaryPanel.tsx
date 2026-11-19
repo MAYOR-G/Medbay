@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -28,10 +27,10 @@ export interface SummaryPanelProps {
   onOpenShare?: () => void;
 }
 
-const SEVERITY_ACCENT: Record<FindingSeverity, string> = {
-  normal: "border-l-[3px] border-l-status-success-text bg-status-success-bg/50",
-  attention: "border-l-[3px] border-l-status-warning-text bg-status-warning-bg/70",
-  critical: "border-l-[3px] border-l-status-danger-text bg-status-danger-bg/80",
+const SEVERITY_DOT_CLASS: Record<FindingSeverity, string> = {
+  normal: "bg-[#059669]",
+  attention: "bg-[#92400E]",
+  critical: "bg-[#991B1B]",
 };
 
 const IN_PROGRESS_STATUSES = new Set(["queued", "extracting", "summarizing", "indexing"]);
@@ -39,6 +38,9 @@ const IN_PROGRESS_STATUSES = new Set(["queued", "extracting", "summarizing", "in
 export function SummaryPanel({ document, profiles, onOpenShare }: SummaryPanelProps) {
   const router = useRouter();
   const addToast = useVaultStore((state) => state.addToast);
+  const setChatOpen = useVaultStore((state) => state.setChatOpen);
+  const setActiveProfileId = useVaultStore((state) => state.setActiveProfileId);
+
   const [isPending, startTransition] = useTransition();
   const [isRetrying, setIsRetrying] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -105,9 +107,17 @@ export function SummaryPanel({ document, profiles, onOpenShare }: SummaryPanelPr
     });
   }
 
+  function handleAskAiAboutRecord() {
+    setActiveProfileId(document.profileId);
+    setChatOpen(
+      true,
+      `Explain the key findings, abnormal markers, and next steps from "${document.title}".`,
+    );
+  }
+
   return (
-    <div className="space-y-4">
-      {/* Header & Controls */}
+    <div className="space-y-5">
+      {/* Clinical Report Header Card */}
       <Card className="space-y-4">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div className="space-y-1.5">
@@ -120,20 +130,24 @@ export function SummaryPanel({ document, profiles, onOpenShare }: SummaryPanelPr
               )}
               <Badge variant="neutral">{document.category}</Badge>
               {document.documentDate && (
-                <span className="font-mono text-xs text-text-muted tabular-nums">
+                <span className="font-mono text-xs text-[#64748B] tabular-nums">
                   {document.documentDate}
                 </span>
               )}
             </div>
-            <h1 className="font-heading text-2xl font-semibold tracking-[-0.015em] text-text-primary">
+            <h1 className="font-heading text-[24px] leading-[1.2] font-bold tracking-[-0.02em] text-[#0F172A]">
               {document.title}
             </h1>
           </div>
 
           <div className="flex shrink-0 items-center gap-2">
+            <Button variant="secondary" size="compact" onClick={handleAskAiAboutRecord}>
+              <MessageSquareText className="h-[18px] w-[18px] shrink-0" strokeWidth={1.75} aria-hidden="true" />
+              <span>Ask AI</span>
+            </Button>
             {onOpenShare && (
               <Button variant="primary" size="compact" onClick={onOpenShare}>
-                <Share2 className="h-4 w-4" aria-hidden="true" />
+                <Share2 className="h-[18px] w-[18px] shrink-0" strokeWidth={1.75} aria-hidden="true" />
                 <span>Share</span>
               </Button>
             )}
@@ -142,22 +156,22 @@ export function SummaryPanel({ document, profiles, onOpenShare }: SummaryPanelPr
               size="compact"
               aria-label="Delete document"
               onClick={() => setDeleteModalOpen(true)}
-              className="text-status-danger-text hover:bg-status-danger-bg hover:text-status-danger-text"
+              className="text-[#991B1B] hover:bg-[#FEF2F2] hover:text-[#991B1B]"
             >
-              <Trash2 className="h-4 w-4" aria-hidden="true" />
+              <Trash2 className="h-[18px] w-[18px] shrink-0" strokeWidth={1.75} aria-hidden="true" />
             </Button>
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border-hairline pt-3">
-          <label className="flex items-center gap-2 text-[13px] font-semibold text-text-secondary">
-            <span>Patient Profile:</span>
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#E2E8F0] pt-3.5">
+          <label className="flex items-center gap-2.5 text-[14px] font-semibold text-[#475569]">
+            <span>Patient Profile</span>
             <select
               aria-label="Reassign family profile"
               value={document.profileId}
               disabled={isPending}
               onChange={(e) => handleProfileChange(e.target.value)}
-              className="h-[40px] rounded-md border border-border-strong bg-surface px-2.5 text-[14px] font-medium text-text-primary focus:border-border-focus"
+              className="h-10 rounded-[10px] border border-[#CBD5E1] bg-white px-3 text-[14px] font-semibold text-[#0F172A] focus:border-[#059669]"
             >
               {profiles.map((profile) => (
                 <option key={profile.id} value={profile.id}>
@@ -168,7 +182,7 @@ export function SummaryPanel({ document, profiles, onOpenShare }: SummaryPanelPr
           </label>
 
           {document.detectedPatientName && (
-            <span className="font-mono text-xs text-text-muted">
+            <span className="font-mono text-xs text-[#64748B]">
               Detected name: {document.detectedPatientName}
             </span>
           )}
@@ -179,40 +193,42 @@ export function SummaryPanel({ document, profiles, onOpenShare }: SummaryPanelPr
       {document.profileMatchConfidence === "needs_review" && (
         <div
           role="alert"
-          className="flex items-start gap-3 rounded-lg border border-status-warning-border bg-status-warning-bg p-4 text-[14px] text-status-warning-text"
+          className="flex items-start gap-3 rounded-2xl border border-[#FDE68A] bg-[#FFFBEB] p-4 text-[14px] text-[#92400E]"
         >
-          <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
+          <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0" strokeWidth={1.75} aria-hidden="true" />
           <div>
-            <p className="font-semibold">Verify Patient Profile</p>
+            <p className="font-semibold">Verify patient profile</p>
             <p className="mt-0.5">
               MedBay could not confidently match this record to a family member. Please confirm or
-              reassign the Patient Profile above.
+              reassign the patient profile above.
             </p>
           </div>
         </div>
       )}
 
-      {/* Processing / Failed / Ready Summary Cards */}
+      {/* Processing / Failed States */}
       {isProcessing && (
-        <Card className="flex items-center gap-3">
-          <Loader2 className="h-5 w-5 animate-spin text-accent-primary" aria-hidden="true" />
+        <Card className="flex items-center gap-3.5">
+          <Loader2 className="h-5 w-5 shrink-0 animate-spin text-[#059669]" aria-hidden="true" />
           <div>
-            <p className="text-[15px] font-semibold text-text-primary">
-              Analyzing your medical document...
+            <p className="text-[15px] font-semibold text-[#0F172A]">
+              Preparing clinical AI summary...
             </p>
-            <p className="text-[13px] text-text-secondary">
-              Current stage: <span className="font-mono uppercase">{document.ingestionStatus}</span>
-            </p>
+            <p className="font-mono text-xs text-[#475569]">Stage: {document.ingestionStatus}</p>
           </div>
         </Card>
       )}
 
       {document.ingestionStatus === "failed" && (
-        <Card className="space-y-3 border-status-danger-border bg-status-danger-bg">
-          <div className="flex items-start gap-2.5 text-status-danger-text">
-            <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
+        <Card className="space-y-3 border-[#FECACA] bg-[#FEF2F2]">
+          <div className="flex items-start gap-2.5 text-[#991B1B]">
+            <AlertTriangle
+              className="mt-0.5 h-5 w-5 shrink-0"
+              strokeWidth={1.75}
+              aria-hidden="true"
+            />
             <div>
-              <p className="font-semibold">AI Summary Failed</p>
+              <p className="font-semibold">AI summary failed</p>
               <p className="mt-1 text-[14px]">
                 {document.ingestionError ??
                   "The AI analysis pipeline encountered a temporary issue. Your original document is safely stored."}
@@ -225,45 +241,58 @@ export function SummaryPanel({ document, profiles, onOpenShare }: SummaryPanelPr
             loadingLabel="Retrying..."
             onClick={handleRetryIngestion}
           >
-            <RefreshCw className="h-4 w-4" aria-hidden="true" />
+            <RefreshCw className="h-[18px] w-[18px] shrink-0" strokeWidth={1.75} aria-hidden="true" />
             <span>Retry Analysis</span>
           </Button>
         </Card>
       )}
 
+      {/* Unified Clinical AI Summary Report Sheet */}
       {document.summary && (
-        <>
-          {/* Card 1: Plain-English Overview */}
-          <Card className="space-y-2.5">
-            <h2 className="font-heading text-[17px] font-semibold text-text-primary">
-              What This Document Is About
-            </h2>
-            <p className="clinical-prose text-text-primary">{document.summary.overview}</p>
-          </Card>
+        <div className="divide-y divide-[#E2E8F0] overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white shadow-[0_1px_3px_rgba(15,23,42,0.05),0_1px_2px_rgba(15,23,42,0.03)]">
+          {/* Plain-English Overview */}
+          <section className="space-y-2.5 p-5 md:p-6">
+            <div className="flex items-center justify-between gap-2">
+              <h2 className="font-heading text-[18px] font-semibold text-[#0F172A]">
+                Clinical Summary Report
+              </h2>
+              <span className="font-mono text-[11px] text-[#64748B]">
+                {document.summary.modelUsed}
+              </span>
+            </div>
+            <p className="clinical-prose text-[15px] leading-relaxed text-[#0F172A]">
+              {document.summary.overview}
+            </p>
+          </section>
 
-          {/* Card 2: Key Findings & Critical Flags */}
-          <Card className="space-y-3">
-            <h2 className="font-heading text-[17px] font-semibold text-text-primary">
-              Key Findings &amp; Clinical Flags
+          {/* Key Findings & Biomarkers */}
+          <section className="space-y-3.5 p-5 md:p-6">
+            <h2 className="font-heading text-[18px] font-semibold text-[#0F172A]">
+              Key Findings &amp; Markers
             </h2>
             {document.summary.keyFindings.length === 0 ? (
-              <p className="text-[15px] text-text-secondary">
+              <p className="text-[15px] text-[#475569]">
                 No abnormal or notable markers highlighted.
               </p>
             ) : (
-              <ul className="space-y-2.5">
+              <div className="divide-y divide-[#E2E8F0] rounded-xl border border-[#E2E8F0]">
                 {document.summary.keyFindings.map((finding, idx) => (
-                  <li
-                    key={`${finding.label}-${idx}`}
-                    className={cn(
-                      "rounded-md border border-border-hairline px-3.5 py-2.5",
-                      SEVERITY_ACCENT[finding.severity],
-                    )}
-                  >
+                  <div key={`${finding.label}-${idx}`} className="space-y-1.5 px-4 py-3.5">
                     <div className="flex flex-wrap items-center justify-between gap-2">
-                      <span className="font-semibold text-text-primary">{finding.label}</span>
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-xs font-medium text-text-primary tabular-nums">
+                        <span
+                          className={cn(
+                            "h-2 w-2 shrink-0 rounded-full",
+                            SEVERITY_DOT_CLASS[finding.severity],
+                          )}
+                          aria-hidden="true"
+                        />
+                        <span className="text-[15px] font-semibold text-[#0F172A]">
+                          {finding.label}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono text-xs font-semibold text-[#0F172A] tabular-nums">
                           {finding.value}
                         </span>
                         <Badge
@@ -279,41 +308,40 @@ export function SummaryPanel({ document, profiles, onOpenShare }: SummaryPanelPr
                         </Badge>
                       </div>
                     </div>
-                    <p className="mt-1 text-[14px] text-text-secondary">{finding.explanation}</p>
-                  </li>
+                    <p className="pl-4 text-[14px] leading-relaxed text-[#475569]">
+                      {finding.explanation}
+                    </p>
+                  </div>
                 ))}
-              </ul>
+              </div>
             )}
-          </Card>
+          </section>
 
-          {/* Card 3: Questions to Ask Your Doctor */}
-          <Card className="space-y-3">
-            <h2 className="font-heading text-[17px] font-semibold text-text-primary">
-              Questions to Ask Your Doctor
+          {/* Questions to Ask Your Doctor */}
+          <section className="space-y-3.5 p-5 md:p-6">
+            <h2 className="font-heading text-[18px] font-semibold text-[#0F172A]">
+              Questions for Your Doctor
             </h2>
-            <ol className="list-decimal space-y-2 pl-5 text-[15px] text-text-primary">
+            <ol className="list-decimal space-y-2 pl-5 text-[15px] leading-relaxed text-[#0F172A]">
               {document.summary.doctorQuestions.map((question, idx) => (
                 <li key={idx}>{question}</li>
               ))}
             </ol>
             <div className="pt-1">
-              <Link
-                href={`/chat?profileId=${document.profileId}`}
-                className="inline-flex min-h-[44px] items-center gap-2 rounded-md border border-accent-primary-border bg-accent-primary-tint px-4 text-[14px] font-semibold text-accent-primary hover:bg-[#D6E7E0]"
-              >
-                <MessageSquareText className="h-4 w-4" aria-hidden="true" />
-                <span>Ask AI Follow-Up Questions</span>
-              </Link>
+              <Button variant="secondary" onClick={handleAskAiAboutRecord}>
+                <MessageSquareText className="h-[18px] w-[18px] shrink-0" strokeWidth={1.75} aria-hidden="true" />
+                <span>Discuss This Report in AI Chat</span>
+              </Button>
             </div>
-          </Card>
+          </section>
 
-          {/* Card 4: Verified Medical Citations */}
-          <Card className="space-y-3">
-            <h2 className="font-heading text-[17px] font-semibold text-text-primary">
-              Verified Medical Citations
+          {/* Verified Medical Citations & Disclaimer */}
+          <section className="space-y-3 bg-[#F8FAFC] p-5 md:p-6">
+            <h2 className="font-heading text-[16px] font-semibold text-[#0F172A]">
+              Verified Medical References
             </h2>
             {document.summary.citations.length === 0 ? (
-              <p className="text-[14px] text-text-secondary">
+              <p className="text-[14px] text-[#475569]">
                 External medical citations temporarily unavailable for this record.
               </p>
             ) : (
@@ -324,32 +352,40 @@ export function SummaryPanel({ document, profiles, onOpenShare }: SummaryPanelPr
                     href={citation.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-[44px] items-center gap-1.5 rounded-sm border border-status-info-border bg-status-info-bg px-3 py-1.5 text-[13px] font-medium text-status-info-text hover:underline"
+                    className="inline-flex h-9 flex-row items-center gap-1.5 whitespace-nowrap rounded-lg border border-[#BFDBFE] bg-[#EFF6FF] px-3 font-mono text-xs font-medium text-[#1D4ED8] transition-colors hover:bg-[#DBEAFE]"
                   >
-                    <ShieldCheck className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                    <span className="font-mono text-xs">{citation.domain}</span>
-                    <ExternalLink className="h-3 w-3 shrink-0" aria-hidden="true" />
+                    <ShieldCheck
+                      className="h-3.5 w-3.5 shrink-0"
+                      strokeWidth={1.75}
+                      aria-hidden="true"
+                    />
+                    <span>{citation.domain}</span>
+                    <ExternalLink
+                      className="h-3 w-3 shrink-0"
+                      strokeWidth={1.75}
+                      aria-hidden="true"
+                    />
                   </a>
                 ))}
               </div>
             )}
-            <p className="border-t border-border-hairline pt-2.5 text-[12px] text-text-muted">
+            <p className="pt-1 text-[12px] text-[#64748B]">
               MedBay AI provides plain-English explanations for informational purposes only and is
               not a substitute for professional medical advice.
             </p>
-          </Card>
-        </>
+          </section>
+        </div>
       )}
 
       <ModalOrSheet
         open={deleteModalOpen}
         onOpenChange={setDeleteModalOpen}
-        title="Delete Medical Document?"
+        title="Delete Medical Document"
         description="This permanently deletes the original encrypted file, AI summary, vector index, and any active share links."
       >
         <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
           <Button variant="outline" disabled={isPending} onClick={() => setDeleteModalOpen(false)}>
-            Cancel
+            <span>Cancel</span>
           </Button>
           <Button
             variant="destructive"
@@ -357,7 +393,7 @@ export function SummaryPanel({ document, profiles, onOpenShare }: SummaryPanelPr
             loadingLabel="Deleting..."
             onClick={handleConfirmDelete}
           >
-            Delete Document
+            <span>Delete Document</span>
           </Button>
         </div>
       </ModalOrSheet>

@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Clock } from "lucide-react";
-import { Button, Card, cn } from "@/components/ui";
+import { ArrowRight } from "lucide-react";
+import { Button, Card, EmptyStateIllustration, cn } from "@/components/ui";
 import type { TimelineCategoryFilter, TimelineGroupDto } from "@/server/services";
 import type { FamilyProfileDto, PaginationMeta } from "@/types/domain.types";
 import { TimelineGroup } from "./TimelineGroup";
@@ -16,7 +16,7 @@ export interface TimelineFeedProps {
 }
 
 const CATEGORY_CHIPS: ReadonlyArray<{ value: TimelineCategoryFilter; label: string }> = [
-  { value: "all", label: "All" },
+  { value: "all", label: "All Activity" },
   { value: "uploads", label: "Uploads" },
   { value: "shares", label: "Shares" },
   { value: "appointments", label: "Appointments" },
@@ -42,13 +42,14 @@ export function TimelineFeed({ groups, profiles, activeCategory, pagination }: T
   }
 
   return (
-    <div className="mx-auto max-w-[760px] space-y-5">
+    <div className="w-full space-y-6">
       <div>
-        <h1 className="font-heading text-2xl font-semibold tracking-[-0.015em] text-text-primary">
+        <h1 className="font-heading text-[28px] leading-[1.2] font-bold tracking-[-0.02em] text-[#0F172A]">
           Activity Timeline
         </h1>
-        <p className="mt-0.5 text-[14px] text-text-secondary tabular-nums">
-          {pagination.totalCount} {pagination.totalCount === 1 ? "event" : "events"} recorded
+        <p className="mt-1.5 text-[15px] text-[#475569] tabular-nums">
+          {pagination.totalCount} {pagination.totalCount === 1 ? "event" : "events"} recorded across
+          uploads, AI summaries, physician links, and appointments
         </p>
       </div>
 
@@ -62,10 +63,10 @@ export function TimelineFeed({ groups, profiles, activeCategory, pagination }: T
               type="button"
               onClick={() => updateFilter({ category: chip.value, page: null })}
               className={cn(
-                "min-h-[44px] shrink-0 rounded-full border px-4 text-[13px] transition-colors",
+                "inline-flex h-10 shrink-0 flex-row items-center whitespace-nowrap rounded-full border px-4 text-[14px] transition-colors",
                 selected
-                  ? "border-accent-primary bg-accent-primary font-semibold text-text-inverted"
-                  : "border-border-hairline bg-surface font-medium text-text-secondary hover:border-border-strong",
+                  ? "border-[#A7F3D0] bg-[#ECFDF5] font-semibold text-[#065F46] shadow-2xs"
+                  : "border-[#E2E8F0] bg-white font-medium text-[#475569] hover:border-[#CBD5E1] hover:text-[#0F172A]",
               )}
             >
               {chip.label}
@@ -75,23 +76,22 @@ export function TimelineFeed({ groups, profiles, activeCategory, pagination }: T
       </div>
 
       {groups.length === 0 ? (
-        <Card className="flex flex-col items-center px-6 py-12 text-center">
-          <div className="flex h-16 w-16 items-center justify-center rounded-full border border-accent-primary-border bg-accent-primary-tint text-accent-primary">
-            <Clock className="h-7 w-7" aria-hidden="true" />
-          </div>
-          <h2 className="mt-4 font-heading text-xl font-semibold text-text-primary">
+        <Card className="flex flex-col items-center px-6 py-14 text-center">
+          <EmptyStateIllustration variant="timeline" />
+          <h2 className="mt-4 font-heading text-lg font-semibold text-[#0F172A]">
             No vault activity yet
           </h2>
-          <p className="mt-2 max-w-[360px] text-[15px] text-text-secondary">
+          <p className="mt-2 max-w-md text-[15px] text-[#475569]">
             Uploads, AI summaries, shared links, and booked appointments will appear here
             chronologically.
           </p>
           <div className="mt-6">
             <Link
               href="/vault"
-              className="inline-flex min-h-[44px] items-center justify-center rounded-md bg-accent-primary px-5 text-[15px] font-semibold text-text-inverted hover:bg-accent-primary-hover"
+              className="inline-flex h-11 flex-row items-center justify-center gap-2 whitespace-nowrap rounded-[10px] bg-[#059669] px-5 text-[15px] font-semibold text-white shadow-xs transition-colors hover:bg-[#047857]"
             >
-              Go to Vault
+              <span>Go to Vault</span>
+              <ArrowRight className="h-[18px] w-[18px] shrink-0" strokeWidth={2} aria-hidden="true" />
             </Link>
           </div>
         </Card>
@@ -102,15 +102,15 @@ export function TimelineFeed({ groups, profiles, activeCategory, pagination }: T
           ))}
 
           {(pagination.page > 1 || pagination.hasMore) && (
-            <div className="flex items-center justify-between border-t border-border-hairline pt-4">
+            <div className="flex items-center justify-between border-t border-[#E2E8F0] pt-4">
               <Button
                 variant="outline"
                 disabled={pagination.page <= 1}
                 onClick={() => updateFilter({ page: String(pagination.page - 1) })}
               >
-                Previous
+                <span>Previous</span>
               </Button>
-              <span className="font-mono text-xs text-text-muted tabular-nums">
+              <span className="font-mono text-xs text-[#64748B] tabular-nums">
                 Page {pagination.page}
               </span>
               <Button
@@ -118,7 +118,7 @@ export function TimelineFeed({ groups, profiles, activeCategory, pagination }: T
                 disabled={!pagination.hasMore}
                 onClick={() => updateFilter({ page: String(pagination.page + 1) })}
               >
-                Next
+                <span>Next</span>
               </Button>
             </div>
           )}

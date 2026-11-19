@@ -6,6 +6,7 @@ import {
   ensurePrimarySelfProfile,
   getUnreadNotificationCount,
   getUserAccount,
+  listChatThreadsByUser,
   listProfilesByUser,
   upsertUserFromOAuth,
 } from "@/server/repositories";
@@ -47,13 +48,17 @@ export default async function AuthenticatedAppLayout({
     profiles = [primary];
   }
 
-  const unreadNotificationCount = await getUnreadNotificationCount(supabase, user.id);
+  const [unreadNotificationCount, threads] = await Promise.all([
+    getUnreadNotificationCount(supabase, user.id),
+    listChatThreadsByUser(supabase, user.id, 30),
+  ]);
 
   return (
     <AppShell
       user={userAccount}
       profiles={profiles}
       unreadNotificationCount={unreadNotificationCount}
+      initialThreads={threads}
     >
       {children}
     </AppShell>

@@ -16,7 +16,7 @@ export interface ModalOrSheetProps {
 
 /**
  * Accessible modal primitive adapting cleanly between a mobile bottom sheet (< 768px)
- * and a centered desktop dialog (>= 768px) per DESIGN.md Section 5.4.
+ * and a centered desktop dialog (>= 768px).
  */
 export function ModalOrSheet({
   open,
@@ -29,38 +29,38 @@ export function ModalOrSheet({
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-40 bg-overlay transition-opacity duration-200" />
+        <Dialog.Overlay className="fixed inset-0 z-40 bg-overlay backdrop-blur-[2px] transition-opacity duration-200" />
         <Dialog.Content
           className={cn(
-            "fixed z-50 w-full border border-border-hairline bg-surface p-5 shadow-elevation-3 focus:outline-none",
-            "inset-x-0 bottom-0 max-h-[90vh] overflow-y-auto rounded-t-lg",
-            "md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:rounded-lg md:p-6",
+            "fixed z-50 w-full border border-[#E2E8F0] bg-white p-5 shadow-elevation-3 focus:outline-none",
+            "inset-x-0 bottom-0 max-h-[90vh] overflow-y-auto rounded-t-2xl",
+            "md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:rounded-2xl md:p-6",
             size === "wide" ? "md:max-w-[560px]" : "md:max-w-[480px]",
           )}
         >
           {/* Mobile Drag Handle */}
-          <div className="mx-auto mb-3 h-1 w-9 rounded-full bg-border-strong md:hidden" />
+          <div className="mx-auto mb-3 h-1 w-9 rounded-full bg-[#CBD5E1] md:hidden" />
 
           <div className="flex items-start justify-between gap-3">
             <div>
-              <Dialog.Title className="font-heading text-xl font-semibold tracking-[-0.01em] text-text-primary">
+              <Dialog.Title className="font-heading text-xl font-bold tracking-[-0.015em] text-[#0F172A]">
                 {title}
               </Dialog.Title>
               {description && (
-                <Dialog.Description className="mt-1 text-[15px] text-text-secondary">
+                <Dialog.Description className="mt-1 text-[15px] text-[#475569]">
                   {description}
                 </Dialog.Description>
               )}
             </div>
             <Dialog.Close
               aria-label="Close Modal"
-              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md text-text-secondary transition-colors hover:bg-surface-subtle hover:text-text-primary"
+              className="inline-flex h-10 w-10 shrink-0 flex-row items-center justify-center rounded-[10px] text-[#475569] transition-colors hover:bg-[#F8FAFC] hover:text-[#0F172A]"
             >
-              <X className="h-5 w-5" aria-hidden="true" />
+              <X className="h-5 w-5 shrink-0" aria-hidden="true" />
             </Dialog.Close>
           </div>
 
-          <div className="mt-4">{children}</div>
+          <div className="mt-5">{children}</div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

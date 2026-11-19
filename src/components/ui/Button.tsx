@@ -14,20 +14,20 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   primary:
-    "bg-accent-primary text-text-inverted hover:bg-accent-primary-hover active:bg-accent-primary-active disabled:bg-border-hairline disabled:text-text-muted",
+    "bg-[#059669] text-white border border-transparent hover:bg-[#047857] active:bg-[#065F46] shadow-xs disabled:bg-[#E2E8F0] disabled:text-[#64748B]",
   secondary:
-    "bg-accent-primary-tint text-accent-primary border border-accent-primary-border hover:bg-[#D6E7E0] hover:border-accent-primary active:bg-[#C6DDD4] disabled:bg-surface-subtle disabled:text-text-muted disabled:border-border-hairline",
+    "bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0] hover:bg-[#D1FAE5] hover:border-[#059669] active:bg-[#A7F3D0] disabled:bg-[#F8FAFC] disabled:text-[#64748B] disabled:border-[#E2E8F0]",
   outline:
-    "bg-surface text-text-primary border border-border-strong hover:bg-surface-hover hover:border-text-primary active:bg-surface-subtle disabled:bg-canvas disabled:text-text-muted disabled:border-border-hairline",
+    "bg-white text-[#0F172A] border border-[#CBD5E1] hover:bg-[#F8FAFC] hover:border-[#94A3B8] active:bg-[#F1F5F9] shadow-2xs disabled:bg-[#F8FAFC] disabled:text-[#64748B] disabled:border-[#E2E8F0]",
   ghost:
-    "bg-transparent text-text-secondary hover:bg-surface-subtle hover:text-text-primary active:bg-border-hairline disabled:text-text-muted disabled:opacity-60",
+    "bg-transparent text-[#475569] hover:bg-[#F8FAFC] hover:text-[#0F172A] active:bg-[#F1F5F9] disabled:text-[#64748B] disabled:opacity-60",
   destructive:
-    "bg-status-danger-bg text-status-danger-text border border-status-danger-border hover:bg-status-danger-text hover:text-text-inverted hover:border-status-danger-text active:bg-[#7F1D1D] active:text-text-inverted focus-visible:outline-status-danger-text disabled:bg-surface-subtle disabled:text-text-muted disabled:border-border-hairline",
+    "bg-[#FEF2F2] text-[#991B1B] border border-[#FECACA] hover:bg-[#991B1B] hover:text-white hover:border-[#991B1B] active:bg-[#7F1D1D] active:text-white focus-visible:outline-[#991B1B] disabled:bg-[#F8FAFC] disabled:text-[#64748B] disabled:border-[#E2E8F0]",
 };
 
 const SIZE_CLASSES: Record<ButtonSize, string> = {
-  default: "min-h-[44px] px-4",
-  compact: "min-h-[44px] md:min-h-[40px] px-3.5",
+  default: "h-11 min-h-[44px] px-4",
+  compact: "h-10 min-h-[40px] px-3.5",
 };
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -51,15 +51,15 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         type={type}
         disabled={disabled || isLoading}
         className={cn(
-          "inline-flex items-center justify-center gap-2 rounded-md font-body text-[15px] font-semibold transition-[background-color,border-color,color,transform] duration-150 ease-[cubic-bezier(0.2,0,0,1)] active:scale-[0.985] disabled:cursor-not-allowed disabled:active:scale-100",
+          "inline-flex flex-row items-center justify-center gap-2 whitespace-nowrap rounded-[10px] font-body text-[15px] font-semibold transition-[background-color,border-color,color,transform,box-shadow] duration-150 ease-[cubic-bezier(0.2,0,0,1)] active:scale-[0.985] disabled:cursor-not-allowed disabled:active:scale-100 [&_svg]:h-[18px] [&_svg]:w-[18px] [&_svg]:shrink-0",
           VARIANT_CLASSES[variant],
           SIZE_CLASSES[size],
           className,
         )}
         {...props}
       >
-        {isLoading && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
-        <span>{isLoading && loadingLabel ? loadingLabel : children}</span>
+        {isLoading && <Loader2 className="h-[18px] w-[18px] shrink-0 animate-spin" aria-hidden="true" />}
+        {isLoading && loadingLabel ? <span>{loadingLabel}</span> : children}
       </button>
     );
   },

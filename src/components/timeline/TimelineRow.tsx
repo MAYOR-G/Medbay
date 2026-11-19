@@ -20,35 +20,35 @@ export interface TimelineRowProps {
 const EVENT_ICON_MAP: Record<ActivityEventType, { icon: typeof FileUp; toneClass: string }> = {
   DOCUMENT_UPLOADED: {
     icon: FileUp,
-    toneClass: "bg-accent-primary-tint text-accent-primary border-accent-primary-border",
+    toneClass: "bg-[#ECFDF5] text-[#059669] border-[#A7F3D0]",
   },
   AI_SUMMARY_GENERATED: {
     icon: Sparkles,
-    toneClass: "bg-status-success-bg text-status-success-text border-status-success-border",
+    toneClass: "bg-[#ECFDF5] text-[#065F46] border-[#A7F3D0]",
   },
   PROFILE_ASSIGNED: {
     icon: UserCheck,
-    toneClass: "bg-surface-subtle text-text-primary border-border-hairline",
+    toneClass: "bg-[#F8FAFC] text-[#0F172A] border-[#E2E8F0]",
   },
   SHARE_LINK_CREATED: {
     icon: Share2,
-    toneClass: "bg-status-info-bg text-status-info-text border-status-info-border",
+    toneClass: "bg-[#EFF6FF] text-[#1D4ED8] border-[#BFDBFE]",
   },
   SHARE_LINK_ACCESSED: {
     icon: Eye,
-    toneClass: "bg-status-info-bg text-status-info-text border-status-info-border",
+    toneClass: "bg-[#EFF6FF] text-[#1D4ED8] border-[#BFDBFE]",
   },
   SHARE_LINK_REVOKED: {
     icon: Link2Off,
-    toneClass: "bg-status-danger-bg text-status-danger-text border-status-danger-border",
+    toneClass: "bg-[#FEF2F2] text-[#991B1B] border-[#FECACA]",
   },
   CALENDAR_APPOINTMENT_BOOKED: {
     icon: CalendarCheck,
-    toneClass: "bg-status-success-bg text-status-success-text border-status-success-border",
+    toneClass: "bg-[#ECFDF5] text-[#065F46] border-[#A7F3D0]",
   },
   GMAIL_MEDICAL_DETECTED: {
     icon: Mail,
-    toneClass: "bg-status-info-bg text-status-info-text border-status-info-border",
+    toneClass: "bg-[#EFF6FF] text-[#1D4ED8] border-[#BFDBFE]",
   },
 };
 
@@ -79,22 +79,22 @@ export function TimelineRow({ event, profile }: TimelineRowProps) {
   const rowContent = (
     <div
       className={cn(
-        "flex min-h-[60px] items-center justify-between gap-3 rounded-md border border-border-hairline bg-surface px-3.5 py-3 shadow-elevation-1",
-        href && "transition-colors hover:border-border-strong hover:bg-surface-hover",
+        "flex min-h-[64px] items-center justify-between gap-4 rounded-2xl border border-[#E2E8F0] bg-white px-5 py-3.5 shadow-[0_1px_3px_rgba(15,23,42,0.05),0_1px_2px_rgba(15,23,42,0.03)]",
+        href && "transition-colors hover:border-[#CBD5E1] hover:bg-[#F8FAFC]",
       )}
     >
-      <div className="flex min-w-0 items-center gap-3">
+      <div className="flex min-w-0 items-center gap-3.5">
         <span
           className={cn(
-            "flex h-9 w-9 shrink-0 items-center justify-center rounded-full border",
+            "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border",
             toneClass,
           )}
         >
-          <Icon className="h-4 w-4" aria-hidden="true" />
+          <Icon className="h-[18px] w-[18px] shrink-0" strokeWidth={1.75} aria-hidden="true" />
         </span>
 
         <div className="min-w-0 space-y-1">
-          <p className="text-[15px] leading-[1.4] text-text-primary">{event.description}</p>
+          <p className="text-[15px] leading-snug font-medium text-[#0F172A]">{event.description}</p>
           {profile && (
             <ProfileBadge
               name={profile.isPrimary ? "Self" : profile.fullName}
@@ -104,13 +104,13 @@ export function TimelineRow({ event, profile }: TimelineRowProps) {
         </div>
       </div>
 
-      <span className="shrink-0 font-mono text-xs text-text-muted tabular-nums">{timeText}</span>
+      <span className="shrink-0 font-mono text-xs text-[#64748B] tabular-nums">{timeText}</span>
     </div>
   );
 
   if (href) {
     return (
-      <Link href={href} className="block rounded-md focus-visible:outline-none">
+      <Link href={href} className="block rounded-2xl focus-visible:outline-none">
         {rowContent}
       </Link>
     );

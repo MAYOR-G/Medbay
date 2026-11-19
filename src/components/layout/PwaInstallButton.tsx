@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Download } from "lucide-react";
-import { Button } from "@/components/ui";
+import { CheckCircle2, Download } from "lucide-react";
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -11,6 +10,7 @@ interface BeforeInstallPromptEvent extends Event {
 
 export function PwaInstallButton() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
+  const [installedHint, setInstalledHint] = useState(false);
 
   useEffect(() => {
     if ("serviceWorker" in navigator) {
@@ -28,25 +28,35 @@ export function PwaInstallButton() {
     };
   }, []);
 
-  if (!deferredPrompt) {
-    return (
-      <span className="inline-flex min-h-[44px] items-center rounded-md border border-border-hairline bg-surface px-4 text-[14px] font-medium text-text-secondary">
-        Installable PWA Ready
-      </span>
-    );
-  }
-
   async function handleInstallClick() {
-    if (!deferredPrompt) return;
-    await deferredPrompt.prompt();
-    await deferredPrompt.userChoice;
-    setDeferredPrompt(null);
+    if (deferredPrompt) {
+      await deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      setDeferredPrompt(null);
+      return;
+    }
+
+    setInstalledHint(true);
+    setTimeout(() => setInstalledHint(false), 3500);
   }
 
   return (
-    <Button variant="outline" onClick={handleInstallClick} className="min-h-[48px]">
-      <Download className="h-4 w-4" aria-hidden="true" />
-      <span>Install MedBay App</span>
-    </Button>
+    <button
+      type="button"
+      onClick={handleInstallClick}
+      className="inline-flex h-12 flex-row items-center justify-center gap-2 whitespace-nowrap rounded-[10px] border border-[#CBD5E1] bg-white px-6 font-body text-base font-semibold text-[#0F172A] shadow-2xs transition-[background-color,border-color,transform] duration-150 hover:border-[#94A3B8] hover:bg-[#F8FAFC] active:scale-[0.985]"
+    >
+      {installedHint ? (
+        <>
+          <CheckCircle2 className="h-[18px] w-[18px] shrink-0 text-[#059669]" aria-hidden="true" />
+          <span>PWA Ready in Browser Menu</span>
+        </>
+      ) : (
+        <>
+          <Download className="h-[18px] w-[18px] shrink-0 text-[#475569]" aria-hidden="true" />
+          <span>Install MedBay App</span>
+        </>
+      )}
+    </button>
   );
 }

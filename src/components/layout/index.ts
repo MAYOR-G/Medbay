@@ -5,3 +5,4 @@ export { TopHeader, type TopHeaderProps } from "./TopHeader";
 export { ProfileSwitcher, type ProfileSwitcherProps } from "./ProfileSwitcher";
 export { GoogleSignInButton, type GoogleSignInButtonProps } from "./GoogleSignInButton";
 export { PwaInstallButton } from "./PwaInstallButton";
+export { EmailOtpLoginForm, type EmailOtpLoginFormProps } from "./EmailOtpLoginForm";

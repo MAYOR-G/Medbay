@@ -15,19 +15,32 @@ interface VaultUiState {
   setActiveProfileId: (profileId: string) => void;
   isUploadSheetOpen: boolean;
   setUploadSheetOpen: (isOpen: boolean) => void;
+  isChatOpen: boolean;
+  hasOpenedChat: boolean;
+  chatInitialPrompt: string | null;
+  setChatOpen: (isOpen: boolean, initialPrompt?: string | null) => void;
   toasts: ToastMessage[];
   addToast: (message: string, tone?: ToastTone) => void;
   dismissToast: (id: string) => void;
 }
 
 /**
- * Global UI store strictly for active FamilyProfile filter, modal/sheet flags, and toast queue.
+ * Global UI store for active FamilyProfile filter, upload/chat overlay flags, and toast queue.
  */
 export const useVaultStore = create<VaultUiState>((set) => ({
   activeProfileId: "all",
   setActiveProfileId: (profileId) => set({ activeProfileId: profileId }),
   isUploadSheetOpen: false,
   setUploadSheetOpen: (isOpen) => set({ isUploadSheetOpen: isOpen }),
+  isChatOpen: false,
+  hasOpenedChat: false,
+  chatInitialPrompt: null,
+  setChatOpen: (isOpen, initialPrompt = null) =>
+    set((state) => ({
+      isChatOpen: isOpen,
+      hasOpenedChat: state.hasOpenedChat || isOpen,
+      chatInitialPrompt: isOpen ? initialPrompt : null,
+    })),
   toasts: [],
   addToast: (message, tone = "default") =>
     set((state) => ({

@@ -1,14 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { Loader2 } from "lucide-react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
-import { Button } from "@/components/ui";
+import { GoogleIcon, cn } from "@/components/ui";
 import { useVaultStore } from "@/stores/use-vault-store";
 
 export interface GoogleSignInButtonProps {
   label?: string;
   nextPath?: string;
   fullWidth?: boolean;
+  className?: string;
 }
 
 const GOOGLE_OAUTH_SCOPES = [
@@ -21,8 +23,9 @@ const GOOGLE_OAUTH_SCOPES = [
 
 export function GoogleSignInButton({
   label = "Continue with Google",
-  nextPath = "/vault",
+  nextPath = "/dashboard",
   fullWidth = false,
+  className,
 }: GoogleSignInButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
   const addToast = useVaultStore((state) => state.addToast);
@@ -59,20 +62,22 @@ export function GoogleSignInButton({
   }
 
   return (
-    <Button
-      variant="primary"
-      isLoading={isLoading}
-      loadingLabel="Connecting to Google..."
+    <button
+      type="button"
+      disabled={isLoading}
       onClick={handleSignIn}
-      className={fullWidth ? "min-h-[48px] w-full" : "min-h-[48px] w-full sm:w-auto sm:px-6"}
+      className={cn(
+        "inline-flex h-12 flex-row items-center justify-center gap-2.5 whitespace-nowrap rounded-xl border border-[#CBD5E1] bg-white px-5 font-body text-[15px] font-semibold text-[#0F172A] shadow-xs transition-[background-color,border-color,transform] duration-150 hover:border-[#94A3B8] hover:bg-[#F8FAFC] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60",
+        fullWidth ? "w-full" : "w-full sm:w-auto",
+        className,
+      )}
     >
-      <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
-        <path
-          fill="currentColor"
-          d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81Z"
-        />
-      </svg>
-      <span>{label}</span>
-    </Button>
+      {isLoading ? (
+        <Loader2 className="h-[18px] w-[18px] shrink-0 animate-spin text-[#059669]" aria-hidden="true" />
+      ) : (
+        <GoogleIcon className="h-[18px] w-[18px] shrink-0" />
+      )}
+      <span>{isLoading ? "Connecting to Google..." : label}</span>
+    </button>
   );
 }

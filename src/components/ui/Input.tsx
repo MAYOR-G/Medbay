@@ -19,15 +19,15 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <div className="space-y-1.5">
         <label
           htmlFor={inputId}
-          className="flex items-center gap-1.5 text-[14px] font-semibold text-text-primary"
+          className="flex items-center gap-1.5 text-[14px] font-semibold text-[#0F172A]"
         >
           <span>{label}</span>
           {required && (
-            <span className="text-status-danger-text" aria-hidden="true">
+            <span className="text-[#991B1B]" aria-hidden="true">
               *
             </span>
           )}
-          {optionalTag && <span className="font-normal text-text-muted">(Optional)</span>}
+          {optionalTag && <span className="font-normal text-[#64748B]">(Optional)</span>}
         </label>
         <input
           ref={ref}
@@ -36,21 +36,21 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           aria-invalid={Boolean(error)}
           aria-describedby={error ? errorId : undefined}
           className={cn(
-            "h-[44px] w-full rounded-md border bg-surface px-3 font-body text-[15px] text-text-primary placeholder:text-text-muted transition-colors",
+            "h-11 w-full rounded-[10px] border bg-white px-3.5 font-body text-[15px] text-[#0F172A] placeholder:text-[#64748B] shadow-2xs transition-colors",
             error
-              ? "border-status-danger-text focus-visible:outline-status-danger-text"
-              : "border-border-strong focus:border-border-focus",
+              ? "border-[#991B1B] focus-visible:outline-[#991B1B]"
+              : "border-[#CBD5E1] focus:border-[#059669]",
             className,
           )}
           {...props}
         />
         {error ? (
-          <p id={errorId} className="flex items-center gap-1 text-[13px] text-status-danger-text">
+          <p id={errorId} className="flex items-center gap-1.5 text-[13px] text-[#991B1B]">
             <AlertCircle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
             <span>{error}</span>
           </p>
         ) : helperText ? (
-          <p className="text-[13px] text-text-muted">{helperText}</p>
+          <p className="text-[13px] text-[#64748B]">{helperText}</p>
         ) : null}
       </div>
     );

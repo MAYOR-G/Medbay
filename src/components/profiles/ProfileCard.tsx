@@ -46,9 +46,9 @@ export function ProfileCard({ profile, onEdit }: ProfileCardProps) {
               <ProfileBadge name={profile.relationship} colorIndex={profile.colorIndex} />
               {profile.isPrimary && <Badge variant="ready">Primary</Badge>}
             </div>
-            <h3 className="truncate font-heading text-lg font-semibold text-text-primary">
+            <h2 className="truncate font-heading text-[18px] font-semibold text-[#0F172A]">
               {profile.fullName}
-            </h3>
+            </h2>
           </div>
 
           <div className="flex shrink-0 items-center gap-1">
@@ -59,7 +59,7 @@ export function ProfileCard({ profile, onEdit }: ProfileCardProps) {
               onClick={() => onEdit(profile)}
               className="px-2.5"
             >
-              <Pencil className="h-4 w-4" aria-hidden="true" />
+              <Pencil className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
               <span className="sr-only sm:not-sr-only">Edit</span>
             </Button>
             {!profile.isPrimary && (
@@ -68,24 +68,24 @@ export function ProfileCard({ profile, onEdit }: ProfileCardProps) {
                 size="compact"
                 aria-label={`Delete ${profile.fullName}`}
                 onClick={() => setConfirmDeleteOpen(true)}
-                className="px-2.5 text-status-danger-text hover:bg-status-danger-bg hover:text-status-danger-text"
+                className="px-2.5 text-[#991B1B] hover:bg-[#FEF2F2] hover:text-[#991B1B]"
               >
-                <Trash2 className="h-4 w-4" aria-hidden="true" />
+                <Trash2 className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
               </Button>
             )}
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-4 border-t border-border-hairline pt-3 text-[13px] text-text-secondary">
-          <span className="inline-flex items-center gap-1.5 tabular-nums">
-            <FileText className="h-4 w-4 text-text-muted" aria-hidden="true" />
+        <div className="flex flex-wrap items-center gap-4 border-t border-[#E2E8F0] pt-3.5 text-[14px] text-[#475569]">
+          <span className="inline-flex flex-row items-center gap-1.5 tabular-nums">
+            <FileText className="h-4 w-4 shrink-0 text-[#059669]" aria-hidden="true" />
             <span>
               {profile.documentCount} {profile.documentCount === 1 ? "document" : "documents"}
             </span>
           </span>
           {profile.dateOfBirth && (
-            <span className="inline-flex items-center gap-1.5 font-mono text-xs tabular-nums">
-              <Calendar className="h-3.5 w-3.5 text-text-muted" aria-hidden="true" />
+            <span className="inline-flex flex-row items-center gap-1.5 font-mono text-xs tabular-nums">
+              <Calendar className="h-3.5 w-3.5 shrink-0 text-[#64748B]" aria-hidden="true" />
               <span>DOB {profile.dateOfBirth}</span>
             </span>
           )}
@@ -104,7 +104,7 @@ export function ProfileCard({ profile, onEdit }: ProfileCardProps) {
             disabled={isPending}
             onClick={() => setConfirmDeleteOpen(false)}
           >
-            Cancel
+            <span>Cancel</span>
           </Button>
           <Button
             variant="destructive"
@@ -112,7 +112,7 @@ export function ProfileCard({ profile, onEdit }: ProfileCardProps) {
             loadingLabel="Deleting..."
             onClick={handleConfirmDelete}
           >
-            Delete Profile
+            <span>Delete Profile</span>
           </Button>
         </div>
       </ModalOrSheet>

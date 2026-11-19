@@ -33,14 +33,14 @@ export function ProfilesClientView({ user, profiles }: ProfilesClientViewProps) 
 
   return (
     <div className="space-y-8">
-      <section className="space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-3">
+      <section className="space-y-5">
+        <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="font-heading text-2xl font-semibold tracking-[-0.015em] text-text-primary">
+            <h1 className="font-heading text-[28px] leading-[1.2] font-bold tracking-[-0.02em] text-[#0F172A]">
               Family Profiles &amp; Settings
             </h1>
-            <p className="mt-1 flex items-center gap-2 text-[14px] text-text-secondary">
-              <Users className="h-4 w-4 text-text-muted" aria-hidden="true" />
+            <p className="mt-1.5 flex items-center gap-2 text-[15px] text-[#475569]">
+              <Users className="h-[18px] w-[18px] shrink-0 text-[#059669]" aria-hidden="true" />
               <span className="tabular-nums">
                 {dependentCount} of {MAX_DEPENDENT_PROFILES} managed dependents used
               </span>
@@ -48,12 +48,12 @@ export function ProfilesClientView({ user, profiles }: ProfilesClientViewProps) 
           </div>
 
           <Button variant="primary" disabled={atDependentLimit} onClick={openAddModal}>
-            <Plus className="h-4 w-4" aria-hidden="true" />
+            <Plus className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
             <span>Add Family Member</span>
           </Button>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {profiles.map((profile) => (
             <ProfileCard key={profile.id} profile={profile} onEdit={openEditModal} />
           ))}

@@ -18,7 +18,7 @@ export {
 
 export { createShareLinkAction, revokeShareLinkAction } from "./share.action";
 
-export { deleteChatThreadAction } from "./chat.action";
+export { deleteChatThreadAction, loadChatThreadAction } from "./chat.action";
 
 export {
   markNotificationsReadAction,

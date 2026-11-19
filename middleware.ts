@@ -1,7 +1,14 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const PROTECTED_PREFIXES = ["/vault", "/chat", "/timeline", "/profiles", "/notifications"];
+const PROTECTED_PREFIXES = [
+  "/dashboard",
+  "/vault",
+  "/chat",
+  "/timeline",
+  "/profiles",
+  "/notifications",
+];
 
 function isProtectedRoute(pathname: string): boolean {
   return PROTECTED_PREFIXES.some(
@@ -53,10 +60,10 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
   }
 
   if (user && (pathname === "/" || pathname === "/login")) {
-    const vaultUrl = request.nextUrl.clone();
-    vaultUrl.pathname = "/vault";
-    vaultUrl.search = "";
-    return NextResponse.redirect(vaultUrl);
+    const dashboardUrl = request.nextUrl.clone();
+    dashboardUrl.pathname = "/dashboard";
+    dashboardUrl.search = "";
+    return NextResponse.redirect(dashboardUrl);
   }
 
   return response;
