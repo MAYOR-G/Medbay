@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -19,6 +20,7 @@ import {
   FamilyIsolationDiagram,
   FaqAccordion,
   HeroVaultInteractive,
+  JsonLd,
   MarketingFooter,
   MarketingHeader,
   ScrollReveal,
@@ -30,6 +32,34 @@ import {
   BLOG_ARTICLES,
   FAQ_ITEMS,
 } from "@/lib/marketing-content";
+import {
+  buildFaqSchema,
+  buildOrganizationSchema,
+  buildPageMetadata,
+  buildWebApplicationSchema,
+  buildWebSiteSchema,
+  SITE_BRAND,
+} from "@/lib/seo";
+
+export const metadata: Metadata = {
+  ...buildPageMetadata({
+    title: "MedBay — Encrypted Family Medical Vault & Clinical AI",
+    description:
+      "Store encrypted family lab reports and prescriptions, read plain-English AI summaries backed by WHO & NHS citations, and share doctor links in one click.",
+    pathname: "/",
+    keywords: [
+      "family medical vault",
+      "encrypted medical records",
+      "plain English lab report AI",
+      "expiring doctor share links",
+      "family health organizer",
+      "WHO NHS clinical summary",
+    ],
+  }),
+  title: {
+    absolute: "MedBay — Encrypted Family Medical Vault & Clinical AI",
+  },
+};
 
 const WORKFLOW_STAGES = [
   {
@@ -69,6 +99,14 @@ export default function LandingPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-[#FFFFFF] text-[#0F172A]">
+      <JsonLd
+        data={[
+          buildOrganizationSchema(),
+          buildWebSiteSchema(),
+          buildWebApplicationSchema(),
+          buildFaqSchema(FAQ_ITEMS),
+        ]}
+      />
       <MarketingHeader />
 
       <main id="main-content" className="flex-1 text-base">
@@ -560,10 +598,10 @@ export default function LandingPage() {
                       <div>
                         <p className="font-semibold text-[#0F172A]">Support &amp; Privacy Desk</p>
                         <a
-                          href="mailto:support@medbay.health"
+                          href={`mailto:${SITE_BRAND.supportEmail}`}
                           className="text-[#1E293B] hover:text-[#047857]"
                         >
-                          support@medbay.health
+                          {SITE_BRAND.supportEmail}
                         </a>
                       </div>
                     </div>

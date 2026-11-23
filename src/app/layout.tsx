@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono, Outfit, Source_Sans_3 } from "next/font/google";
 import type { ReactNode } from "react";
+import { getSiteUrl, INDEXABLE_ROBOTS, SITE_BRAND } from "@/lib/seo";
 import "@/styles/tokens.css";
 
 const outfit = Outfit({
@@ -24,30 +25,57 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
+const bingVerification = process.env.NEXT_PUBLIC_BING_VERIFICATION?.trim();
+
 export const metadata: Metadata = {
+  metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "MedBay — Encrypted Family Medical Vault & Clinical AI Hub",
+    default: "MedBay — Encrypted Family Medical Vault & Clinical AI",
     template: "%s | MedBay",
   },
-  description:
-    "Store encrypted family medical records, read plain-English AI clinical summaries backed by WHO, NHS, and CDC citations, and share originals with doctors in one click.",
-  manifest: "/manifest.json",
+  description: SITE_BRAND.description,
+  applicationName: SITE_BRAND.name,
+  authors: [{ name: SITE_BRAND.name, url: getSiteUrl() }],
+  creator: SITE_BRAND.name,
+  publisher: SITE_BRAND.name,
+  category: "health",
+  manifest: "/site.webmanifest",
+  robots: INDEXABLE_ROBOTS,
   icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-    apple: "/icons/icon-192.png",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: "/icon.svg",
+    apple: [{ url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" }],
+  },
+  verification: {
+    ...(googleVerification ? { google: googleVerification } : {}),
+    ...(bingVerification ? { other: { "msvalidate.01": bingVerification } } : {}),
   },
   openGraph: {
     type: "website",
-    siteName: "MedBay",
-    title: "MedBay — Encrypted Family Medical Vault & Clinical AI Hub",
-    description:
-      "Plain-English AI clinical summaries backed by verified medical authorities, strict family profile isolation, and one-click expiring doctor links.",
+    url: getSiteUrl(),
+    siteName: SITE_BRAND.name,
+    locale: SITE_BRAND.locale,
+    title: "MedBay — Encrypted Family Medical Vault & Clinical AI",
+    description: SITE_BRAND.description,
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "MedBay — Encrypted Family Medical Vault & Plain-English Clinical AI Hub",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MedBay — Encrypted Family Medical Vault",
-    description:
-      "Your family's medical records, understood and ready anywhere. AES-256 encrypted vault with verified WHO & NHS clinical references.",
+    title: "MedBay — Encrypted Family Medical Vault & Clinical AI",
+    description: SITE_BRAND.description,
+    images: ["/opengraph-image"],
   },
   appleWebApp: {
     capable: true,
@@ -57,7 +85,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#059669",
+  themeColor: "#047857",
   width: "device-width",
   initialScale: 1,
 };

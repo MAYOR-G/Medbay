@@ -1,19 +1,41 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, FileCheck2 } from "lucide-react";
-import { MarketingFooter, MarketingHeader } from "@/components/marketing";
+import { JsonLd, MarketingFooter, MarketingHeader } from "@/components/marketing";
+import {
+  absoluteUrl,
+  buildBreadcrumbSchema,
+  buildPageMetadata,
+  SITE_BRAND,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Terms of Service",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Terms of Service — Medical Disclaimer & Vault Terms",
   description:
-    "Terms of Service governing use of the MedBay family medical document vault, plain English AI summaries, dependent profiles, and expiring doctor share links.",
-};
+    "Read MedBay's Terms of Service covering our informational-only AI clinical disclaimer, dependent family profile authorization, and expiring doctor links.",
+  pathname: "/terms",
+});
 
 const LAST_UPDATED = "November 23, 2026";
 
 export default function TermsOfServicePage() {
   return (
     <div className="flex min-h-screen flex-col bg-[#FFFFFF] text-[#0F172A]">
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "MedBay Terms of Service",
+            url: absoluteUrl("/terms"),
+            dateModified: "2026-11-23",
+          },
+          buildBreadcrumbSchema([
+            { name: "Home", pathname: "/" },
+            { name: "Terms of Service", pathname: "/terms" },
+          ]),
+        ]}
+      />
       <MarketingHeader />
 
       <main id="main-content" className="flex-1">
@@ -144,10 +166,10 @@ export default function TermsOfServicePage() {
                 noted with an updated effective date at the top of this page. For questions
                 regarding these terms, please contact{" "}
                 <a
-                  href="mailto:support@medbay.health"
+                  href={`mailto:${SITE_BRAND.supportEmail}`}
                   className="font-semibold text-[#059669] hover:text-[#047857]"
                 >
-                  support@medbay.health
+                  {SITE_BRAND.supportEmail}
                 </a>{" "}
                 or visit our{" "}
                 <Link href="/contact" className="font-semibold text-[#059669] hover:text-[#047857]">

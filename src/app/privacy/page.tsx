@@ -1,19 +1,41 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Lock, ShieldCheck } from "lucide-react";
-import { MarketingFooter, MarketingHeader } from "@/components/marketing";
+import { JsonLd, MarketingFooter, MarketingHeader } from "@/components/marketing";
+import {
+  absoluteUrl,
+  buildBreadcrumbSchema,
+  buildPageMetadata,
+  SITE_BRAND,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Privacy Policy — AES-256 Vault & Google Limited Use",
   description:
-    "How MedBay protects your family's medical records with AES 256 storage encryption, PostgreSQL Row Level Security, profile isolated RAG, and read only Google Workspace permissions.",
-};
+    "Review how MedBay encrypts family medical records with AES-256 storage, PostgreSQL Row-Level Security, PHI log redaction, and Google API Limited Use.",
+  pathname: "/privacy",
+});
 
 const LAST_UPDATED = "November 23, 2026";
 
 export default function PrivacyPolicyPage() {
   return (
     <div className="flex min-h-screen flex-col bg-[#FFFFFF] text-[#0F172A]">
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "MedBay Privacy Policy",
+            url: absoluteUrl("/privacy"),
+            dateModified: "2026-11-23",
+          },
+          buildBreadcrumbSchema([
+            { name: "Home", pathname: "/" },
+            { name: "Privacy Policy", pathname: "/privacy" },
+          ]),
+        ]}
+      />
       <MarketingHeader />
 
       <main id="main-content" className="flex-1">
@@ -194,10 +216,10 @@ export default function PrivacyPolicyPage() {
                 If you have any questions about this Privacy Policy, encryption safeguards, or data
                 deletion requests, please email{" "}
                 <a
-                  href="mailto:privacy@medbay.health"
+                  href={`mailto:${SITE_BRAND.privacyEmail}`}
                   className="font-semibold text-[#059669] hover:text-[#047857]"
                 >
-                  privacy@medbay.health
+                  {SITE_BRAND.privacyEmail}
                 </a>{" "}
                 or reach us via our{" "}
                 <Link href="/contact" className="font-semibold text-[#059669] hover:text-[#047857]">

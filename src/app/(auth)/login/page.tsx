@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { AlertCircle, ArrowLeft, CheckCircle2, Lock } from "lucide-react";
 import { EmailOtpLoginForm, GoogleSignInButton } from "@/components/layout";
 import { MedBayLogo } from "@/components/ui";
+import { PRIVATE_NOINDEX_ROBOTS } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: "Sign In",
+  description: "Sign in to access your encrypted MedBay family medical vault.",
+  robots: PRIVATE_NOINDEX_ROBOTS,
+};
 
 interface LoginPageProps {
   searchParams: Promise<{ error?: string; next?: string }>;

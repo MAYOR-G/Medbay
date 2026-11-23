@@ -67,7 +67,7 @@ export const DEMO_VAULT_PROFILES: [DemoVaultProfile, ...DemoVaultProfile[]] = [
       { label: "WHO HbA1c Guidance", domain: "who.int", href: "https://www.who.int" },
       { label: "NHS Blood Sugar Reference", domain: "nhs.uk", href: "https://www.nhs.uk" },
     ],
-    shareTokenPreview: "medbay.health/share/rv84-cmp-24h",
+    shareTokenPreview: "medbayhealth.xyz/share/rv84-cmp-24h",
     shareExpiryLabel: "Expires in 23h 58m",
   },
   {
@@ -101,7 +101,7 @@ export const DEMO_VAULT_PROFILES: [DemoVaultProfile, ...DemoVaultProfile[]] = [
       { label: "CDC Pediatric Asthma", domain: "cdc.gov", href: "https://www.cdc.gov" },
       { label: "NHS Childhood Asthma", domain: "nhs.uk", href: "https://www.nhs.uk" },
     ],
-    shareTokenPreview: "medbay.health/share/mv07-asthma-7d",
+    shareTokenPreview: "medbayhealth.xyz/share/mv07-asthma-7d",
     shareExpiryLabel: "Expires in 6d 23h",
   },
   {
@@ -136,7 +136,7 @@ export const DEMO_VAULT_PROFILES: [DemoVaultProfile, ...DemoVaultProfile[]] = [
       { label: "NIH Lipid Guidelines", domain: "nih.gov", href: "https://www.nih.gov" },
       { label: "Mayo Clinic Cholesterol", domain: "mayoclinic.org", href: "https://www.mayoclinic.org" },
     ],
-    shareTokenPreview: "medbay.health/share/dv71-echo-24h",
+    shareTokenPreview: "medbayhealth.xyz/share/dv71-echo-24h",
     shareExpiryLabel: "Expires in 23h 59m",
   },
 ];
@@ -159,6 +159,8 @@ export interface BlogArticle {
   excerpt: string;
   category: BlogCategory;
   publishedAt: string;
+  publishedIso: string;
+  updatedIso: string;
   readTime: string;
   author: {
     name: string;
@@ -178,6 +180,8 @@ export const BLOG_ARTICLES: [BlogArticle, ...BlogArticle[]] = [
       "Reference ranges, high flags, and unfamiliar abbreviations turn routine lab PDFs into anxious late night searches. Here is a calm framework to read what matters first.",
     category: "Clinical Literacy",
     publishedAt: "November 12, 2026",
+    publishedIso: "2026-11-12T09:00:00.000Z",
+    updatedIso: "2026-11-23T09:00:00.000Z",
     readTime: "6 min read",
     author: {
       name: "Dr. Amara Okafor",
@@ -226,6 +230,8 @@ export const BLOG_ARTICLES: [BlogArticle, ...BlogArticle[]] = [
       "Caregivers often juggle pediatric vaccine cards, personal prescriptions, and aging parents' hospital discharges across five portals and three email threads.",
     category: "Family Care",
     publishedAt: "November 03, 2026",
+    publishedIso: "2026-11-03T09:00:00.000Z",
+    updatedIso: "2026-11-23T09:00:00.000Z",
     readTime: "5 min read",
     author: {
       name: "Hannah Lindqvist",
@@ -268,6 +274,8 @@ export const BLOG_ARTICLES: [BlogArticle, ...BlogArticle[]] = [
       "Emailing raw lab reports leaves sensitive health files sitting permanently in third party inboxes. Time limited zero login links give visiting specialists instant clarity without losing control.",
     category: "Privacy & Security",
     publishedAt: "October 22, 2026",
+    publishedIso: "2026-10-22T09:00:00.000Z",
+    updatedIso: "2026-11-23T09:00:00.000Z",
     readTime: "4 min read",
     author: {
       name: "Marcus Chen",
@@ -308,6 +316,8 @@ export const BLOG_ARTICLES: [BlogArticle, ...BlogArticle[]] = [
       "Most generic chatbots blend every uploaded document into one unstructured thread. Learn how database row level security and verified medical grounding protect accuracy.",
     category: "Product Guide",
     publishedAt: "October 09, 2026",
+    publishedIso: "2026-10-09T09:00:00.000Z",
+    updatedIso: "2026-11-23T09:00:00.000Z",
     readTime: "5 min read",
     author: {
       name: "Claire Beaumont",

@@ -3,19 +3,51 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import {
   BlogGridClient,
+  JsonLd,
   MarketingFooter,
   MarketingHeader,
 } from "@/components/marketing";
+import {
+  absoluteUrl,
+  buildBreadcrumbSchema,
+  buildPageMetadata,
+  getSiteUrl,
+  SITE_BRAND,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Clinical Journal & Blog",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Clinical Journal — Family Health & Privacy Guides",
   description:
-    "Guides from MedBay on reading blood panels calmly, organizing multi generational family records, and keeping medical PDFs secure.",
-};
+    "Read plain-English clinical guides from MedBay on metabolic blood panels, multi-generational family record management, and zero-trust doctor share links.",
+  pathname: "/blog",
+});
 
 export default function BlogPage() {
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "MedBay Clinical Journal",
+    url: absoluteUrl("/blog"),
+    description:
+      "Plain-English guides on laboratory literacy, family caregiving, and medical document privacy.",
+    publisher: {
+      "@id": `${getSiteUrl()}/#organization`,
+      "@type": "Organization",
+      name: SITE_BRAND.name,
+    },
+  };
+
   return (
     <div className="flex min-h-screen flex-col bg-[#FFFFFF] text-[#0F172A]">
+      <JsonLd
+        data={[
+          blogSchema,
+          buildBreadcrumbSchema([
+            { name: "Home", pathname: "/" },
+            { name: "Clinical Journal", pathname: "/blog" },
+          ]),
+        ]}
+      />
       <MarketingHeader />
 
       <main id="main-content" className="flex-1">

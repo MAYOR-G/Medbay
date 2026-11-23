@@ -1,0 +1,48 @@
+# MedBay
+
+> MedBay is an AES-256 encrypted family medical document vault and plain-English clinical AI hub. It helps individuals and family caregivers store medical records for up to five managed dependents, understand lab panels with verified WHO/NHS/CDC citations, chat over profile-isolated health records, and share time-limited raw documents with doctors in one click.
+
+## Core Value Proposition
+
+- **Family-Isolated Medical Vault:** Manage self, spouse, children, and aging parents under a single encrypted account with strict PostgreSQL Row-Level Security (RLS) isolation and zero separate logins for dependents.
+- **Plain-English AI Clinical Summaries:** Upload multi-page PDFs, lab panels, scanned prescriptions, DOCX, or TXT files (up to 25 MB). MedBay extracts biomarkers, highlights normal/attention/critical flags, generates tailored questions for your physician, and cites authoritative medical sources (WHO, NHS, CDC, NIH, MedlinePlus, Mayo Clinic, Cleveland Clinic, MSD Manuals).
+- **Profile-Isolated Clinical RAG Chat & Calendar Booking:** Ask questions strictly scoped to one family member's records at a time, and schedule doctor follow-ups directly onto Google Calendar from chat.
+- **One-Click Expiring Doctor Share Links:** Generate 24-hour, 7-day, or 30-day zero-login share links that expose only the original medical file—never AI chat history, personal notes, or other family profiles—with instant one-tap revocation.
+- **24-Hour Read-Only Gmail Scanner:** Automatically checks connected Gmail every 24 hours for new lab notices, prescriptions, and clinic updates via calm in-app and Web Push alerts.
+
+## Target Audience
+
+- Parents managing pediatric records, allergy plans, immunizations, and prescriptions for children.
+- Caregivers coordinating lab results, hospital discharges, and specialist visits for aging parents.
+- Individuals seeking calm, plain-English clinical explanations grounded in verified medical authorities rather than unverified search results.
+
+## Key Pages
+
+- [Home — Family Medical Vault](https://www.medbayhealth.xyz/): Overview of MedBay with an interactive Family Clinical Vault preview, architecture diagrams, FAQ, and contact form.
+- [About MedBay](https://www.medbayhealth.xyz/about): Mission, Private Health Atelier principles, database isolation architecture, verified clinical authorities, and downloadable vector SVG brand assets.
+- [Clinical Journal (Blog)](https://www.medbayhealth.xyz/blog): Guides on reading blood panels, multi-generational family caregiving, expiring doctor links, and profile-isolated AI.
+- [Contact MedBay](https://www.medbayhealth.xyz/contact): Support, privacy desk, and clinical partnership inquiries.
+- [Privacy Policy](https://www.medbayhealth.xyz/privacy): Detailed AES-256 encryption, PostgreSQL RLS, PHI log redaction, and Google Workspace API Limited Use disclosure.
+- [Terms of Service](https://www.medbayhealth.xyz/terms): Informational-only medical disclaimer, dependent sub-profile authorization, and expiring link terms.
+
+## Clinical Journal Guides
+
+- [How to read a metabolic blood panel before your follow up visit](https://www.medbayhealth.xyz/blog/how-to-read-your-blood-panel-without-panic): Calm four-layer framework for reviewing HbA1c, glucose, kidney eGFR, electrolytes, and liver enzymes.
+- [Keeping medical records clear across children, parents, and yourself](https://www.medbayhealth.xyz/blog/organizing-medical-records-for-three-generations): Why database-enforced family profile isolation prevents dosage and record mix-ups.
+- [Why expiring doctor share links beat forwarding medical PDFs](https://www.medbayhealth.xyz/blog/why-expiring-share-links-beat-emailing-medical-pdfs): Security benefits of time-boxed zero-login links with instant revocation.
+- [What profile isolated clinical AI actually means for your family](https://www.medbayhealth.xyz/blog/what-profile-isolated-ai-means-for-family-privacy): How PostgreSQL RLS and scoped vector retrieval prevent cross-profile context leakage.
+
+## Full Documentation for AI Systems
+
+- [Extended Knowledge Base (llms-full.txt)](https://www.medbayhealth.xyz/llms-full.txt): Consolidated product architecture, security specification, FAQ, and full guide summaries for LLM ingestion.
+
+## Important Clinical & Legal Notice
+
+MedBay AI provides plain-English explanations for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment.
+
+## Contact & Source
+
+- Website: https://www.medbayhealth.xyz
+- Support: support@medbayhealth.xyz
+- Privacy & Security: privacy@medbayhealth.xyz
+- Source Repository: https://github.com/MAYOR-G/Medbay

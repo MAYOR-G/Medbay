@@ -10,16 +10,17 @@ const PRODUCT_LINKS = [
 ] as const;
 
 const COMPANY_LINKS = [
-  { href: "/about", label: "About MedBay" },
-  { href: "/blog", label: "Clinical Journal" },
-  { href: "/contact", label: "Contact Us" },
+  { href: "/about", label: "About MedBay", external: false },
+  { href: "/blog", label: "Clinical Journal", external: false },
+  { href: "/contact", label: "Contact Us", external: false },
+  { href: "https://github.com/MAYOR-G/Medbay", label: "GitHub Repository", external: true },
 ] as const;
 
 const LEGAL_LINKS = [
   { href: "/privacy", label: "Privacy Policy" },
   { href: "/terms", label: "Terms of Service" },
+  { href: "/llms.txt", label: "AI Reference (llms.txt)" },
   { href: "/brand/medbay-logo.svg", label: "Brand Logo SVG" },
-  { href: "/brand/medbay-mark.svg", label: "Brand Mark SVG" },
 ] as const;
 
 export function MarketingFooter() {
@@ -77,12 +78,24 @@ export function MarketingFooter() {
               <ul className="mt-4 space-y-3 text-sm text-[#D1FAE5]">
                 {COMPANY_LINKS.map((item) => (
                   <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="inline-flex items-center gap-1 transition-colors duration-300 hover:text-white"
-                    >
-                      <span>{item.label}</span>
-                    </Link>
+                    {item.external ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 transition-colors duration-300 hover:text-white"
+                      >
+                        <span>{item.label}</span>
+                        <ArrowUpRight className="h-3.5 w-3.5 opacity-75" aria-hidden="true" />
+                      </a>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="inline-flex items-center gap-1 transition-colors duration-300 hover:text-white"
+                      >
+                        <span>{item.label}</span>
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -94,10 +107,11 @@ export function MarketingFooter() {
               </h2>
               <ul className="mt-4 space-y-3 text-sm text-[#D1FAE5]">
                 {LEGAL_LINKS.map((item) => {
-                  const isAsset = item.href.startsWith("/brand/");
+                  const isStaticFile =
+                    item.href.startsWith("/brand/") || item.href.endsWith(".txt");
                   return (
                     <li key={item.href}>
-                      {isAsset ? (
+                      {isStaticFile ? (
                         <a
                           href={item.href}
                           target="_blank"

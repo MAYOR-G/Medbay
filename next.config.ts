@@ -16,6 +16,9 @@ const baseCspDirectives = [
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ["googleapis", "mammoth", "web-push"],
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
   async headers() {
     return [
       {

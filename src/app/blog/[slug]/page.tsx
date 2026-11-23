@@ -4,10 +4,16 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, CheckCircle2, Clock } from "lucide-react";
 import {
   BlogCoverIllustration,
+  JsonLd,
   MarketingFooter,
   MarketingHeader,
 } from "@/components/marketing";
 import { BLOG_ARTICLES, getBlogArticleBySlug } from "@/lib/marketing-content";
+import {
+  buildArticleSchema,
+  buildBreadcrumbSchema,
+  buildPageMetadata,
+} from "@/lib/seo";
 
 interface BlogArticlePageProps {
   params: Promise<{ slug: string }>;
@@ -25,10 +31,17 @@ export async function generateMetadata({
   if (!article) {
     return { title: "Article Not Found" };
   }
-  return {
+  return buildPageMetadata({
     title: article.title,
     description: article.excerpt,
-  };
+    pathname: `/blog/${article.slug}`,
+    type: "article",
+    imagePath: `/blog/${article.slug}/opengraph-image`,
+    imageAlt: `${article.title} — MedBay Clinical Journal`,
+    publishedTime: article.publishedIso,
+    modifiedTime: article.updatedIso,
+    authors: [article.author.name],
+  });
 }
 
 export default async function BlogArticlePage({ params }: BlogArticlePageProps) {
@@ -43,6 +56,16 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
 
   return (
     <div className="flex min-h-screen flex-col bg-[#FFFFFF] text-[#0F172A]">
+      <JsonLd
+        data={[
+          buildArticleSchema(article),
+          buildBreadcrumbSchema([
+            { name: "Home", pathname: "/" },
+            { name: "Clinical Journal", pathname: "/blog" },
+            { name: article.title, pathname: `/blog/${article.slug}` },
+          ]),
+        ]}
+      />
       <MarketingHeader />
 
       <main id="main-content" className="flex-1">
@@ -66,7 +89,9 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
                   <Clock className="h-4 w-4" aria-hidden="true" />
                   <span>{article.readTime}</span>
                 </span>
-                <span className="font-medium text-[#475569]">{article.publishedAt}</span>
+                <time dateTime={article.publishedIso} className="font-medium text-[#475569]">
+                  {article.publishedAt}
+                </time>
               </div>
 
               <h1 className="mt-5 font-heading text-3xl leading-[1.12] font-semibold tracking-[-0.025em] text-[#0F172A] text-balance sm:text-5xl">

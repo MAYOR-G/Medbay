@@ -1,5 +1,6 @@
 export { MarketingHeader } from "./MarketingHeader";
 export { MarketingFooter } from "./MarketingFooter";
+export { JsonLd } from "./JsonLd";
 export { ScrollReveal } from "./ScrollReveal";
 export { TaglineReveal } from "./TaglineReveal";
 export { HeroVaultInteractive } from "./HeroVaultInteractive";

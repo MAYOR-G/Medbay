@@ -1,0 +1,96 @@
+# MedBay — Complete Product, Architecture & Clinical Guide Reference
+
+> Canonical URL: https://www.medbayhealth.xyz
+> Category: Encrypted Family Health Document Vault & Clinical AI Assistant (PWA)
+> Pricing: Free to start
+> Medical Disclaimer: MedBay AI provides plain-English explanations for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment.
+
+---
+
+## 1. Product Overview
+
+MedBay is a privacy-first, mobile-friendly Progressive Web App built for individuals and family caregivers who need a single calm, encrypted vault for medical records across multiple generations. Instead of juggling disconnected hospital portals, camera roll photos of prescriptions, and unencrypted email attachments, MedBay organizes every family member's medical history under one account with strict database-level profile boundaries.
+
+### Core Capabilities
+
+1. **Family-Isolated Medical Vault (Up to 5 Managed Dependents)**
+   - Manage records for self, spouse, children, and aging parents inside one account with zero separate logins, passwords, or email invitations for dependents.
+   - Automatic patient name extraction and fuzzy matching assign uploaded lab reports to the right household member.
+   - Distinct color-coded Family Profile Pills prevent cross-profile ambiguity during urgent care visits or medication checks.
+
+2. **Multi-Format Upload, OCR & Plain-English AI Summaries**
+   - Accepts PDF, JPEG, PNG, WebP, DOCX, and TXT records up to 25 MB with magic-byte verification and OCR support for photographed prescriptions and scanned reports.
+   - Every processed document is structured into three scannable clinical sections:
+     - **Overview:** Calm plain-English explanation of what the record shows.
+     - **Key Findings & Clinical Flags:** Highlights normal, attention (borderline), and critical values with reference ranges.
+     - **Questions for Your Doctor:** Three actionable questions tailored to the findings so families arrive prepared.
+   - Every external explanation is grounded in eight verified clinical authorities: World Health Organization (`who.int`), NHS (`nhs.uk`), CDC (`cdc.gov`), NIH (`nih.gov`), MedlinePlus (`medlineplus.gov`), Mayo Clinic (`mayoclinic.org`), Cleveland Clinic (`clevelandclinic.org`), and MSD Manuals (`msdmanuals.com`).
+
+3. **Profile-Isolated Clinical RAG Chat & Google Calendar Booking**
+   - Ask follow-up questions grounded strictly in a single family member's uploaded records.
+   - Vector similarity search (`match_document_chunks`) enforces both `user_id` and `profile_id` isolation inside PostgreSQL so one person's lab results or dosage never leak into another family member's chat thread.
+   - Visually distinguishes private **Vault Citations** from **External Medical Authority Citations**.
+   - With explicit Google Calendar permission (`calendar.events`), users can schedule doctor follow-up appointments directly from chat and receive structured confirmation cards.
+
+4. **One-Click Expiring Doctor Share Links**
+   - Generate 24-hour, 7-day, or 30-day read-only links (`/share/[token]`) with zero recipient login or PIN required.
+   - Strict zero-leak isolation: visiting physicians view only the raw original document, expiration timer, and download action—never AI summaries, doctor questions, chat history, or other family profiles.
+   - Instant one-tap revocation; expired or revoked links return a neutral unavailable page (`X-Robots-Tag: noindex, nofollow`, `Cache-Control: no-store`) revealing zero metadata.
+
+5. **24-Hour Read-Only Gmail Medical Scanner & Chronological Timeline**
+   - With optional `gmail.readonly` authorization, MedBay scans once every 24 hours for new laboratory notices, prescriptions, and clinic updates.
+   - Alerts surface quietly inside the app and via opt-in Web Push notifications (never outbound spam emails).
+   - Every upload, AI summary, shared link, and booked calendar event is recorded in a chronological family Activity Timeline.
+
+---
+
+## 2. Security, Privacy & Technical Architecture
+
+- **Storage Encryption:** Uploaded files reside in private AES-256 encrypted storage buckets under `{user_id}/{document_id}/{filename}` and stream solely through short-lived signed URLs.
+- **Database Isolation:** PostgreSQL Row-Level Security (RLS) enforces strict cross-tenant and per-profile isolation across documents, summaries, embeddings, chat threads, notifications, and activity events.
+- **OAuth Token Protection:** Google OAuth refresh tokens are encrypted with AES-256-GCM before storage and are never exposed to client browsers.
+- **PHI/PII Log Redaction:** Operational logs exclude raw OCR text, clinical summaries, patient names, chat prompts, Gmail snippets, and share tokens.
+- **Google API Limited Use Compliance:** `gmail.readonly` is used strictly for 24-hour medical notice alerts; `calendar.events` is used strictly for user-initiated doctor appointment booking. Users can disconnect Google Workspace at any time.
+
+---
+
+## 3. Frequently Asked Questions
+
+**Do my children or aging parents need their own logins to use MedBay?**
+No. You manage up to five dependent family profiles directly inside your single encrypted MedBay account with zero separate passwords or email invitations.
+
+**How does MedBay keep one family member's records out of another's AI chat?**
+Profile isolation is enforced at the database layer using PostgreSQL Row-Level Security and scoped vector retrieval (`user_id` + `profile_id`).
+
+**Is MedBay AI giving medical advice or diagnoses?**
+No. MedBay translates clinical terminology into plain English, highlights reference ranges, suggests doctor questions, and cites verified authorities (WHO, NHS, CDC). It is strictly informational and never replaces licensed medical care.
+
+**What does a doctor see when I send a one-click expiring share link?**
+Only the single original medical document you chose, its expiration countdown, and a download control—with zero login required and zero exposure of AI summaries, chat threads, or other family members.
+
+**Which medical document formats and file sizes are supported?**
+PDF, JPEG, PNG, WebP, DOCX, and TXT files up to 25 MB per file, including built-in OCR for photographed paper records.
+
+---
+
+## 4. Clinical Journal Article Summaries
+
+1. **How to read a metabolic blood panel before your follow up visit** (`https://www.medbayhealth.xyz/blog/how-to-read-your-blood-panel-without-panic`) — By Dr. Amara Okafor. Explains how to group a Comprehensive Metabolic Panel into four functional layers (glucose/HbA1c, kidney eGFR/creatinine, electrolytes, liver enzymes) and prepare three clear doctor questions.
+2. **Keeping medical records clear across children, parents, and yourself** (`https://www.medbayhealth.xyz/blog/organizing-medical-records-for-three-generations`) — By Hannah Lindqvist. Covers caregiver record sprawl across portals and how color-coded dependent profiles eliminate cross-member dosage confusion.
+3. **Why expiring doctor share links beat forwarding medical PDFs** (`https://www.medbayhealth.xyz/blog/why-expiring-share-links-beat-emailing-medical-pdfs`) — By Marcus Chen. Compares permanent unencrypted email attachments against revocable 24h/7d/30d signed document streams.
+4. **What profile isolated clinical AI actually means for your family** (`https://www.medbayhealth.xyz/blog/what-profile-isolated-ai-means-for-family-privacy`) — By Claire Beaumont. Explains database-enforced vector scoping and honest visual separation between private vault citations and external medical authority references.
+
+---
+
+## 5. Authoritative Links & Contact
+
+- Homepage: https://www.medbayhealth.xyz/
+- About: https://www.medbayhealth.xyz/about
+- Clinical Journal: https://www.medbayhealth.xyz/blog
+- Contact: https://www.medbayhealth.xyz/contact
+- Privacy Policy: https://www.medbayhealth.xyz/privacy
+- Terms of Service: https://www.medbayhealth.xyz/terms
+- Sitemap: https://www.medbayhealth.xyz/sitemap.xml
+- Support Email: support@medbayhealth.xyz
+- Privacy Email: privacy@medbayhealth.xyz
+- GitHub: https://github.com/MAYOR-G/Medbay

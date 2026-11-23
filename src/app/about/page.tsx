@@ -13,18 +13,25 @@ import {
 import {
   ExpiringShareDiagram,
   FamilyIsolationDiagram,
+  JsonLd,
   MarketingFooter,
   MarketingHeader,
   ScrollReveal,
 } from "@/components/marketing";
 import { MedBayLogo } from "@/components/ui";
 import { ARCHITECTURE_PILLARS } from "@/lib/marketing-content";
+import {
+  buildBreadcrumbSchema,
+  buildOrganizationSchema,
+  buildPageMetadata,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About MedBay",
+export const metadata: Metadata = buildPageMetadata({
+  title: "About Our Encrypted Family Medical Vault",
   description:
-    "Learn why MedBay was built as an encrypted family medical vault with plain English clinical summaries, verified WHO and NHS citations, and strict profile isolation.",
-};
+    "Discover how MedBay protects multi-generational family records with AES-256 encryption, PostgreSQL Row-Level isolation, and WHO/NHS clinical citations.",
+  pathname: "/about",
+});
 
 const DESIGN_PRINCIPLES = [
   {
@@ -61,6 +68,15 @@ const TRUSTED_AUTHORITIES = [
 export default function AboutPage() {
   return (
     <div className="flex min-h-screen flex-col bg-[#FFFFFF] text-[#0F172A]">
+      <JsonLd
+        data={[
+          buildOrganizationSchema(),
+          buildBreadcrumbSchema([
+            { name: "Home", pathname: "/" },
+            { name: "About", pathname: "/about" },
+          ]),
+        ]}
+      />
       <MarketingHeader />
 
       <main id="main-content" className="flex-1">

@@ -3,40 +3,66 @@ import Link from "next/link";
 import { ArrowLeft, Clock, Lock, Mail, ShieldCheck } from "lucide-react";
 import {
   ContactForm,
+  JsonLd,
   MarketingFooter,
   MarketingHeader,
 } from "@/components/marketing";
+import {
+  absoluteUrl,
+  buildBreadcrumbSchema,
+  buildPageMetadata,
+  SITE_BRAND,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact MedBay",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Contact Family Support & Privacy Desk",
   description:
-    "Reach the MedBay support, security, and clinical partnerships team for questions about your encrypted family medical vault.",
-};
+    "Reach MedBay's family support, privacy desk, or clinical partnerships team for questions on dependent profiles, encryption architecture, or Workspace sync.",
+  pathname: "/contact",
+});
 
 const CONTACT_CHANNELS = [
   {
     icon: Mail,
     title: "Family Support",
     detail: "Questions about family sub profiles, document ingestion, or Google Workspace sync.",
-    email: "support@medbay.health",
+    email: SITE_BRAND.supportEmail,
   },
   {
     icon: Lock,
     title: "Privacy & Security Desk",
     detail: "Data export requests, encryption architecture reviews, or responsible disclosure.",
-    email: "privacy@medbay.health",
+    email: SITE_BRAND.privacyEmail,
   },
   {
     icon: ShieldCheck,
     title: "Clinical & Press Inquiries",
     detail: "Healthcare literacy collaborations, caregiver guides, and brand asset requests.",
-    email: "hello@medbay.health",
+    email: "hello@medbayhealth.xyz",
   },
 ] as const;
 
 export default function ContactPage() {
+  const contactPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact MedBay",
+    url: absoluteUrl("/contact"),
+    description:
+      "Support, privacy desk, and clinical partnership inquiries for MedBay Family Medical Vault.",
+  };
+
   return (
     <div className="flex min-h-screen flex-col bg-[#FFFFFF] text-[#0F172A]">
+      <JsonLd
+        data={[
+          contactPageSchema,
+          buildBreadcrumbSchema([
+            { name: "Home", pathname: "/" },
+            { name: "Contact", pathname: "/contact" },
+          ]),
+        ]}
+      />
       <MarketingHeader />
 
       <main id="main-content" className="flex-1">

@@ -1,12 +1,19 @@
+import type { Metadata } from "next";
 import { Clock } from "lucide-react";
 import { Card } from "@/components/ui";
 import { PublicShareViewer } from "@/components/vault";
 import { shareTokenParamSchema } from "@/lib/schemas";
+import { PRIVATE_NOINDEX_ROBOTS } from "@/lib/seo";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { resolvePublicShareDocument } from "@/server/services";
 import type { ResolvedShareLinkDto } from "@/types/domain.types";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Shared Medical Document",
+  robots: PRIVATE_NOINDEX_ROBOTS,
+};
 
 function ExpiredShareFallback() {
   return (

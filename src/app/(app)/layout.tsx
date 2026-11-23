@@ -1,6 +1,8 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
 import { AppShell } from "@/components/layout";
+import { PRIVATE_NOINDEX_ROBOTS } from "@/lib/seo";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import {
   ensurePrimarySelfProfile,
@@ -10,6 +12,11 @@ import {
   listProfilesByUser,
   upsertUserFromOAuth,
 } from "@/server/repositories";
+
+export const metadata: Metadata = {
+  title: "Private Family Vault",
+  robots: PRIVATE_NOINDEX_ROBOTS,
+};
 
 export default async function AuthenticatedAppLayout({
   children,
