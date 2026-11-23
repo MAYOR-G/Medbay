@@ -44,7 +44,7 @@ export function PwaInstallButton() {
     <button
       type="button"
       onClick={handleInstallClick}
-      className="inline-flex h-12 flex-row items-center justify-center gap-2 whitespace-nowrap rounded-[10px] border border-[#CBD5E1] bg-white px-6 font-body text-base font-semibold text-[#0F172A] shadow-2xs transition-[background-color,border-color,transform] duration-150 hover:border-[#94A3B8] hover:bg-[#F8FAFC] active:scale-[0.985]"
+      className="inline-flex h-12 flex-row items-center justify-center gap-2 whitespace-nowrap rounded-[10px] bg-[#F2F6F4] px-6 font-body text-base font-semibold text-[#0F172A] transition-[background-color,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#E6F0EC] active:scale-[0.985]"
     >
       {installedHint ? (
         <>

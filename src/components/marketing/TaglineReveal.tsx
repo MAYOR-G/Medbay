@@ -58,11 +58,11 @@ export function TaglineReveal({ text, caption }: TaglineRevealProps) {
   return (
     <section
       aria-label="Clinical Clarity Statement"
-      className="bg-[#F5F5F0] py-20 sm:py-28 lg:py-32"
+      className="bg-[#F2F6F4] py-20 sm:py-28 lg:py-32"
     >
       <div ref={containerRef} className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="max-w-4xl space-y-6">
-          <p className="font-heading text-3xl leading-[1.18] font-semibold tracking-[-0.025em] text-balance sm:text-4xl lg:text-5xl">
+          <p className="font-heading text-2xl leading-[1.28] font-semibold tracking-[-0.02em] text-balance sm:text-3xl lg:text-4xl">
             {words.map((word, idx) => {
               const isLit = idx < activeCount;
               return (
@@ -71,7 +71,7 @@ export function TaglineReveal({ text, caption }: TaglineRevealProps) {
                     className="inline-block transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
                     style={{
                       color: "#0F172A",
-                      opacity: isLit ? 1 : 0.26,
+                      opacity: isLit ? 1 : 0.28,
                     }}
                   >
                     {word}
@@ -81,7 +81,7 @@ export function TaglineReveal({ text, caption }: TaglineRevealProps) {
             })}
           </p>
           {caption && (
-            <p className="max-w-2xl text-base leading-relaxed text-[#475569] sm:text-lg text-pretty">
+            <p className="max-w-[60ch] text-base leading-relaxed text-[#1E293B] sm:text-lg text-pretty">
               {caption}
             </p>
           )}

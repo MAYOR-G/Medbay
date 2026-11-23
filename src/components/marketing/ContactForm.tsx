@@ -246,7 +246,7 @@ export function ContactForm({ compact = false }: ContactFormProps) {
       <button
         type="submit"
         disabled={submitting}
-        className="inline-flex h-12 items-center justify-center gap-2 rounded-[10px] bg-[#059669] px-6 text-base font-semibold text-white transition-[background-color,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#047857] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
+        className="inline-flex h-12 items-center justify-center gap-2 rounded-[10px] bg-[#047857] px-6 text-base font-semibold text-white transition-[background-color,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[#065F46] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
       >
         <span>{submitting ? "Sending message..." : "Send Message"}</span>
         <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />

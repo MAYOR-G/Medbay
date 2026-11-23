@@ -34,16 +34,16 @@ export function HeroVaultInteractive() {
   return (
     <div
       data-ui="true"
-      className="medbay-shutter rounded-2xl border border-[#DCE2DF] bg-[#F5F5F0] p-4 sm:p-6"
+      className="medbay-shutter rounded-2xl bg-[#F2F6F4] p-4 sm:p-6"
     >
       {/* Top Vault Toolbar */}
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">
-          <span className="h-2.5 w-2.5 rounded-full bg-[#059669]" aria-hidden="true" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#047857]" aria-hidden="true" />
           <span className="font-heading text-sm font-semibold text-[#0F172A]">
             Family Clinical Vault
           </span>
-          <span className="rounded-md bg-[#E6F0EC] px-2 py-0.5 text-xs font-medium text-[#065F46]">
+          <span className="rounded-md bg-[#E6F0EC] px-2.5 py-0.5 text-sm font-medium text-[#065F46]">
             AES 256
           </span>
         </div>
@@ -52,13 +52,13 @@ export function HeroVaultInteractive() {
           type="button"
           onClick={() => setSharePreviewOpen((prev) => !prev)}
           aria-pressed={sharePreviewOpen}
-          className={`inline-flex min-h-[36px] items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors duration-300 ${
+          className={`inline-flex min-h-[38px] items-center gap-1.5 rounded-lg px-3.5 py-1.5 text-sm font-semibold transition-colors duration-300 ${
             sharePreviewOpen
-              ? "border-[#064E3B] bg-[#064E3B] text-white"
-              : "border-[#A7F3D0] bg-[#ECFDF5] text-[#065F46] hover:bg-[#D1FAE5]"
+              ? "bg-[#064E3B] text-white"
+              : "bg-[#ECFDF5] text-[#065F46] hover:bg-[#D1FAE5]"
           }`}
         >
-          <Share2 className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+          <Share2 className="h-4 w-4 shrink-0" aria-hidden="true" />
           <span>{sharePreviewOpen ? "Viewing Doctor Link" : "Preview Doctor Link"}</span>
         </button>
       </div>
@@ -78,10 +78,10 @@ export function HeroVaultInteractive() {
               role="tab"
               aria-selected={isSelected}
               onClick={() => handleProfileChange(profile.id)}
-              className={`inline-flex min-h-[38px] items-center gap-2 rounded-full border px-3.5 text-xs font-semibold transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] active:scale-[0.98] ${
+              className={`inline-flex min-h-[38px] items-center gap-2 rounded-full px-4 text-sm font-semibold transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] active:scale-[0.98] ${
                 isSelected
-                  ? "border-[#059669] bg-[#059669] text-white"
-                  : "border-[#DCE2DF] bg-white text-[#475569] hover:border-[#94A3B8] hover:text-[#0F172A]"
+                  ? "bg-[#047857] text-white"
+                  : "bg-white text-[#334155] hover:bg-[#E6F0EC] hover:text-[#0F172A]"
               }`}
             >
               <span>{profile.label}</span>

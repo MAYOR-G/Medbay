@@ -160,22 +160,24 @@
   --shadow-elevation-3: var(--elevation-3);
 }
 
-html,
-body {
-  background-color: var(--bg-canvas);
-  color: var(--text-primary);
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@layer base {
+  html,
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-h1,
-h2,
-h3 {
-  font-family: var(--font-heading);
-  color: var(--text-primary);
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+  }
 }
 
 /* Global Focus Ring */

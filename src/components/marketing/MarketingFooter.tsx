@@ -126,7 +126,7 @@ export function MarketingFooter() {
         {/* Full-Width Editorial Wordmark Close */}
         <div
           aria-hidden="true"
-          className="mt-14 select-none overflow-hidden border-t border-white/15 pt-8"
+          className="mt-14 select-none overflow-hidden pt-6"
         >
           <p className="font-heading text-5xl leading-none font-bold tracking-[-0.04em] text-white/15 sm:text-7xl lg:text-8xl">
             MedBay Family Vault
@@ -134,7 +134,7 @@ export function MarketingFooter() {
         </div>
 
         {/* Bottom Legal & Medical Disclaimer Strip */}
-        <div className="mt-8 flex flex-col justify-between gap-4 border-t border-white/15 pt-8 text-sm text-[#A7F3D0] lg:flex-row lg:items-center">
+        <div className="mt-8 flex flex-col justify-between gap-4 pt-6 text-sm text-[#A7F3D0] lg:flex-row lg:items-center">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <span>© {year} MedBay. All rights reserved.</span>
             <Link href="/privacy" className="underline-offset-4 hover:text-white hover:underline">
