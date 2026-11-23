@@ -1,0 +1,3397 @@
+{
+ "url": "http://localhost:3045",
+ "at": "2026-11-23T15:23:27.999Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 10,
+   "filled": [
+    0.51,
+    0.69,
+    0.62,
+    0.73,
+    0.53,
+    0.7,
+    0.57,
+    0.38,
+    0.67,
+    0.82
+   ],
+   "motion": {
+    "elements": 30,
+    "css": 1,
+    "transitions": 17,
+    "scripted": 12,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 8384,
+     "screens": 9.3,
+     "words": 1450,
+     "img": 0,
+     "video": 0,
+     "canvas": 0,
+     "svg": 70,
+     "sections": 9,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 1,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 1,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Your family's medical records, understood and ready anywhere.",
+     "words": 8,
+     "chars": 61,
+     "lines": 3,
+     "size": 45,
+     "vw": 3.1,
+     "font": "Outfit",
+     "weight": 600,
+     "tracking": -0.03,
+     "leading": 1.08,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.31,
+     "top": 201,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Your family's medical records, understood and ready anywhere.",
+     "words": 8,
+     "lines": 3,
+     "size": 45,
+     "font": "Outfit"
+    },
+    "headings": [
+     {
+      "text": "Your family's medical records, understood and ready anywhere.",
+      "words": 8,
+      "chars": 61,
+      "lines": 3,
+      "size": 45,
+      "vw": 3.1,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.03,
+      "leading": 1.08,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.31,
+      "top": 201,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Every blood panel, prescription, and pediatric note organized for the appointment that matters most.",
+      "words": 14,
+      "chars": 100,
+      "lines": 3,
+      "size": 45,
+      "vw": 3.1,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.58,
+      "top": 1102,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Built for the whole household, engineered for clinical clarity.",
+      "words": 9,
+      "chars": 63,
+      "lines": 2,
+      "size": 45,
+      "vw": 3.1,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.44,
+      "top": 1579,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Strict family isolation without extra logins",
+      "words": 6,
+      "chars": 44,
+      "lines": 2,
+      "size": 28.1,
+      "vw": 2,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.31,
+      "top": 1909,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "One click doctor links and calm workspace sync",
+      "words": 8,
+      "chars": 46,
+      "lines": 2,
+      "size": 28.1,
+      "vw": 2,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.31,
+      "top": 2384,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "From raw medical PDF to prepared doctor visit in under thirty seconds.",
+      "words": 12,
+      "chars": 70,
+      "lines": 2,
+      "size": 33.8,
+      "vw": 2.3,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.44,
+      "top": 2921,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Why we built MedBay as a private health archive",
+      "words": 9,
+      "chars": 47,
+      "lines": 2,
+      "size": 33.8,
+      "vw": 2.3,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.38,
+      "top": 3714,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Notes on family health clarity and clinical privacy",
+      "words": 8,
+      "chars": 51,
+      "lines": 2,
+      "size": 33.8,
+      "vw": 2.3,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.44,
+      "top": 4355,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Your family's health history stays private and under your control.",
+      "words": 10,
+      "chars": 66,
+      "lines": 3,
+      "size": 33.8,
+      "vw": 2.3,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.29,
+      "top": 5631,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Questions families ask before moving their records",
+      "words": 7,
+      "chars": 50,
+      "lines": 2,
+      "size": 28.1,
+      "vw": 2,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.24,
+      "top": 6024,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Talk with the MedBay team",
+      "words": 5,
+      "chars": 25,
+      "lines": 1,
+      "size": 33.8,
+      "vw": 2.3,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.31,
+      "top": 6925,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Bring your family's health records into one calm, encrypted vault.",
+      "words": 10,
+      "chars": 66,
+      "lines": 2,
+      "size": 33.8,
+      "vw": 2.3,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.44,
+      "top": 7554,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "MedBay Family Vault",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 90,
+      "vw": 6.3,
+      "font": "Outfit",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 8145,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 13,
+     "maxLines": 3,
+     "over2Lines": 2,
+     "statements": 2,
+     "centered": 0,
+     "medianWords": 9,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Source Sans 3",
+       "share": 0.79,
+       "mono": false
+      },
+      {
+       "family": "Outfit",
+       "share": 0.21,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      11,
+      13,
+      15,
+      17,
+      19,
+      21,
+      23,
+      26,
+      28,
+      34,
+      45,
+      90
+     ],
+     "sizeCount": 12,
+     "notLoaded": [],
+     "body": {
+      "font": "Source Sans 3",
+      "size": 15,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.6
+     },
+     "measureChars": 60,
+     "max": {
+      "size": 90,
+      "vw": 6.3,
+      "font": "Outfit",
+      "text": "MedBay Family Vault"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.01,
+     "smallText": 11
+    },
+    "eyebrows": [
+     {
+      "text": "Zero Trust Medical Storage",
+      "above": "Your family's health history stays priva",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": true,
+      "size": 11.3,
+      "top": 5595
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#ffffff",
+     "bodyBgHsl": {
+      "h": 0,
+      "s": 0,
+      "l": 1
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 0,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#f5f5f0",
+       "top": 982,
+       "hsl": {
+        "h": 60,
+        "s": 0.2,
+        "l": 0.95
+       }
+      },
+      {
+       "color": "#f8fafc",
+       "top": 2801,
+       "hsl": {
+        "h": 210,
+        "s": 0.4,
+        "l": 0.98
+       }
+      },
+      {
+       "color": "#064e3b",
+       "top": 5544,
+       "hsl": {
+        "h": 164,
+        "s": 0.86,
+        "l": 0.16
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#475569",
+       "share": 0.48
+      },
+      {
+       "color": "#0f172a",
+       "share": 0.28
+      },
+      {
+       "color": "#d1fae5",
+       "share": 0.1
+      },
+      {
+       "color": "#065f46",
+       "share": 0.04
+      },
+      {
+       "color": "#64748b",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#ffffff",
+      "hsl": {
+       "h": 0,
+       "s": 0,
+       "l": 1
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": [
+      {
+       "text": "Open Vault",
+       "ratio": 3.8,
+       "need": 4.5,
+       "size": 15,
+       "fg": "#ffffff",
+       "bg": "#059669"
+      },
+      {
+       "text": "Get Started Free",
+       "ratio": 3.8,
+       "need": 4.5,
+       "size": 15,
+       "fg": "#ffffff",
+       "bg": "#059669"
+      },
+      {
+       "text": "Self",
+       "ratio": 3.8,
+       "need": 4.5,
+       "size": 11.3,
+       "fg": "#ffffff",
+       "bg": "#059669"
+      },
+      {
+       "text": "Create Your Family Vault",
+       "ratio": 3.8,
+       "need": 4.5,
+       "size": 15,
+       "fg": "#ffffff",
+       "bg": "#059669"
+      },
+      {
+       "text": "Read guide",
+       "ratio": 3.8,
+       "need": 4.5,
+       "size": 13.1,
+       "fg": "#059669",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Read",
+       "ratio": 3.8,
+       "need": 4.5,
+       "size": 11.3,
+       "fg": "#059669",
+       "bg": "#ffffff"
+      }
+     ]
+    },
+    "buttons": {
+     "count": 13,
+     "inHero": 8,
+     "radius": 10,
+     "height": 45,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Home",
+      "Open Vault",
+      "Get Started Free",
+      "Install MedBay App",
+      "Preview Doctor Link"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 1,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "button.inline-flex.h-12 → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 8,
+     "hairlineSamples": [
+      "header.sticky.top-0 1440px",
+      "p.mt-6.border-t 303px",
+      "p.mt-6.border-t 303px",
+      "p.mt-6.border-t 303px",
+      "div.flex.items-center 473px"
+     ],
+     "outlinedBoxes": 11,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 26,
+     "boxRadius": 15,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 4,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 3845
+      },
+      {
+       "count": 4,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 5589
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 7,
+     "fixed": true,
+     "height": 77,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "outfit",
+     "source sans 3",
+     "jetbrains mono"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 8384,
+    "margins": {
+     "left": 150,
+     "right": 151
+    },
+    "sections": [
+     {
+      "sel": "section.mx-auto.max-w-7xl",
+      "tag": "section",
+      "top": 77,
+      "height": 905,
+      "words": 209,
+      "media": 0,
+      "middle": 27,
+      "heading": {
+       "text": "Your family's medical records, understood and read",
+       "size": 45,
+       "tag": "h1"
+      },
+      "left": 150,
+      "right": 174,
+      "textLeft": 150,
+      "textRight": 186,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.bg-[#F5F5F0].py-20",
+      "tag": "section",
+      "top": 982,
+      "height": 477,
+      "words": 41,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Every",
+       "size": 45,
+       "tag": "span"
+      },
+      "left": 150,
+      "right": 600,
+      "textLeft": 150,
+      "textRight": 600,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#vault-showcase.mx-auto.max-w-7xl",
+      "tag": "section",
+      "top": 1459,
+      "height": 1342,
+      "words": 184,
+      "media": 2,
+      "middle": 0,
+      "heading": {
+       "text": "Built for the whole household, engineered for clin",
+       "size": 45,
+       "tag": "h2"
+      },
+      "left": 150,
+      "right": 150,
+      "textLeft": 150,
+      "textRight": 155,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#how-it-works.bg-[#F8FAFC].py-24",
+      "tag": "section",
+      "top": 2801,
+      "height": 780,
+      "words": 162,
+      "media": 0,
+      "middle": 94,
+      "heading": {
+       "text": "From raw medical PDF to prepared doctor visit in u",
+       "size": 34,
+       "tag": "h2"
+      },
+      "left": 150,
+      "right": 195,
+      "textLeft": 150,
+      "textRight": 195,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#about.mx-auto.max-w-7xl",
+      "tag": "section",
+      "top": 3580,
+      "height": 655,
+      "words": 119,
+      "media": 0,
+      "middle": 105,
+      "heading": {
+       "text": "Why we built MedBay as a private health archive",
+       "size": 34,
+       "tag": "h2"
+      },
+      "left": 150,
+      "right": 199,
+      "textLeft": 150,
+      "textRight": 199,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#blog.bg-[#F5F5F0].py-24",
+      "tag": "section",
+      "top": 4235,
+      "height": 1189,
+      "words": 222,
+      "media": 1,
+      "middle": 55,
+      "heading": {
+       "text": "Notes on family health clarity and clinical privac",
+       "size": 34,
+       "tag": "h2"
+      },
+      "left": 150,
+      "right": 177,
+      "textLeft": 150,
+      "textRight": 177,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#security-faq.mx-auto.max-w-7xl",
+      "tag": "section",
+      "top": 5424,
+      "height": 1396,
+      "words": 292,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Your family's health history stays private and und",
+       "size": 34,
+       "tag": "h2"
+      },
+      "left": 150,
+      "right": 151,
+      "textLeft": 150,
+      "textRight": 174,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#contact.bg-[#F8FAFC].py-24",
+      "tag": "section",
+      "top": 6820,
+      "height": 568,
+      "words": 65,
+      "media": 0,
+      "middle": 102,
+      "heading": {
+       "text": "Talk with the MedBay team",
+       "size": 34,
+       "tag": "h2"
+      },
+      "left": 150,
+      "right": 181,
+      "textLeft": 150,
+      "textRight": 246,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mx-auto.max-w-7xl",
+      "tag": "section",
+      "top": 7388,
+      "height": 386,
+      "words": 26,
+      "media": 0,
+      "middle": 383,
+      "heading": {
+       "text": "Bring your family's health records into one calm, ",
+       "size": 34,
+       "tag": "h2"
+      },
+      "left": 196,
+      "right": 241,
+      "textLeft": 196,
+      "textRight": 241,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.bg-[#064E3B].text-white",
+      "tag": "footer",
+      "top": 7774,
+      "height": 609,
+      "words": 110,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "MedBay Family Vault",
+       "size": 90,
+       "tag": "p"
+      },
+      "left": 150,
+      "right": 195,
+      "textLeft": 150,
+      "textRight": 195,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Your family's medical records, understood and ready anywhere.",
+      "size": 45,
+      "top": 201,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 150,
+      "n": 18
+     },
+     {
+      "x": 569,
+      "n": 10
+     },
+     {
+      "x": 181,
+      "n": 4
+     },
+     {
+      "x": 195,
+      "n": 3
+     },
+     {
+      "x": 856,
+      "n": 3
+     },
+     {
+      "x": 667,
+      "n": 2
+     },
+     {
+      "x": 841,
+      "n": 2
+     },
+     {
+      "x": 956,
+      "n": 2
+     },
+     {
+      "x": 973,
+      "n": 2
+     }
+    ],
+    "leftBlocks": 46,
+    "bodySize": 15,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0.09,
+    "voidBox": {
+     "x": 1260,
+     "y": 240,
+     "w": 180,
+     "h": 660
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    0.61,
+    0.7,
+    0.68,
+    0.77,
+    0.36,
+    0.55,
+    0.59,
+    0.75,
+    0.41,
+    0.48,
+    0.87,
+    0.89
+   ],
+   "motion": {
+    "elements": 30,
+    "css": 1,
+    "transitions": 17,
+    "scripted": 12,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 11369,
+     "screens": 11.1,
+     "words": 1450,
+     "img": 0,
+     "video": 0,
+     "canvas": 0,
+     "svg": 70,
+     "sections": 9,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 1,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 1,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Your family's medical records, understood and ready anywhere.",
+     "words": 8,
+     "chars": 61,
+     "lines": 2,
+     "size": 45,
+     "vw": 5.9,
+     "font": "Outfit",
+     "weight": 600,
+     "tracking": -0.03,
+     "leading": 1.08,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.89,
+     "top": 137,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Your family's medical records, understood and ready anywhere.",
+     "words": 8,
+     "lines": 2,
+     "size": 45,
+     "font": "Outfit"
+    },
+    "headings": [
+     {
+      "text": "Your family's medical records, understood and ready anywhere.",
+      "words": 8,
+      "chars": 61,
+      "lines": 2,
+      "size": 45,
+      "vw": 5.9,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.03,
+      "leading": 1.08,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 137,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Every blood panel, prescription, and pediatric note organized for the appointment that matters most.",
+      "words": 14,
+      "chars": 100,
+      "lines": 3,
+      "size": 33.8,
+      "vw": 4.4,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1484,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Built for the whole household, engineered for clinical clarity.",
+      "words": 9,
+      "chars": 63,
+      "lines": 2,
+      "size": 33.8,
+      "vw": 4.4,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.82,
+      "top": 1876,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Strict family isolation without extra logins",
+      "words": 6,
+      "chars": 44,
+      "lines": 1,
+      "size": 28.1,
+      "vw": 3.7,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 2154,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "One click doctor links and calm workspace sync",
+      "words": 8,
+      "chars": 46,
+      "lines": 1,
+      "size": 28.1,
+      "vw": 3.7,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 2944,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "From raw medical PDF to prepared doctor visit in under thirty seconds.",
+      "words": 12,
+      "chars": 70,
+      "lines": 2,
+      "size": 33.8,
+      "vw": 4.4,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.82,
+      "top": 3774,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Why we built MedBay as a private health archive",
+      "words": 9,
+      "chars": 47,
+      "lines": 1,
+      "size": 33.8,
+      "vw": 4.4,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 5070,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "MedBay",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 26,
+      "vw": 3.4,
+      "font": "Outfit",
+      "weight": 700,
+      "tracking": -0.025,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.18,
+      "top": 5445,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Notes on family health clarity and clinical privacy",
+      "words": 8,
+      "chars": 51,
+      "lines": 2,
+      "size": 33.8,
+      "vw": 4.4,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.66,
+      "top": 5973,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Your family's health history stays private and under your control.",
+      "words": 10,
+      "chars": 66,
+      "lines": 2,
+      "size": 33.8,
+      "vw": 4.4,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.8,
+      "top": 7725,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Questions families ask before moving their records",
+      "words": 7,
+      "chars": 50,
+      "lines": 1,
+      "size": 28.1,
+      "vw": 3.7,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 8353,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Talk with the MedBay team",
+      "words": 5,
+      "chars": 25,
+      "lines": 1,
+      "size": 33.8,
+      "vw": 4.4,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 9421,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Bring your family's health records into one calm, encrypted vault.",
+      "words": 10,
+      "chars": 66,
+      "lines": 2,
+      "size": 33.8,
+      "vw": 4.4,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.8,
+      "top": 10291,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "MedBay",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 26,
+      "vw": 3.4,
+      "font": "Outfit",
+      "weight": 700,
+      "tracking": -0.025,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.18,
+      "top": 10632,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "MedBay Family Vault",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 67.5,
+      "vw": 8.8,
+      "font": "Outfit",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 11119,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 15,
+     "maxLines": 3,
+     "over2Lines": 0,
+     "statements": 2,
+     "centered": 0,
+     "medianWords": 8,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Source Sans 3",
+       "share": 0.79,
+       "mono": false
+      },
+      {
+       "family": "Outfit",
+       "share": 0.21,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      11,
+      13,
+      15,
+      17,
+      19,
+      21,
+      23,
+      26,
+      28,
+      34,
+      45,
+      68
+     ],
+     "sizeCount": 12,
+     "notLoaded": [],
+     "body": {
+      "font": "Source Sans 3",
+      "size": 15,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.6
+     },
+     "measureChars": 94,
+     "max": {
+      "size": 67.5,
+      "vw": 8.8,
+      "font": "Outfit",
+      "text": "MedBay Family Vault"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.01,
+     "smallText": 11
+    },
+    "eyebrows": [
+     {
+      "text": "Zero Trust Medical Storage",
+      "above": "Your family's health history stays priva",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": true,
+      "size": 11.3,
+      "top": 7690
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#ffffff",
+     "bodyBgHsl": {
+      "h": 0,
+      "s": 0,
+      "l": 1
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 0,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#f5f5f0",
+       "top": 545,
+       "hsl": {
+        "h": 60,
+        "s": 0.2,
+        "l": 0.95
+       }
+      },
+      {
+       "color": "#f8fafc",
+       "top": 3684,
+       "hsl": {
+        "h": 210,
+        "s": 0.4,
+        "l": 0.98
+       }
+      },
+      {
+       "color": "#064e3b",
+       "top": 7639,
+       "hsl": {
+        "h": 164,
+        "s": 0.86,
+        "l": 0.16
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#475569",
+       "share": 0.48
+      },
+      {
+       "color": "#0f172a",
+       "share": 0.28
+      },
+      {
+       "color": "#d1fae5",
+       "share": 0.1
+      },
+      {
+       "color": "#065f46",
+       "share": 0.04
+      },
+      {
+       "color": "#64748b",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#ffffff",
+      "hsl": {
+       "h": 0,
+       "s": 0,
+       "l": 1
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": [
+      {
+       "text": "Open Vault",
+       "ratio": 3.8,
+       "need": 4.5,
+       "size": 15,
+       "fg": "#ffffff",
+       "bg": "#059669"
+      },
+      {
+       "text": "Get Started Free",
+       "ratio": 3.8,
+       "need": 4.5,
+       "size": 15,
+       "fg": "#ffffff",
+       "bg": "#059669"
+      },
+      {
+       "text": "Self",
+       "ratio": 3.8,
+       "need": 4.5,
+       "size": 11.3,
+       "fg": "#ffffff",
+       "bg": "#059669"
+      },
+      {
+       "text": "Create Your Family Vault",
+       "ratio": 3.8,
+       "need": 4.5,
+       "size": 15,
+       "fg": "#ffffff",
+       "bg": "#059669"
+      }
+     ]
+    },
+    "buttons": {
+     "count": 13,
+     "inHero": 8,
+     "radius": 10,
+     "height": 45,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Home",
+      "Open Vault",
+      "Get Started Free",
+      "Install MedBay App",
+      "Preview Doctor Link"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 1,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "button.inline-flex.h-12 → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 8,
+     "hairlineSamples": [
+      "header.sticky.top-0 768px",
+      "p.mt-6.border-t 646px",
+      "p.mt-6.border-t 646px",
+      "p.mt-6.border-t 646px",
+      "div.flex.items-center 633px"
+     ],
+     "outlinedBoxes": 11,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 26,
+     "boxRadius": 15,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 4,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 5553
+      },
+      {
+       "count": 4,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 7955
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 7,
+     "fixed": true,
+     "height": 77,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "outfit",
+     "outfit fallback",
+     "source sans 3",
+     "source sans 3 fallback",
+     "jetbrains mono"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 11369,
+    "margins": {
+     "left": 30,
+     "right": 31
+    },
+    "sections": [
+     {
+      "sel": "section.mx-auto.max-w-7xl",
+      "tag": "section",
+      "top": 77,
+      "height": 1302,
+      "words": 209,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Your family's medical records, understood and read",
+       "size": 45,
+       "tag": "h1"
+      },
+      "left": 30,
+      "right": 54,
+      "textLeft": 30,
+      "textRight": 66,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.bg-[#F5F5F0].py-20",
+      "tag": "section",
+      "top": 1379,
+      "height": 407,
+      "words": 41,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Every",
+       "size": 34,
+       "tag": "span"
+      },
+      "left": 30,
+      "right": 146,
+      "textLeft": 30,
+      "textRight": 146,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.medbay-reveal",
+      "tag": "div",
+      "top": 1876,
+      "height": 154,
+      "words": 35,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Built for the whole household, engineered for clin",
+       "size": 34,
+       "tag": "h2"
+      },
+      "left": 30,
+      "right": 113,
+      "textLeft": 30,
+      "textRight": 113,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.medbay-reveal.mt-16",
+      "tag": "div",
+      "top": 2090,
+      "height": 715,
+      "words": 73,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Strict family isolation without extra logins",
+       "size": 28,
+       "tag": "h3"
+      },
+      "left": 30,
+      "right": 30,
+      "textLeft": 30,
+      "textRight": 31,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.medbay-reveal.mt-20",
+      "tag": "div",
+      "top": 2880,
+      "height": 714,
+      "words": 76,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "One click doctor links and calm workspace sync",
+       "size": 28,
+       "tag": "h3"
+      },
+      "left": 30,
+      "right": 30,
+      "textLeft": 30,
+      "textRight": 40,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#how-it-works.bg-[#F8FAFC].py-24",
+      "tag": "section",
+      "top": 3684,
+      "height": 1296,
+      "words": 162,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "From raw medical PDF to prepared doctor visit in u",
+       "size": 34,
+       "tag": "h2"
+      },
+      "left": 30,
+      "right": 67,
+      "textLeft": 30,
+      "textRight": 67,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#about.mx-auto.max-w-7xl",
+      "tag": "section",
+      "top": 4980,
+      "height": 903,
+      "words": 119,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Why we built MedBay as a private health archive",
+       "size": 34,
+       "tag": "h2"
+      },
+      "left": 30,
+      "right": 36,
+      "textLeft": 30,
+      "textRight": 36,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#blog.bg-[#F5F5F0].py-24",
+      "tag": "section",
+      "top": 5883,
+      "height": 1666,
+      "words": 222,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Notes on family health clarity and clinical privac",
+       "size": 34,
+       "tag": "h2"
+      },
+      "left": 30,
+      "right": 31,
+      "textLeft": 30,
+      "textRight": 58,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.medbay-reveal",
+      "tag": "div",
+      "top": 7639,
+      "height": 638,
+      "words": 133,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Your family's health history stays private and und",
+       "size": 34,
+       "tag": "h2"
+      },
+      "left": 75,
+      "right": 102,
+      "textLeft": 75,
+      "textRight": 102,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.medbay-reveal.mt-20",
+      "tag": "div",
+      "top": 8353,
+      "height": 888,
+      "words": 159,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Questions families ask before moving their records",
+       "size": 28,
+       "tag": "h2"
+      },
+      "left": 30,
+      "right": 31,
+      "textLeft": 30,
+      "textRight": 69,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#contact.bg-[#F8FAFC].py-24",
+      "tag": "section",
+      "top": 9331,
+      "height": 810,
+      "words": 65,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Talk with the MedBay team",
+       "size": 34,
+       "tag": "h2"
+      },
+      "left": 30,
+      "right": 61,
+      "textLeft": 30,
+      "textRight": 64,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mx-auto.max-w-7xl",
+      "tag": "section",
+      "top": 10140,
+      "height": 431,
+      "words": 26,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Bring your family's health records into one calm, ",
+       "size": 34,
+       "tag": "h2"
+      },
+      "left": 76,
+      "right": 211,
+      "textLeft": 76,
+      "textRight": 211,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.bg-[#064E3B].text-white",
+      "tag": "footer",
+      "top": 10572,
+      "height": 797,
+      "words": 110,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Med",
+       "size": 26,
+       "tag": "span"
+      },
+      "left": 30,
+      "right": 137,
+      "textLeft": 30,
+      "textRight": 137,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Your family's medical records, understood and ready anywhere.",
+      "size": 45,
+      "top": 137,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 30,
+      "n": 20
+     },
+     {
+      "x": 54,
+      "n": 19
+     },
+     {
+      "x": 75,
+      "n": 3
+     },
+     {
+      "x": 94,
+      "n": 2
+     },
+     {
+      "x": 410,
+      "n": 2
+     }
+    ],
+    "leftBlocks": 46,
+    "bodySize": 15,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    0.51,
+    0.71,
+    0.79,
+    0.56,
+    0.76,
+    0.66,
+    0.52,
+    0.52,
+    0.82,
+    0.59,
+    0.72,
+    0.7
+   ],
+   "motion": {
+    "elements": 28,
+    "css": 1,
+    "transitions": 15,
+    "scripted": 12,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 13605,
+     "screens": 16.1,
+     "words": 1457,
+     "img": 0,
+     "video": 0,
+     "canvas": 0,
+     "svg": 70,
+     "sections": 9,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 1,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 1,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Your family's medical records, understood and ready anywhere.",
+     "words": 8,
+     "chars": 61,
+     "lines": 3,
+     "size": 33.8,
+     "vw": 8.7,
+     "font": "Outfit",
+     "weight": 600,
+     "tracking": -0.03,
+     "leading": 1.08,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.9,
+     "top": 122,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Your family's medical records, understood and ready anywhere.",
+     "words": 8,
+     "lines": 3,
+     "size": 33.8,
+     "font": "Outfit"
+    },
+    "headings": [
+     {
+      "text": "Your family's medical records, understood and ready anywhere.",
+      "words": 8,
+      "chars": 61,
+      "lines": 3,
+      "size": 33.8,
+      "vw": 8.7,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.03,
+      "leading": 1.08,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 122,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Home",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 22.5,
+      "vw": 5.8,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 130,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "About",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 22.5,
+      "vw": 5.8,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 190,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Blog",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 22.5,
+      "vw": 5.8,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 249,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Contact",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 22.5,
+      "vw": 5.8,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 309,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Every blood panel, prescription, and pediatric note organized for the appointment that matters most.",
+      "words": 14,
+      "chars": 100,
+      "lines": 5,
+      "size": 28.1,
+      "vw": 7.2,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 1896,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Built for the whole household, engineered for clinical clarity.",
+      "words": 9,
+      "chars": 63,
+      "lines": 3,
+      "size": 28.1,
+      "vw": 7.2,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 2323,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Strict family isolation without extra logins",
+      "words": 6,
+      "chars": 44,
+      "lines": 2,
+      "size": 22.5,
+      "vw": 5.8,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 2677,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "One click doctor links and calm workspace sync",
+      "words": 8,
+      "chars": 46,
+      "lines": 2,
+      "size": 22.5,
+      "vw": 5.8,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 3408,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "From raw medical PDF to prepared doctor visit in under thirty seconds.",
+      "words": 12,
+      "chars": 70,
+      "lines": 3,
+      "size": 28.1,
+      "vw": 7.2,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 4155,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Why we built MedBay as a private health archive",
+      "words": 9,
+      "chars": 47,
+      "lines": 2,
+      "size": 28.1,
+      "vw": 7.2,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 5693,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "MedBay",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 26,
+      "vw": 6.7,
+      "font": "Outfit",
+      "weight": 700,
+      "tracking": -0.025,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.34,
+      "top": 6220,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Up to 5 members",
+      "words": 4,
+      "chars": 15,
+      "lines": 1,
+      "size": 22.5,
+      "vw": 5.8,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.65,
+      "top": 6369,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "25 MB multi format",
+      "words": 4,
+      "chars": 18,
+      "lines": 1,
+      "size": 22.5,
+      "vw": 5.8,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.65,
+      "top": 6481,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "8 verified sources",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 22.5,
+      "vw": 5.8,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.65,
+      "top": 6594,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "24h, 7d, or 30d",
+      "words": 4,
+      "chars": 15,
+      "lines": 1,
+      "size": 22.5,
+      "vw": 5.8,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.65,
+      "top": 6706,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "Notes on family health clarity and clinical privacy",
+      "words": 8,
+      "chars": 51,
+      "lines": 2,
+      "size": 28.1,
+      "vw": 7.2,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 6965,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "How to read a metabolic blood panel before your follow up visit",
+      "words": 12,
+      "chars": 63,
+      "lines": 3,
+      "size": 22.5,
+      "vw": 5.8,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.38,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.78,
+      "top": 7483,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Your family's health history stays private and under your control.",
+      "words": 10,
+      "chars": 66,
+      "lines": 3,
+      "size": 28.1,
+      "vw": 7.2,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.75,
+      "top": 8842,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Questions families ask before moving their records",
+      "words": 7,
+      "chars": 50,
+      "lines": 2,
+      "size": 28.1,
+      "vw": 7.2,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 9817,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Talk with the MedBay team",
+      "words": 5,
+      "chars": 25,
+      "lines": 1,
+      "size": 28.1,
+      "vw": 7.2,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 11126,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Bring your family's health records into one calm, encrypted vault.",
+      "words": 10,
+      "chars": 66,
+      "lines": 3,
+      "size": 28.1,
+      "vw": 7.2,
+      "font": "Outfit",
+      "weight": 600,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.74,
+      "top": 12093,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "MedBay",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 26,
+      "vw": 6.7,
+      "font": "Outfit",
+      "weight": 700,
+      "tracking": -0.025,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.34,
+      "top": 12415,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "MedBay Family Vault",
+      "words": 3,
+      "chars": 19,
+      "lines": 2,
+      "size": 45,
+      "vw": 11.5,
+      "font": "Outfit",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 13285,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 24,
+     "maxLines": 5,
+     "over2Lines": 6,
+     "statements": 6,
+     "centered": 0,
+     "medianWords": 5,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Source Sans 3",
+       "share": 0.78,
+       "mono": false
+      },
+      {
+       "family": "Outfit",
+       "share": 0.22,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      11,
+      13,
+      15,
+      17,
+      19,
+      21,
+      23,
+      26,
+      28,
+      34,
+      45
+     ],
+     "sizeCount": 11,
+     "notLoaded": [],
+     "body": {
+      "font": "Source Sans 3",
+      "size": 15,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 6.9
+     },
+     "measureChars": 47,
+     "max": {
+      "size": 45,
+      "vw": 11.5,
+      "font": "Outfit",
+      "text": "MedBay Family Vault"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.01,
+     "smallText": 11
+    },
+    "eyebrows": [
+     {
+      "text": "Zero Trust Medical Storage",
+      "above": "Your family's health history stays priva",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": true,
+      "size": 11.3,
+      "top": 8807
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#ffffff",
+     "bodyBgHsl": {
+      "h": 0,
+      "s": 0,
+      "l": 1
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 0,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#f5f5f0",
+       "top": 713,
+       "hsl": {
+        "h": 60,
+        "s": 0.2,
+        "l": 0.95
+       }
+      },
+      {
+       "color": "#f8fafc",
+       "top": 1038,
+       "hsl": {
+        "h": 210,
+        "s": 0.4,
+        "l": 0.98
+       }
+      },
+      {
+       "color": "#064e3b",
+       "top": 8771,
+       "hsl": {
+        "h": 164,
+        "s": 0.86,
+        "l": 0.16
+       }
+      },
+      {
+       "color": "#ecfdf5",
+       "top": 12013,
+       "hsl": {
+        "h": 152,
+        "s": 0.81,
+        "l": 0.96
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#475569",
+       "share": 0.48
+      },
+      {
+       "color": "#0f172a",
+       "share": 0.28
+      },
+      {
+       "color": "#d1fae5",
+       "share": 0.1
+      },
+      {
+       "color": "#065f46",
+       "share": 0.04
+      },
+      {
+       "color": "#64748b",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#059669",
+      "hsl": {
+       "h": 161,
+       "s": 0.94,
+       "l": 0.3
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": [
+      {
+       "text": "Sign In",
+       "ratio": 3.8,
+       "need": 4.5,
+       "size": 13.1,
+       "fg": "#ffffff",
+       "bg": "#059669"
+      },
+      {
+       "text": "Create Your Family Vault",
+       "ratio": 3.8,
+       "need": 4.5,
+       "size": 15,
+       "fg": "#ffffff",
+       "bg": "#059669"
+      },
+      {
+       "text": "Get Started Free",
+       "ratio": 3.8,
+       "need": 4.5,
+       "size": 15,
+       "fg": "#ffffff",
+       "bg": "#059669"
+      },
+      {
+       "text": "Self",
+       "ratio": 3.8,
+       "need": 4.5,
+       "size": 11.3,
+       "fg": "#ffffff",
+       "bg": "#059669"
+      },
+      {
+       "text": "Create Your Family Vault",
+       "ratio": 3.8,
+       "need": 4.5,
+       "size": 15,
+       "fg": "#ffffff",
+       "bg": "#059669"
+      }
+     ]
+    },
+    "buttons": {
+     "count": 14,
+     "inHero": 8,
+     "radius": 10,
+     "height": 45,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign In",
+      "Home",
+      "Create Your Family Vault",
+      "Get Started Free",
+      "Install MedBay App"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 1,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "button.inline-flex.h-12 → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 9,
+     "hairlineSamples": [
+      "header.sticky.top-0 390px",
+      "div.space-y-4.border-t 345px",
+      "p.mt-6.border-t 298px",
+      "p.mt-6.border-t 298px",
+      "p.mt-6.border-t 298px"
+     ],
+     "outlinedBoxes": 12,
+     "dashed": 0,
+     "blurred": 2,
+     "roundedBoxes": 27,
+     "boxRadius": 15,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 4,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 6327
+      },
+      {
+       "count": 4,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 9141
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 2,
+     "fixed": true,
+     "height": 77,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "outfit",
+     "outfit fallback",
+     "source sans 3",
+     "source sans 3 fallback",
+     "jetbrains mono"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 13605,
+    "margins": {
+     "left": 19,
+     "right": 20
+    },
+    "sections": [
+     {
+      "sel": "div.grid.items-center",
+      "tag": "div",
+      "top": 122,
+      "height": 1388,
+      "words": 178,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 19,
+      "right": 19,
+      "textLeft": 19,
+      "textRight": 19,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.mt-16.rounded-2xl",
+      "tag": "div",
+      "top": 1570,
+      "height": 176,
+      "words": 22,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 41,
+      "right": 51,
+      "textLeft": 41,
+      "textRight": 51,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.bg-[#F5F5F0].py-20",
+      "tag": "section",
+      "top": 1821,
+      "height": 412,
+      "words": 41,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Every",
+       "size": 28,
+       "tag": "span"
+      },
+      "left": 19,
+      "right": 37,
+      "textLeft": 19,
+      "textRight": 37,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.medbay-reveal",
+      "tag": "div",
+      "top": 2323,
+      "height": 230,
+      "words": 35,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Built for the whole household, engineered for clin",
+       "size": 28,
+       "tag": "h2"
+      },
+      "left": 19,
+      "right": 45,
+      "textLeft": 19,
+      "textRight": 45,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.medbay-reveal.mt-16",
+      "tag": "div",
+      "top": 2613,
+      "height": 656,
+      "words": 73,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Strict family isolation without extra logins",
+       "size": 23,
+       "tag": "h3"
+      },
+      "left": 19,
+      "right": 19,
+      "textLeft": 19,
+      "textRight": 36,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.medbay-reveal.mt-20",
+      "tag": "div",
+      "top": 3344,
+      "height": 631,
+      "words": 76,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "One click doctor links and calm workspace sync",
+       "size": 23,
+       "tag": "h3"
+      },
+      "left": 19,
+      "right": 19,
+      "textLeft": 19,
+      "textRight": 28,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#how-it-works.bg-[#F8FAFC].py-24",
+      "tag": "section",
+      "top": 4065,
+      "height": 1538,
+      "words": 162,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "From raw medical PDF to prepared doctor visit in u",
+       "size": 28,
+       "tag": "h2"
+      },
+      "left": 19,
+      "right": 37,
+      "textLeft": 19,
+      "textRight": 37,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#about.mx-auto.max-w-7xl",
+      "tag": "section",
+      "top": 5603,
+      "height": 1272,
+      "words": 119,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Why we built MedBay as a private health archive",
+       "size": 28,
+       "tag": "h2"
+      },
+      "left": 19,
+      "right": 24,
+      "textLeft": 19,
+      "textRight": 24,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#blog.bg-[#F5F5F0].py-24",
+      "tag": "section",
+      "top": 6875,
+      "height": 1806,
+      "words": 222,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Notes on family health clarity and clinical privac",
+       "size": 28,
+       "tag": "h2"
+      },
+      "left": 19,
+      "right": 20,
+      "textLeft": 19,
+      "textRight": 40,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.medbay-reveal",
+      "tag": "div",
+      "top": 8771,
+      "height": 971,
+      "words": 133,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Your family's health history stays private and und",
+       "size": 28,
+       "tag": "h2"
+      },
+      "left": 49,
+      "right": 61,
+      "textLeft": 49,
+      "textRight": 61,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.medbay-reveal.mt-20",
+      "tag": "div",
+      "top": 9817,
+      "height": 1105,
+      "words": 159,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Questions families ask before moving their records",
+       "size": 28,
+       "tag": "h2"
+      },
+      "left": 19,
+      "right": 20,
+      "textLeft": 19,
+      "textRight": 23,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#contact.bg-[#F8FAFC].py-24",
+      "tag": "section",
+      "top": 11012,
+      "height": 902,
+      "words": 0,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": null,
+      "right": null,
+      "textLeft": null,
+      "textRight": null,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mx-auto.max-w-7xl",
+      "tag": "section",
+      "top": 11914,
+      "height": 441,
+      "words": 0,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": null,
+      "right": null,
+      "textLeft": null,
+      "textRight": null,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.bg-[#064E3B].text-white",
+      "tag": "footer",
+      "top": 12355,
+      "height": 1249,
+      "words": 110,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Med",
+       "size": 26,
+       "tag": "span"
+      },
+      "left": 19,
+      "right": 21,
+      "textLeft": 19,
+      "textRight": 21,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Your family's medical records, understood and ready anywhere.",
+      "size": 34,
+      "top": 122,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 39,
+      "n": 21
+     },
+     {
+      "x": 19,
+      "n": 18
+     },
+     {
+      "x": 68,
+      "n": 4
+     }
+    ],
+    "leftBlocks": 43,
+    "bodySize": 15,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 1440,
+   "message": "3 headline(s) wrap past two lines at 1440px: \"Your family's medical records, understood and re\" → 3 lines (8 words, 45px); \"Every blood panel, prescription, and pediatric n\" → 3 lines (14 words, 45px, a paragraph set above 36px); \"Your family's health history stays private and u\" → 3 lines (10 words, 33.8px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 36px or less."
+  },
+  {
+   "level": "FAIL",
+   "id": "eyebrow",
+   "width": 1440,
+   "message": "1 eyebrow/kicker label(s) above headings: \"Zero Trust Medical Storage\" (pill) above \"Your family's health history stays priva\"",
+   "fix": "Delete them. If the label carried real information, fold it into the headline or the supporting sentence.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "shadow",
+   "width": 1440,
+   "message": "1 box-shadow(s) on elements at rest: button.inline-flex.h-12 → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+   "fix": "Remove. Separate surfaces with a tone step or space. Shadows are for things that really float (menus, dialogs, sticky bars).",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "hairline",
+   "width": 1440,
+   "message": "8 thin rule(s)/divider line(s): header.sticky.top-0 1440px | p.mt-6.border-t 303px | p.mt-6.border-t 303px | p.mt-6.border-t 303px",
+   "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "outlined-box",
+   "width": 1440,
+   "message": "11 boxes drawn with a 1px outline.",
+   "fix": "Define a surface by its fill (one tone step from the page) or leave the content unboxed.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "card-rows",
+   "width": 1440,
+   "message": "2 rows of identical boxed cards.",
+   "fix": "Vary the composition; not every section is a card grid.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "palette-cream",
+   "width": 1440,
+   "message": "Yellow-cream background (section #f5f5f0).",
+   "fix": "Use the drawn palette. If you want warmth, take a low-chroma stone or bone, not a yellow cream.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "contrast",
+   "width": 1440,
+   "message": "Low-contrast text: \"Open Vault\" 3.8:1 needs 4.5:1; \"Get Started Free\" 3.8:1 needs 4.5:1; \"Self\" 3.8:1 needs 4.5:1; \"Create Your Family Vault\" 3.8:1 needs 4.5:1",
+   "fix": "Darken or lighten the text colour.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "12 different font sizes (11, 13, 15, 17, 19, 21, 23, 26, 28, 34, 45, 90).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "body-size",
+   "width": 1440,
+   "message": "Body text is 15px.",
+   "fix": "Body copy 16–20px.",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "few-pictures",
+   "width": 1440,
+   "message": "Only 1 picture(s) on the page (0 photographs, footage or raster images, 1 interface fragments). Drawings in SVG do not count.",
+   "fix": "Find real pictures of the subject's world with scripts/assets.mjs (photographs, archival images, maps, engravings, footage), download them to assets/ and give them room: a hero picture, one per section that has a subject, a full-width band. At least four, usually six to twelve."
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "FAIL",
+   "id": "small-text",
+   "width": 1440,
+   "message": "11 text blocks under 13px.",
+   "fix": "Nothing meant to be read goes below 13px.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 768,
+   "message": "1 headline(s) wrap past two lines at 768px: \"Every blood panel, prescription, and pediatric n\" → 3 lines (14 words, 33.8px, a paragraph set above 32px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 32px or less."
+  },
+  {
+   "level": "WARN",
+   "id": "measure",
+   "width": 768,
+   "message": "Longest paragraph runs about 94 characters per line.",
+   "fix": "Cap paragraphs at 45–75 characters (max-width: 60ch)."
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 390,
+   "message": "7 headline(s) wrap past two lines at 390px: \"Your family's medical records, understood and re\" → 3 lines (8 words, 33.8px); \"Every blood panel, prescription, and pediatric n\" → 5 lines (14 words, 28.1px, a paragraph set above 24px); \"Built for the whole household, engineered for cl\" → 3 lines (9 words, 28.1px); \"From raw medical PDF to prepared doctor visit in\" → 3 lines (12 words, 28.1px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less."
+  },
+  {
+   "level": "WARN",
+   "id": "glass",
+   "width": 390,
+   "message": "2 backdrop-blur surfaces.",
+   "fix": "One blurred sticky bar at most; glass cards are a tell."
+  },
+  {
+   "level": "WARN",
+   "id": "grey-body",
+   "width": 390,
+   "message": "The running text is a soft grey on its ground (6.9:1).",
+   "fix": "Set body copy in the full ink (7:1 or more). Keep the muted ink for secondary notes; pages read thin and unfinished when everything is grey."
+  },
+  {
+   "level": "FAIL",
+   "id": "covered-text",
+   "width": 390,
+   "message": "Large text lies under another element at some scroll position: \"Your family's medical records, understood and re\" (screen 1, 58% hidden); \"Every\" (screen 3, 38% hidden); \"prescription,\" (screen 3, 25% hidden); \"for\" (screen 3, 25% hidden)",
+   "fix": "Nothing may sit on top of a headline or statement. Move the picture, shorten the pinned run, or raise the text above it (z-index) and give it a ground."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/mayorg/Documents/MAYOR G PROJECT/Medbay/.taste-skill/after/desktop-fold.jpg",
+   "pages": [
+    "/Users/mayorg/Documents/MAYOR G PROJECT/Medbay/.taste-skill/after/desktop-page-01.jpg",
+    "/Users/mayorg/Documents/MAYOR G PROJECT/Medbay/.taste-skill/after/desktop-page-02.jpg",
+    "/Users/mayorg/Documents/MAYOR G PROJECT/Medbay/.taste-skill/after/desktop-page-03.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/mayorg/Documents/MAYOR G PROJECT/Medbay/.taste-skill/after/tablet-fold.jpg",
+   "pages": [
+    "/Users/mayorg/Documents/MAYOR G PROJECT/Medbay/.taste-skill/after/tablet-page-01.jpg",
+    "/Users/mayorg/Documents/MAYOR G PROJECT/Medbay/.taste-skill/after/tablet-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/mayorg/Documents/MAYOR G PROJECT/Medbay/.taste-skill/after/mobile-fold.jpg",
+   "pages": [
+    "/Users/mayorg/Documents/MAYOR G PROJECT/Medbay/.taste-skill/after/mobile-page-01.jpg",
+    "/Users/mayorg/Documents/MAYOR G PROJECT/Medbay/.taste-skill/after/mobile-page-02.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

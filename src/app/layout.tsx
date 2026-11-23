@@ -25,10 +25,30 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MedBay — Family Medical Vault",
+  title: {
+    default: "MedBay — Encrypted Family Medical Vault & Clinical AI Hub",
+    template: "%s | MedBay",
+  },
   description:
-    "Encrypted family medical vault with plain-English AI summaries, profile-isolated RAG, and one-click expiring shares.",
+    "Store encrypted family medical records, read plain-English AI clinical summaries backed by WHO, NHS, and CDC citations, and share originals with doctors in one click.",
   manifest: "/manifest.json",
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: "/icons/icon-192.png",
+  },
+  openGraph: {
+    type: "website",
+    siteName: "MedBay",
+    title: "MedBay — Encrypted Family Medical Vault & Clinical AI Hub",
+    description:
+      "Plain-English AI clinical summaries backed by verified medical authorities, strict family profile isolation, and one-click expiring doctor links.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MedBay — Encrypted Family Medical Vault",
+    description:
+      "Your family's medical records, understood and ready anywhere. AES-256 encrypted vault with verified WHO & NHS clinical references.",
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",

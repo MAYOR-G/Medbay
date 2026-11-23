@@ -125,8 +125,15 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
           <EmailOtpLoginForm nextPath={nextPath} />
 
           <p className="mt-6 text-center text-[13px] leading-relaxed text-[#64748B]">
-            By continuing, you agree to MedBay&apos;s Terms &amp; Privacy Policy. AI summaries are
-            informational only and do not replace professional medical advice.
+            By continuing, you agree to MedBay&apos;s{" "}
+            <Link href="/terms" className="font-semibold text-[#059669] hover:underline">
+              Terms of Service
+            </Link>{" "}
+            &amp;{" "}
+            <Link href="/privacy" className="font-semibold text-[#059669] hover:underline">
+              Privacy Policy
+            </Link>
+            . AI summaries are informational only and do not replace professional medical advice.
           </p>
         </div>
 
